@@ -32,7 +32,11 @@ export default function SearchBar(): JSX.Element {
             onChange={handleInputChange}
             required
           />
-          <ButtonDefault type="submit" content="Search" />
+          <ButtonDefault
+            type="submit"
+            content="Search"
+            additionalStyle="absolute right-2.5 bottom-2.5"
+          />
         </div>
       </form>
     </div>
