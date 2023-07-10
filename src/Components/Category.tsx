@@ -14,7 +14,7 @@ function Category({ color1, color2, category }: Props) {
     <div
       className={
         bgGradient +
-        " w-fit p-2 ms-2 rounded-3xl bg-size-200 pg-pos-0 text-gray-50 hover:cursor-pointer hover:bg-pos-100 transition-all"
+        " w-fit py-2 px-4 ms-2 rounded-3xl bg-size-200 pg-pos-0 text-gray-50 hover:cursor-pointer hover:bg-pos-100 transition-all"
       }
     >
       {category}
