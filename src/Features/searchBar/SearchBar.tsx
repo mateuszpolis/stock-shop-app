@@ -1,16 +1,17 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { Dispatch } from "redux";
 import { selectSearchTerm } from "./searchBarSlice";
 import { updateSearchBar } from "./searchBarSlice";
+import { useAppDispatch } from "../../Store/store";
 
-function SearchBar(): JSX.Element {
+export default function SearchBar(): JSX.Element {
   const searchTerm = useSelector(selectSearchTerm);
-  const dispatch: Dispatch = useDispatch();
+  const dispatch: Dispatch = useAppDispatch();
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (event: React.FormEvent<HTMLInputElement>) => {
     event.preventDefault();
-    const userInput: string = event.target.value;
+    const userInput: string = event.currentTarget.value;
     dispatch(updateSearchBar(userInput));
   };
 
@@ -41,5 +42,3 @@ function SearchBar(): JSX.Element {
     </div>
   );
 }
-
-export default SearchBar;
