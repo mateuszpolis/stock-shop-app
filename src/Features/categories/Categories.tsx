@@ -1,6 +1,5 @@
 import React from "react";
 import Category from "../../Components/Category";
-import ButtonDefault from "../../Components/Buttons/ButtonDefault";
 
 function Categories() {
   // Later fetch from API
@@ -10,6 +9,8 @@ function Categories() {
     "Computers",
     "Laptops",
     "Monitors",
+    "Keyboards",
+    "Mice",
   ];
 
   const handleMouseEnterSeeMore = () => {
@@ -29,10 +30,9 @@ function Categories() {
   return (
     <div className="flex justify-normal items-center bg-gray-50 p-3 text-gray-950 dark:bg-gray-900 dark:text-gray-50">
       <h1 className="font-bold text-lg">
-        <i className="fa-solid fa-fire fa-shake text-orange-600 text-2xl"></i>{" "}
-        Popular Categories:
+        <i className="fa-solid fa-list-ul"></i> Popular Categories:
       </h1>
-      <div className="flex items-center overflow-x-scroll">
+      <div className="flex max-w-3xl items-center overflow-x-scroll">
         {categories.map((category, index) => (
           <Category key={index} category={category} />
         ))}
