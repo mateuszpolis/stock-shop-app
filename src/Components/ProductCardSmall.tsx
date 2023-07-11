@@ -13,7 +13,7 @@ type Props = {
 function ProductCardSmall({ id, name, description, price, image }: Props) {
   return (
     <Link to={`/product/${id}`}>
-      <div className="relative mb-2 p-2 rounded-lg flex justify-between items-center border-2 border-gray-300 overflow-hidden w-96 h-20 z-30 hover:bg-gray-300 dark:hover:bg-gray-700 dark:border-gray-700">
+      <div className="relative mb-2 p-2 rounded-lg flex justify-between items-center border-2 border-gray-300 overflow-hidden w-96 h-20 z-30 hover:bg-gray-300 dark:hover:bg-gray-800 dark:border-gray-800 transition-all">
         <img
           alt={name}
           src={image ? image : picture}
@@ -30,8 +30,26 @@ function ProductCardSmall({ id, name, description, price, image }: Props) {
           </button>
           <button>
             <i
-              id={`product-card-heart-id`}
-              className="fa-solid fa-heart-crack hover:text-red-600 transition-all"
+              onMouseEnter={() => {
+                const heart = document.getElementById(
+                  `whislist-card-heart-${id}`
+                );
+                if (heart) {
+                  heart.classList.remove("fa-heart");
+                  heart.classList.add("fa-heart-broken");
+                }
+              }}
+              onMouseLeave={() => {
+                const heart = document.getElementById(
+                  `whislist-card-heart-${id}`
+                );
+                if (heart) {
+                  heart.classList.remove("fa-heart-broken");
+                  heart.classList.add("fa-heart");
+                }
+              }}
+              id={`whislist-card-heart-${id}`}
+              className="fa-solid fa-heart hover:text-red-600 transition-all"
             ></i>
           </button>
         </div>

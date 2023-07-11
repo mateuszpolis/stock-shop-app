@@ -58,7 +58,7 @@ function NavBar(): JSX.Element {
           </span>
           <div
             id="wishlist"
-            className="hidden absolute p-2 z-90 -right-20 rounded-lg bg-gray-200 shadow-lg shadow-gray-400 dark:bg-gray-800 dark:shadow-none"
+            className="hidden absolute p-2 z-90 -right-20 rounded-lg bg-gray-200 shadow-lg shadow-gray-400 dark:bg-gray-700 dark:shadow-none"
           >
             <div className="max-h-96 overflow-y-scroll overscroll-contain">
               <ProductCardSmall
