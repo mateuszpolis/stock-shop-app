@@ -30,7 +30,7 @@ function OfferCard({
   return (
     <div className="relative shrink-0 mb-6 ml-2 mr-4 overflow-hidden rounded-lg h-80 w-60 bg-gray-200 shadow-lg shadow-gray-400 dark:bg-gray-800 dark:shadow-none">
       <img
-        alt="product"
+        alt={name}
         className="absolute h-24 w-full object-cover object-top hover:h-64 transition-all z-20"
         src={image ? image : picture}
       />
@@ -59,7 +59,7 @@ function OfferCard({
       </div>
       <div className="absolute bottom-0 p-4 w-full z-10 flex justify-between items-center text-2xl dark:text-gray-50">
         <div>
-          <Link to="/product/1">
+          <Link to={`/product/${id}`}>
             <span className="font-bold text-lg text-gray-500 hover:text-gray-950 dark:text-gray-400 dark:hover:text-gray-50 hover:cursor-pointer transition-all">
               Go to <i className="fa-solid fa-chevron-right"></i>
             </span>
