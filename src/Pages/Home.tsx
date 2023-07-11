@@ -9,6 +9,8 @@ export default function Home() {
       <NavBar />
       <Categories />
       <Offers />
+      <div className="h-96 w-full">t</div>
+      <div className="h-96 w-full">t</div>
       {/* <Footer /> */}
     </div>
   );

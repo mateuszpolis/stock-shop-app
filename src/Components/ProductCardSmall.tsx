@@ -13,7 +13,7 @@ type Props = {
 function ProductCardSmall({ id, name, description, price, image }: Props) {
   return (
     <Link to={`/product/${id}`}>
-      <div className="relative mb-2 p-2 rounded-lg flex justify-between items-center border-b-2 border-gray-300 overflow-hidden w-96 h-20 z-30 hover:bg-gray-300 dark:hover:bg-gray-700">
+      <div className="relative mb-2 p-2 rounded-lg flex justify-between items-center border-2 border-gray-300 overflow-hidden w-96 h-20 z-30 hover:bg-gray-300 dark:hover:bg-gray-700 dark:border-gray-700">
         <img
           alt={name}
           src={image ? image : picture}

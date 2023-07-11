@@ -28,7 +28,7 @@ function OfferCard({
   };
 
   return (
-    <div className="relative shrink-0 mb-6 ml-2 mr-4 overflow-hidden rounded-lg h-80 w-60 bg-gray-200 shadow-lg shadow-gray-400 dark:bg-gray-800 dark:shadow-none">
+    <div className="relative z-10 shrink-0 mb-6 ml-2 mr-4 overflow-hidden rounded-lg h-80 w-60 bg-gray-200 shadow-lg shadow-gray-400 dark:bg-gray-800 dark:shadow-none">
       <img
         alt={name}
         className="absolute h-24 w-full object-cover object-top hover:h-64 transition-all z-20"

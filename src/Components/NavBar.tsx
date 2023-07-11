@@ -4,6 +4,24 @@ import { Link } from "react-router-dom";
 import ProductCardSmall from "./ProductCardSmall";
 
 function NavBar(): JSX.Element {
+  let firstYOffset: number = window.scrollY;
+  window.addEventListener("scroll", () => {
+    let secondYOffset: number = window.scrollY;
+    const navbar = document.getElementById("navbar");
+    if (navbar) {
+      if (window.scrollY > 50 && secondYOffset > firstYOffset) {
+        navbar.classList.add("shadow-md");
+        navbar.classList.add("shadow-gray-400");
+        navbar.classList.add("py-1");
+      } else {
+        navbar.classList.remove("shadow-md");
+        navbar.classList.remove("shadow-gray-400");
+        navbar.classList.remove("py-1");
+      }
+      firstYOffset = secondYOffset;
+    }
+  });
+
   const handleToggleWishlist = () => {
     const wishlist = document.getElementById("wishlist");
     const wishlistToggler = document.getElementById("wishlistToggler");
@@ -19,7 +37,10 @@ function NavBar(): JSX.Element {
   };
 
   return (
-    <div className="flex justify-between items-center p-5 text-2xl text-gray-950 bg-gray-50 dark:bg-gray-900 dark:text-gray-50">
+    <div
+      id="navbar"
+      className="flex sticky z-50 top-0 justify-between items-center p-5 text-2xl text-gray-950 bg-gray-50 dark:bg-gray-900 dark:text-gray-50 transition-all"
+    >
       <div className="text-4xl font-black font-display">StockShop</div>
       <SearchBar />
       <div className="flex justify-between space-x-10 mr-5">
@@ -32,9 +53,12 @@ function NavBar(): JSX.Element {
             onClick={handleToggleWishlist}
             className="fa-solid fa-heart hover:text-red-600 cursor-pointer transition-all"
           ></i>
+          <span className="absolute -top-1 -right-2 text-xs text-gray-50 bg-red-600 rounded-full w-4 h-4 flex justify-center items-center">
+            2
+          </span>
           <div
             id="wishlist"
-            className="hidden absolute p-2 z-30 -right-20 rounded-lg bg-gray-200 shadow-lg shadow-gray-400 dark:bg-gray-800 dark:shadow-none"
+            className="hidden absolute p-2 z-90 -right-20 rounded-lg bg-gray-200 shadow-lg shadow-gray-400 dark:bg-gray-800 dark:shadow-none"
           >
             <div className="max-h-96 overflow-y-scroll overscroll-contain">
               <ProductCardSmall
@@ -69,10 +93,13 @@ function NavBar(): JSX.Element {
             </div>
           </div>
         </div>
-        <div className="hover:text-gray-500 dark:hover:text-gray-200  cursor-pointer transition-all">
+        <div className="relative hover:text-gray-500 dark:hover:text-gray-200  cursor-pointer transition-all">
           <Link to="/cart">
             <i className="fa-solid fa-cart-shopping"></i>
           </Link>
+          <span className="absolute -top-1 -right-2 text-xs text-gray-50 bg-green-500 rounded-full w-4 h-4 flex justify-center items-center">
+            5
+          </span>
         </div>
       </div>
     </div>
