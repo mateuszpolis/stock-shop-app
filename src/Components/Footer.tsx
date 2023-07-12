@@ -2,7 +2,7 @@ import React from "react";
 
 function Footer() {
   return (
-    <footer className="w-full p-10 bg-gray-200 rounded-t-xl text-lg">
+    <footer className="w-full p-10 bg-gray-200 rounded-t-xl text-lg dark:bg-gray-800">
       <div className="flex justify-between items-center">
         <div>
           <span className="text-gray-500 sm:text-center dark:text-gray-400">

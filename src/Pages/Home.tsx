@@ -7,7 +7,7 @@ import Footer from "../Components/Footer";
 
 export default function Home() {
   return (
-    <div className="relative">
+    <div className="relative bg-gray-50 dark:bg-gray-900">
       <NavBar />
       <Categories />
       <Offers />
