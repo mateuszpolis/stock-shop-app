@@ -29,7 +29,7 @@ function ProductCard({
 
   if (discount != null && price_before != null) {
     return (
-      <div className="relative z-10 shrink-0 mb-6 ml-2 mr-4 overflow-hidden rounded-lg h-80 w-60 bg-gray-200 shadow-md shadow-gray-400 dark:bg-gray-800 dark:shadow-none hover:shadow-lg hover:shadow-gray-400 transition-all">
+      <div className="relative z-10 shrink-0 mb-6 ml-2 mr-4 overflow-hidden rounded-lg h-72 w-52 bg-gray-200 shadow-md shadow-gray-400 dark:bg-gray-800 dark:shadow-none hover:shadow-lg dark:hover:shadow-none hover:shadow-gray-400 transition-all">
         <img
           alt={name}
           className="absolute h-24 w-full object-cover object-top hover:h-64 transition-all z-20"
@@ -84,7 +84,7 @@ function ProductCard({
     );
   } else {
     return (
-      <div className="relative z-10 shrink-0 mb-6 ml-2 mr-4 overflow-hidden rounded-lg h-80 w-60 bg-gray-200 shadow-md shadow-gray-400 dark:bg-gray-800 dark:shadow-none hover:shadow-lg hover:shadow-gray-400 transition-all">
+      <div className="relative z-10 shrink-0 mb-6 ml-2 mr-4 overflow-hidden rounded-lg h-80 w-60 bg-gray-200 shadow-md shadow-gray-400 dark:bg-gray-800 dark:shadow-none hover:shadow-lg dark:hover:shadow-none hover:shadow-gray-400 transition-all">
         <img
           alt={name}
           className="absolute h-24 w-full object-cover object-top hover:h-64 transition-all z-20"

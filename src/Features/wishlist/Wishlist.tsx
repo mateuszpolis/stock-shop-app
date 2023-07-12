@@ -5,16 +5,13 @@ import { Link } from "react-router-dom";
 function Wishlist() {
   const handleToggleWishlist = () => {
     const wishlist = document.getElementById("wishlist");
-    const wishlistTip = document.getElementById("wishlist-tip");
     const wishlistToggler = document.getElementById("wishlistToggler");
     if (wishlist) {
       if (wishlist.classList.contains("hidden")) {
         wishlist.classList.remove("hidden");
-        wishlistTip?.classList.remove("hidden");
         wishlistToggler?.classList.add("text-red-600");
       } else {
         wishlist.classList.add("hidden");
-        wishlistTip?.classList.add("hidden");
         wishlistToggler?.classList.remove("text-red-600");
       }
     }
@@ -31,12 +28,8 @@ function Wishlist() {
         2
       </span>
       <div
-        id="wishlist-tip"
-        className="absolute hidden p-2 z-50 w-6 h-6 bg-gray-200 rotate-45 dark:bg-gray-700"
-      ></div>
-      <div
         id="wishlist"
-        className="hidden absolute p-2 z-50 -right-20 rounded-lg bg-gray-200 shadow-lg shadow-gray-400 dark:bg-gray-700 dark:shadow-none"
+        className="absolute hidden p-2 z-50 -right-14 rounded-lg bg-gray-200 shadow-lg shadow-gray-400 dark:bg-gray-700 dark:shadow-none"
       >
         <div className="max-h-96 z-50 overflow-y-scroll overscroll-contain">
           <ProductCardSmall
@@ -63,9 +56,9 @@ function Wishlist() {
           />
         </div>
         <div className="flex space-between">
-          <Link to={`/cart`}>
+          <Link to={`/wishlist`}>
             <span className="font-bold text-lg text-gray-500 hover:text-gray-950 dark:text-gray-400 dark:hover:text-gray-50 hover:cursor-pointer transition-all">
-              Go to cart <i className="fa-solid fa-cart-shopping"></i>{" "}
+              Go to wishlist <i className="fa-solid fa-cart-shopping"></i>{" "}
               <i className="fa-solid fa-chevron-right"></i>
             </span>
           </Link>

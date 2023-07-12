@@ -4,8 +4,8 @@ import ProductCard from "../../Components/ProductCard";
 function Offers() {
   return (
     <div className="p-3 bg-gray-50 dark:bg-gray-900">
-      <h1 className="text-center text-4xl font-black mb-2 text-gray-900 dark:text-gray-50">
-        Now on sale
+      <h1 className="text-center font-mono text-4xl font-black mb-2 text-gray-900 dark:text-gray-50">
+        ON SALE
       </h1>
       <div className="flex justify-normal items-center overflow-x-scroll">
         <ProductCard
