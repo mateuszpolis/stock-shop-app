@@ -35,29 +35,31 @@ function ProductCard({
           className="absolute h-24 w-full object-cover object-top hover:h-64 transition-all z-20"
           src={image ? image : picture}
         />
-        <div className="p-4 absolute top-24 z-10">
-          <h1 className="font-bold text-lg dark:text-gray-50">{name}</h1>
-          <p className="text-gray-500 dark:text-gray-300">{description}</p>
-          <h1 className="font-bold text-2xl dark:text-gray-50">
-            <i className="fa-solid fa-fire fa-shake text-orange-600 text-2xl"></i>{" "}
-            Now <span className="text-3xl">{discount}%</span> off
-          </h1>
-          <p className="font-bold text-md dark:text-gray-50">
-            Price:{" "}
-            <span className="line-through text-gray-400 dark:text-gray-500">
-              ${price_before}
-            </span>{" "}
-            ${price_current}
-          </p>
-          <p className="text-xs">
-            <br />
-          </p>
-          <div className="flex justify-normal items-center">
-            {categories?.map((category, index) => (
-              <CategoryXs key={index} category={category} />
-            ))}
+        <Link to={`/product/${id}`}>
+          <div className="p-4 absolute top-24 z-10">
+            <h1 className="font-bold text-lg dark:text-gray-50">{name}</h1>
+            <p className="text-gray-500 dark:text-gray-300">{description}</p>
+            <h1 className="font-bold text-2xl dark:text-gray-50">
+              <i className="fa-solid fa-fire fa-shake text-orange-600 text-2xl"></i>{" "}
+              Now <span className="text-3xl">{discount}%</span> off
+            </h1>
+            <p className="font-bold text-md dark:text-gray-50">
+              Price:{" "}
+              <span className="line-through text-gray-400 dark:text-gray-500">
+                ${price_before}
+              </span>{" "}
+              ${price_current}
+            </p>
+            <p className="text-xs">
+              <br />
+            </p>
+            <div className="flex justify-normal items-center">
+              {categories?.map((category, index) => (
+                <CategoryXs key={index} category={category} />
+              ))}
+            </div>
           </div>
-        </div>
+        </Link>
         <div className="absolute bottom-0 p-4 w-full z-10 flex justify-between items-center text-2xl dark:text-gray-50">
           <div>
             <Link to={`/product/${id}`}>
@@ -88,22 +90,24 @@ function ProductCard({
           className="absolute h-24 w-full object-cover object-top hover:h-64 transition-all z-20"
           src={image ? image : picture}
         />
-        <div className="p-4 absolute top-24 z-10">
-          <h1 className="font-bold text-lg dark:text-gray-50">{name}</h1>
-          <p className="text-gray-500 dark:text-gray-300">{description}</p>
+        <Link to={`/product/${id}`}>
+          <div className="p-4 absolute top-24 z-10">
+            <h1 className="font-bold text-lg dark:text-gray-50">{name}</h1>
+            <p className="text-gray-500 dark:text-gray-300">{description}</p>
 
-          <p className="font-bold text-md dark:text-gray-50">
-            Price: ${price_current}
-          </p>
-          <p className="text-xs">
-            <br />
-          </p>
-          <div className="flex justify-normal items-center">
-            {categories?.map((category, index) => (
-              <CategoryXs key={index} category={category} />
-            ))}
+            <p className="font-bold text-md dark:text-gray-50">
+              Price: ${price_current}
+            </p>
+            <p className="text-xs">
+              <br />
+            </p>
+            <div className="flex justify-normal items-center">
+              {categories?.map((category, index) => (
+                <CategoryXs key={index} category={category} />
+              ))}
+            </div>
           </div>
-        </div>
+        </Link>
         <div className="absolute bottom-0 p-4 w-full z-10 flex justify-between items-center text-2xl dark:text-gray-50">
           <div>
             <Link to={`/product/${id}`}>
