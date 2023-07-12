@@ -21,7 +21,7 @@ function Wishlist() {
   };
 
   return (
-    <div>
+    <div className="relative">
       <i
         id="wishlistToggler"
         onClick={handleToggleWishlist}
@@ -32,13 +32,13 @@ function Wishlist() {
       </span>
       <div
         id="wishlist-tip"
-        className="absolute hidden p-2 z-90 w-6 h-6 bg-gray-200 rotate-45 dark:bg-gray-700"
+        className="absolute hidden p-2 z-50 w-6 h-6 bg-gray-200 rotate-45 dark:bg-gray-700"
       ></div>
       <div
         id="wishlist"
-        className="hidden absolute p-2 z-90 -right-20 rounded-lg bg-gray-200 shadow-lg shadow-gray-400 dark:bg-gray-700 dark:shadow-none"
+        className="hidden absolute p-2 z-50 -right-20 rounded-lg bg-gray-200 shadow-lg shadow-gray-400 dark:bg-gray-700 dark:shadow-none"
       >
-        <div className="max-h-96 overflow-y-scroll overscroll-contain">
+        <div className="max-h-96 z-50 overflow-y-scroll overscroll-contain">
           <ProductCardSmall
             id={1}
             name="iPhone 14 pro"

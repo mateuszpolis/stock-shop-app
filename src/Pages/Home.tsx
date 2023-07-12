@@ -6,7 +6,7 @@ import Bestsellers from "../Features/bestsellers/Bestsellers";
 
 export default function Home() {
   return (
-    <div>
+    <div className="relative">
       <NavBar />
       <Categories />
       <Offers />

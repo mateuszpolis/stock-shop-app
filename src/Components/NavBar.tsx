@@ -9,13 +9,9 @@ function NavBar(): JSX.Element {
     let secondYOffset: number = window.scrollY;
     const navbar = document.getElementById("navbar");
     if (navbar) {
-      if (window.scrollY > 50 && secondYOffset > firstYOffset) {
-        navbar.classList.add("shadow-md");
-        navbar.classList.add("shadow-gray-400");
+      if (window.scrollY > 20 && secondYOffset > firstYOffset) {
         navbar.classList.add("py-1");
       } else {
-        navbar.classList.remove("shadow-md");
-        navbar.classList.remove("shadow-gray-400");
         navbar.classList.remove("py-1");
       }
       firstYOffset = secondYOffset;
