@@ -4,6 +4,7 @@ import searchBarReducer from "../Features/searchBar/searchBarSlice";
 import catgoriesReducer from "../Features/categories/categoriesSlice";
 import offersReducer from "../Features/offers/offersSlice";
 import wishlistReducer from "../Features/wishlist/wishlistSlice";
+import bestsellersReducer from "../Features/bestsellers/bestsellersSlice";
 
 export const store = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ export const store = configureStore({
     categories: catgoriesReducer,
     offers: offersReducer,
     wishlist: wishlistReducer,
+    bestsellers: bestsellersReducer,
   },
 });
 

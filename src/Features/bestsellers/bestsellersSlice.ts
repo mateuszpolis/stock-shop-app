@@ -1,15 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { Product } from "../../Models/ProductModel";
 
-interface OffersState {
+interface BestsellersState {
   value: Product[];
 }
 
-const offersSlice = createSlice({
+const bestsellesrSlice = createSlice({
   name: "offers",
   initialState: {
     value: [],
-  } as OffersState,
+  } as BestsellersState,
   reducers: {
     updateOffers: (state, action) => {
       state.value = action.payload;
@@ -17,4 +17,4 @@ const offersSlice = createSlice({
   },
 });
 
-export default offersSlice.reducer;
+export default bestsellesrSlice.reducer;

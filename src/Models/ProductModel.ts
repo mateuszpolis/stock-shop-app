@@ -1,10 +1,10 @@
-export type Offer = {
+export type Product = {
   id: number;
   name: string;
   description: string;
-  discount: number;
+  discount?: number;
   price_current: number;
-  price_before: number;
+  price_before?: number;
   categories: string[];
   image?: string;
 };

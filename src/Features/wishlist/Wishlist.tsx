@@ -58,6 +58,7 @@ function Wishlist() {
             name="iMac 27inch"
             description="Apple"
             price={1799}
+            price_before={1999}
             image="https://cdn.pixabay.com/photo/2014/09/28/11/25/imac-464737_1280.jpg"
           />
         </div>
