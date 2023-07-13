@@ -7,7 +7,10 @@ function Footer() {
         <div>
           <span className="text-gray-500 sm:text-center dark:text-gray-400">
             © 2023{" "}
-            <a href="https://flowbite.com/" className="hover:underline">
+            <a
+              href="https://www.linkedin.com/in/mateuszpolis/"
+              className="hover:underline"
+            >
               Mateusz Polis
             </a>
             . All Rights Reserved.

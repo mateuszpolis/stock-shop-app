@@ -5,6 +5,7 @@ import catgoriesReducer from "../Features/categories/categoriesSlice";
 import offersReducer from "../Features/offers/offersSlice";
 import wishlistReducer from "../Features/wishlist/wishlistSlice";
 import bestsellersReducer from "../Features/bestsellers/bestsellersSlice";
+import productInfoReducer from "../Features/productInfo/productInfoSlice";
 
 export const store = configureStore({
   reducer: {
@@ -13,6 +14,7 @@ export const store = configureStore({
     offers: offersReducer,
     wishlist: wishlistReducer,
     bestsellers: bestsellersReducer,
+    productInfo: productInfoReducer,
   },
 });
 

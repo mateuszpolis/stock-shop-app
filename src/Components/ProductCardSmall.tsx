@@ -21,7 +21,7 @@ function ProductCardSmall({
 }: Props) {
   if (price_before != null) {
     return (
-      <div className="w-full sm:w-96 relative mb-2 p-2 rounded-lg flex justify-between items-center border-2 border-gray-300 overflow-hidden h-20 z-30 hover:bg-gray-300 dark:hover:bg-gray-800 dark:border-gray-800 transition-all">
+      <div className="w-full sm:w-96 relative mb-2 p-2 rounded-lg flex justify-between items-center border-2  overflow-hidden h-20 z-30 hover:bg-gray-300 dark:hover:bg-gray-800  transition-all">
         <Link to={`/product/${id}`}>
           <img
             alt={name}
@@ -75,7 +75,7 @@ function ProductCardSmall({
     );
   } else {
     return (
-      <div className="w-full sm:w-96  relative mb-2 p-2 rounded-lg flex justify-between items-center border-2 border-gray-300 overflow-hidden h-20 z-30 hover:bg-gray-300 dark:hover:bg-gray-800 dark:border-gray-800 transition-all">
+      <div className="w-full sm:w-96  relative mb-2 p-2 rounded-lg flex justify-between items-center border-2  overflow-hidden h-20 z-30 hover:bg-gray-300 dark:hover:bg-gray-800  transition-all">
         <Link to={`/product/${id}`}>
           <img
             alt={name}

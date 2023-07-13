@@ -10,7 +10,7 @@ function NavBar(): JSX.Element {
       id="navbar"
       className="flex flex-col sticky top-0 p-5 transition-all bg-gray-50 dark:bg-gray-900 z-50"
     >
-      <div className="flex flex-col space-y-2 sm:flex-row justify-between items-center text-sm sm:text-lg md:text-xl lg:text-2xl text-gray-950 bg-gray-50 dark:bg-gray-900 dark:text-gray-50 transition-all">
+      <div className="flex flex-col space-y-2 sm:flex-row justify-between mb-2 items-center text-sm sm:text-lg md:text-xl lg:text-2xl text-gray-950 bg-gray-50 dark:bg-gray-900 dark:text-gray-50 transition-all">
         <div className="flex justify-between items-center w-full sm:w-auto">
           <div className="text-3xl sm:hidden hover:text-gray-500 dark:hover:text-gray-200 cursor-pointer transition-all">
             <i className="fa-solid fa-user"></i>

@@ -30,7 +30,7 @@ function Categories() {
   return (
     <div
       id="categories"
-      className="z-40 flex justify-normal items-center bg-gray-50 py-2 px-0 text-gray-950 dark:bg-gray-900 dark:text-gray-50 transition-all"
+      className="z-40 flex justify-normal items-center bg-gray-50 pt-2 mb-0 px-0 text-gray-950 dark:bg-gray-900 dark:text-gray-50 transition-all"
     >
       <div className="flex max-w-3xl items-center overflow-x-scroll">
         {categories.map((category, index) => (
