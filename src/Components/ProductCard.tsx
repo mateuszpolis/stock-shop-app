@@ -38,11 +38,9 @@ function ProductCard({
         <Link to={`/product/${id}`}>
           <div className="p-4 absolute top-24 z-10">
             <h1 className="font-bold text-lg dark:text-neutral-50">{name}</h1>
-            <p className="text-neutral-500 dark:text-neutral-300">{description}</p>
-            <h1 className="font-bold text-2xl dark:text-neutral-50">
-              <i className="fa-solid fa-fire fa-shake text-orange-600 text-2xl"></i>{" "}
-              Now <span className="text-3xl">{discount}%</span> off
-            </h1>
+            <p className="text-neutral-500 dark:text-neutral-300">
+              {description}
+            </p>
             <p className="font-bold text-md dark:text-neutral-50">
               Price:{" "}
               <span className="line-through text-neutral-400 dark:text-neutral-500">
@@ -93,7 +91,9 @@ function ProductCard({
         <Link to={`/product/${id}`}>
           <div className="p-4 absolute top-24 z-10">
             <h1 className="font-bold text-lg dark:text-neutral-50">{name}</h1>
-            <p className="text-neutral-500 dark:text-neutral-300">{description}</p>
+            <p className="text-neutral-500 dark:text-neutral-300">
+              {description}
+            </p>
 
             <p className="font-bold text-md dark:text-neutral-50">
               Price: ${price_current}

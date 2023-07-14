@@ -30,18 +30,18 @@ function Review({
   };
 
   return (
-    <div>
+    <div className="mb-2">
       <div className="flex items-center gap-1">
-        <h1 className="text-sm font-semibold">{author}</h1>
+        <h1 className="text-sm lg:text-base font-semibold">{author}</h1>
         <StarRating rating={rating} review_id={review_id} />
         <div>
-          <span className="text-xs text-gray-500 dark:text-gray-300">
+          <span className="text-xs lg:text-sm text-gray-500 dark:text-gray-300">
             {date}
           </span>
         </div>
       </div>
       <div className="p-2">
-        <p className="text-sm">{content}</p>
+        <p className="text-sm lg:text-base">{content}</p>
       </div>
       <div onClick={handleLikeReview} className="hover:cursor-pointer">
         <span>

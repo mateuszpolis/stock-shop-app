@@ -35,14 +35,14 @@ function Specification() {
         onClick={handleToggleSpecification}
         className="flex items-center hover:cursor-pointer"
       >
-        <h1 className="text-xl font-semibold">Specification</h1>{" "}
+        <h1 className="text-xl lg:text-2xl font-semibold">Specification</h1>{" "}
         <i id="specification-angle" className="fa-solid fa-angle-down" />
       </div>
       <div id="specification" className="grid-cols-2 p-2 hidden">
         {Object.keys(attributes).map((key) => (
           <div key={key} className="grid grid-cols-2">
-            <h1 className="text-sm font-semibold">{key}:</h1>
-            <span className="text-xs text-gray-500 dark:text-gray-300">
+            <h1 className="text-sm lg:text-lg font-semibold">{key}:</h1>
+            <span className="text-xs lg:text-sm text-gray-500 dark:text-gray-300">
               {attributes[key]}
             </span>
           </div>

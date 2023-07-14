@@ -24,7 +24,7 @@ function Reviews() {
         onClick={handleToggleReviews}
         className="flex items-center hover:cursor-pointer"
       >
-        <h1 className="text-xl font-semibold">
+        <h1 className="text-xl lg:text-2xl font-semibold">
           Reviews{" "}
           <span className="text-base font-base text-gray-500 dark:text-gray-300">
             (25)

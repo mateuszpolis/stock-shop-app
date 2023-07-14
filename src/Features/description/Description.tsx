@@ -23,14 +23,14 @@ function Description() {
         onClick={handleToggleDescription}
         className="relative flex items-center hover:cursor-pointer"
       >
-        <h1 className="text-xl font-semibold">Description</h1>{" "}
+        <h1 className="text-xl lg:text-2xl font-semibold">Description</h1>{" "}
         <i
           id="description-angle"
           className="fa-solid fa-angle-down transition-all"
         />
       </div>
       <div id="description" className="p-2 hidden">
-        <p className="text-sm">
+        <p className="text-sm lg:text-base">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
           voluptatum, quibusdam, voluptates, quia voluptate quod quos
           voluptatibus quas doloribus quidem fugiat. Quisquam voluptatum,
