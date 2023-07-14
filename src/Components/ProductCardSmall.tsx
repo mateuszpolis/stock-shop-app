@@ -21,7 +21,7 @@ function ProductCardSmall({
 }: Props) {
   if (price_before != null) {
     return (
-      <div className="w-full sm:w-96 relative mb-2 p-2 rounded-lg flex justify-between items-center border-2  overflow-hidden h-20 z-30 hover:bg-gray-300 dark:hover:bg-gray-800  transition-all">
+      <div className="w-full sm:w-96 relative mb-2 p-2 rounded-lg flex justify-between items-center border-2  overflow-hidden h-20 z-30 hover:bg-neutral-300 dark:hover:bg-neutral-800  transition-all">
         <Link to={`/product/${id}`}>
           <img
             alt={name}
@@ -32,10 +32,10 @@ function ProductCardSmall({
         <Link to={`/product/${id}`}>
           <div className="flex-shrink-0">
             <h1 className="font-bold text-sm">{name}</h1>
-            <p className="text-gray-500 text-xs">{description}</p>
-            <p className="text-gray-500 text-xs">
+            <p className="text-neutral-500 text-xs">{description}</p>
+            <p className="text-neutral-500 text-xs">
               Price:{" "}
-              <span className="line-through text-gray-400 dark:text-gray-500">
+              <span className="line-through text-neutral-400 dark:text-neutral-500">
                 ${price_before}
               </span>{" "}
               ${price}
@@ -75,7 +75,7 @@ function ProductCardSmall({
     );
   } else {
     return (
-      <div className="w-full sm:w-96  relative mb-2 p-2 rounded-lg flex justify-between items-center border-2  overflow-hidden h-20 z-30 hover:bg-gray-300 dark:hover:bg-gray-800  transition-all">
+      <div className="w-full sm:w-96  relative mb-2 p-2 rounded-lg flex justify-between items-center border-2  overflow-hidden h-20 z-30 hover:bg-neutral-300 dark:hover:bg-neutral-800  transition-all">
         <Link to={`/product/${id}`}>
           <img
             alt={name}
@@ -86,8 +86,8 @@ function ProductCardSmall({
         <Link to={`/product/${id}`}>
           <div className="flex-shrink-0">
             <h1 className="font-bold text-sm">{name}</h1>
-            <p className="text-gray-500 text-xs">{description}</p>
-            <p className="text-gray-500 text-xs">Price: ${price}</p>
+            <p className="text-neutral-500 text-xs">{description}</p>
+            <p className="text-neutral-500 text-xs">Price: ${price}</p>
           </div>
         </Link>
         <div className="flex justify-center flex-shrink-0 flex-col text-lg">

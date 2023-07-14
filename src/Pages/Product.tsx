@@ -5,7 +5,7 @@ import ProductInfo from "../Features/productInfo/ProductInfo";
 
 function Product() {
   return (
-    <div className="relative bg-gray-50 dark:bg-gray-900">
+    <div className="relative bg-neutral-50 dark:bg-neutral-900">
       <NavBar />
       <ProductInfo />
       <Footer />

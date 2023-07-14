@@ -1,7 +1,6 @@
-import React, { Attributes, useEffect } from "react";
+import React, { useEffect } from "react";
 import Gallery from "../../Components/Gallery";
 import StarRating from "../../Components/StarRating";
-import Review from "../../Components/Review";
 import Reviews from "../reviews/Reviews";
 import Description from "../description/Description";
 import Specification from "../specification/Specification";
@@ -12,7 +11,7 @@ function ProductInfo() {
     "https://cdn.pixabay.com/photo/2020/10/21/18/07/laptop-5673901_1280.jpg",
     "https://cdn.pixabay.com/photo/2014/09/28/11/25/imac-464737_1280.jpg",
   ];
-  
+
   const handleAddToList = () => {
     const heart = document.getElementById(`product-card-heart`);
     if (heart?.classList.contains("fa-regular")) {
@@ -37,7 +36,7 @@ function ProductInfo() {
       <div className="flex justify-normal items-center">
         <Gallery images={images} />
       </div>
-      <div className="grid grid-cols-3 mt-2">
+      <div className="grid grid-cols-3 mt-2 dark:text-neutral-50">
         <div className="text-center border-e-2 flex flex-col">
           <i className="fa-solid fa-circle-check"></i>
           <p className="text-xs">In stock</p>
@@ -51,7 +50,7 @@ function ProductInfo() {
           <p className="text-xs">Delivery: 24h</p>
         </div>
       </div>
-      <div className="flex mt-3 justify-normal items-center flex-wrap">
+      <div className="flex mt-3 justify-normal items-center flex-wrap dark:text-neutral-50">
         <div className="mr-2">
           <h2 className="text-xl font-semibold">iPhone 14 Pro</h2>
         </div>
@@ -63,7 +62,7 @@ function ProductInfo() {
           (25 reviews)
         </a>
       </div>
-      <div>
+      <div className="dark:text-neutral-50">
         <h1 className="mt-">
           Price: <span className="text-xl font-semibold">$999</span>
         </h1>
@@ -87,7 +86,7 @@ function ProductInfo() {
           ></i>
         </button>
       </div>
-      <div className="mt-5">
+      <div className="mt-5 dark:text-neutral-50">
         <Description />
         <Specification />
         <Reviews />

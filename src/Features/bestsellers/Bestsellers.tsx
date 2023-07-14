@@ -3,8 +3,8 @@ import ProductCard from "../../Components/ProductCard";
 
 function Bestsellers() {
   return (
-    <div className="p-3 bg-gray-50 dark:bg-gray-900">
-      <h1 className="text-center font-mono text-4xl font-black mb-2 text-gray-900 dark:text-gray-50">
+    <div className="p-3 bg-neutral-50 dark:bg-neutral-900">
+      <h1 className="text-center font-mono text-4xl font-black mb-2 text-neutral-900 dark:text-neutral-50">
         BESTSELLERS
       </h1>
       <div className="flex justify-normal items-center overflow-x-scroll">

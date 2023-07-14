@@ -24,12 +24,12 @@ function Wishlist() {
         onClick={handleToggleWishlist}
         className="fa-solid fa-heart hover:text-red-600 cursor-pointer transition-all"
       ></i>
-      <span className="absolute -top-1 -right-2 text-xs text-gray-50 bg-red-600 rounded-full w-4 h-4 flex justify-center items-center">
+      <span className="absolute -top-1 -right-2 text-xs text-neutral-50 bg-red-600 rounded-full w-4 h-4 flex justify-center items-center">
         2
       </span>
       <div
         id="wishlist"
-        className="absolute hidden p-2 z-50 -right-14 rounded-lg bg-gray-200 shadow-lg shadow-gray-400 dark:bg-gray-700 dark:shadow-none"
+        className="absolute hidden p-2 z-50 -right-14 rounded-lg bg-neutral-200 shadow-lg shadow-neutral-400 dark:bg-neutral-700 dark:shadow-none"
       >
         <div className="max-h-96 z-50 overflow-y-scroll overscroll-contain">
           <ProductCardSmall
@@ -57,7 +57,7 @@ function Wishlist() {
         </div>
         <div className="flex space-between">
           <Link to={`/wishlist`}>
-            <span className="font-bold text-lg text-gray-500 hover:text-gray-950 dark:text-gray-400 dark:hover:text-gray-50 hover:cursor-pointer transition-all">
+            <span className="font-bold text-lg text-neutral-500 hover:text-neutral-950 dark:text-neutral-400 dark:hover:text-neutral-50 hover:cursor-pointer transition-all">
               Go to wishlist <i className="fa-solid fa-cart-shopping"></i>{" "}
               <i className="fa-solid fa-chevron-right"></i>
             </span>
