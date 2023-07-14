@@ -24,7 +24,7 @@ function Gallery({ images }: Props) {
   };
 
   return (
-    <div className="group w-full h-60 rounded-lg overflow-hidden bg-gray-200 relative transition-all">
+    <div className="group w-full h-60 sm:h-80 rounded-lg overflow-hidden bg-gray-200 relative transition-all">
       <div
         style={{ backgroundImage: `url(${images[currentImage]})` }}
         className="w-full h-full bg-center bg-cover duration-500"
