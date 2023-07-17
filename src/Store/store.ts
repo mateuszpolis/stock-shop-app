@@ -9,6 +9,7 @@ import productInfoReducer from "../Features/productInfo/productInfoSlice";
 import reviewsReducer from "../Features/reviews/reviewsSlice";
 import descriptionReducer from "../Features/description/descriptionSlice";
 import similiarProductsReducer from "../Features/similiarProducts/similiarProductsSlice";
+import cartReducer from "../Features/cart/cartSlice";
 
 export const store = configureStore({
   reducer: {
@@ -21,6 +22,7 @@ export const store = configureStore({
     reviews: reviewsReducer,
     description: descriptionReducer,
     similiarProducts: similiarProductsReducer,
+    cart: cartReducer,
   },
 });
 

@@ -55,7 +55,7 @@ function Categories() {
       id="categories"
       className="z-40 bg-neutral-50 pt-2 mb-0 px-0 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50 transition-all"
     >
-      <div id="popular-categories" className="flex justify-normal items-center">
+      <div id="popular-categories" className="flex justify-normal items-center lg:hidden">
         <div className="flex max-w-3xl items-center overflow-x-scroll">
           {categories.slice(0, 5).map((category, index) => (
             <Category key={index} category={category} />
@@ -86,9 +86,9 @@ function Categories() {
 
       <div
         id="more-categories"
-        className="hidden flex-col justify-center items-center w-full"
+        className="hidden flex-normal items-center w-full lg:flex"
       >
-        <div className="flex w-full lg:justify-center">
+        <div className="flex w-full lg:w-auto">
           <div className="relative w-full lg:w-96">
             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-neutral-950 dark:text-neutral-50">
               <i className="fa-solid fa-magnifying-glass"></i>
@@ -103,14 +103,14 @@ function Categories() {
           <button
             id="see-more-catoegires"
             onClick={handleShowMoreCategories}
-            className="w-fit text-xs sm:text-lg md:text-sm py-2 px-4 ms-1 sm:ms-2 rounded-lg border-2 border-neutral-950 bg-neutral-50 text-neutral-950 hover:cursor-pointer hover:rounded-sm dark:border-neutral-50 dark:bg-neutral-900 dark:text-neutral-50 transition-all"
+            className="w-fit text-xs lg:hidden sm:text-lg md:text-sm py-2 px-4 ms-1 sm:ms-2 rounded-lg border-2 border-neutral-950 bg-neutral-50 text-neutral-950 hover:cursor-pointer hover:rounded-sm dark:border-neutral-50 dark:bg-neutral-900 dark:text-neutral-50 transition-all"
           >
             <span>
               <i className="fa-solid fa-xmark transition-all"></i>
             </span>
           </button>
         </div>
-        <div className="flex justify-normal items-baseline flex-wrap space-y-2">
+        <div className="flex justify-normal items-center flex-wrap lg:flex-nowrap lg:overflow-x-scroll">
           {categories.slice(0, 15).map((category, index) => (
             <Category key={index} category={category} />
           ))}

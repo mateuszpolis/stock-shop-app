@@ -52,7 +52,7 @@ function ProductCardWishlist({
           {priceP}
         </div>
       </Link>
-      <div className="flex flex-col justify-center items-center text-2xl dark:text-neutral-50">
+      <div className="flex flex-col md:flex-row md:space-x-2 justify-center items-center text-2xl dark:text-neutral-50">
         <button>
           <i
             id={`product-card-heart-id`}
