@@ -26,7 +26,7 @@ export default function SearchBar(): JSX.Element {
           <input
             type="search"
             id="default-search"
-            className="block w-full sm:w-72 md:w-80 lg:w-96 p-4 pl-10 text-base text-neutral-950 border-2 border-neutral-950 active:rounded-lg focus:rounded-lg hover:rounded-lg rounded-lg sm:rounded-lg bg-neutral-50 focus:outline-none focus:ring-1 focus:ring-neutral-950 focus:border-neutral-950 dark:bg-neutral-900 dark:border-neutral-50 dark:placeholder-neutral-400 dark:text-neutral-50 dark:focus:ring-neutral-50 dark:focus:border-neutral-50 transition-all"
+            className="appearance-none block w-full sm:w-72 md:w-80 lg:w-96 p-4 pl-10 text-base text-neutral-950 border-2 border-neutral-950 active:rounded-lg focus:rounded-lg hover:rounded-lg rounded-lg sm:rounded-lg bg-neutral-50 focus:outline-none focus:ring-1 focus:ring-neutral-950 focus:border-neutral-950 dark:bg-neutral-900 dark:border-neutral-50 dark:placeholder-neutral-400 dark:text-neutral-50 dark:focus:ring-neutral-50 dark:focus:border-neutral-50 transition-all"
             placeholder="What are you looking for?"
             value={searchTerm}
             onChange={handleInputChange}
