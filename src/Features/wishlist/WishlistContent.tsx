@@ -26,6 +26,30 @@ function WishlistContent() {
       producer: "Apple",
       price: 999,
     },
+    {
+      id: 2,
+      name: "iMac 2021",
+      producer: "Apple",
+      price: 999,
+    },
+    {
+      id: 2,
+      name: "iMac 2021",
+      producer: "Apple",
+      price: 999,
+    },
+    {
+      id: 2,
+      name: "iMac 2021",
+      producer: "Apple",
+      price: 999,
+    },
+    {
+      id: 2,
+      name: "iMac 2021",
+      producer: "Apple",
+      price: 999,
+    },
   ];
 
   let productsDiv;

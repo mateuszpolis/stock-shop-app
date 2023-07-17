@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import SideShortcuts from "../../Components/SideShortcuts";
 import ProductCardCart from "../../Components/ProductCardCart";
 
@@ -18,6 +18,54 @@ const products: product[] = [
     producer: "Apple",
     price: 999,
     price_before: 1299,
+  },
+  {
+    id: 2,
+    name: "iMac 2021",
+    producer: "Apple",
+    price: 999,
+  },
+  {
+    id: 2,
+    name: "iMac 2021",
+    producer: "Apple",
+    price: 999,
+  },
+  {
+    id: 2,
+    name: "iMac 2021",
+    producer: "Apple",
+    price: 999,
+  },
+  {
+    id: 2,
+    name: "iMac 2021",
+    producer: "Apple",
+    price: 999,
+  },
+  {
+    id: 2,
+    name: "iMac 2021",
+    producer: "Apple",
+    price: 999,
+  },
+  {
+    id: 2,
+    name: "iMac 2021",
+    producer: "Apple",
+    price: 999,
+  },
+  {
+    id: 2,
+    name: "iMac 2021",
+    producer: "Apple",
+    price: 999,
+  },
+  {
+    id: 2,
+    name: "iMac 2021",
+    producer: "Apple",
+    price: 999,
   },
   {
     id: 2,
@@ -45,7 +93,7 @@ function CartContent() {
     checkoutButton = (
       <button
         id="checkout"
-        className="mt-2 w-full bg-blue-500 hover:bg-blue-600 transition-all text-white font-semibold rounded-lg py-2"
+        className="mt-2 w-full bg-neutral-950 hover:bg-neutral-800 transition-all text-white font-semibold rounded-lg py-2 dark:text-neutral-950 dark:bg-neutral-50 dark:hover:bg-neutral-200"
       >
         Checkout <i className="fa-solid fa-cash-register"></i>
       </button>
@@ -60,7 +108,7 @@ function CartContent() {
     checkoutButton = (
       <button
         id="checkout"
-        className="cursor-not-allowed mt-2 w-full bg-blue-500 opacity-50 transition-all text-white font-semibold rounded-lg py-2"
+        className="cursor-not-allowed mt-2 w-full bg-neutral-950 opacity-50 transition-all text-white font-semibold rounded-lg py-2 dark:text-neutral-950 dark:bg-neutral-50 dark:hover:bg-neutral-200"
       >
         Checkout <i className="fa-solid fa-cash-register"></i>
       </button>

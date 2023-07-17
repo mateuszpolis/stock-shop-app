@@ -59,8 +59,8 @@ function ProductCardCart({
   };
 
   return (
-    <div className="w-full h-24 p-2 grid grid-cols-4 justify-between items-center no-scrollbar rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-700">
-      <div className="h-20">
+    <div className="w-full h-24 p-2 flex justify-between items-center no-scrollbar rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-700">
+      <div className="h-full">
         <Link to={`/product/${id}`}>
           <img
             alt={name}
