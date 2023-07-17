@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import Footer from "../Components/Footer";
 import LoginForm from "../Features/login/LoginForm";
-import NavBarEmpty from "../Components/NavBarEmpty";
 import NavBar from "../Components/NavBar";
 
 function Login() {

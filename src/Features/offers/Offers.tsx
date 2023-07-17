@@ -3,7 +3,7 @@ import ProductCard from "../../Components/ProductCard";
 
 function Offers() {
   return (
-    <div className="p-3 bg-neutral-50 dark:bg-neutral-900">
+    <div className="p-3 bg-neutral-50 dark:bg-neutral-900 relative z-10">
       <h1 className="text-center font-mono text-4xl font-black mb-2 text-neutral-900 dark:text-neutral-50">
         ON SALE
       </h1>

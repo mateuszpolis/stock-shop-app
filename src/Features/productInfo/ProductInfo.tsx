@@ -4,6 +4,8 @@ import StarRating from "../../Components/StarRating";
 import Reviews from "../reviews/Reviews";
 import Description from "../description/Description";
 import Specification from "../specification/Specification";
+import AddToCart from "../../Components/Modal/AddToCart";
+import AddToCartButton from "../../Components/AddToCartButton";
 
 function ProductInfo() {
   const images: string[] = [
@@ -52,7 +54,7 @@ function ProductInfo() {
           </div>
           <div className="lg:p-10">
             <div className="flex flex-col gap-y-2 mt-3 justify-center items-start flex-wrap dark:text-neutral-50">
-            <div className="flex justify-normal items-center">
+              <div className="flex justify-normal items-center">
                 <StarRating rating={rating} review_id={0} />
                 <a
                   href="#reviews"
@@ -80,13 +82,17 @@ function ProductInfo() {
                 className="fa-regular fa-heart group-hover:text-red-600 mr-2 transition-all"
               ></i>
             </button>
-            <button className="p-5 group bg-gray-100 rounded-full hover:bg-gray-200 transition-all">
-              Add to cart{" "}
-              <i
-                id="product-card-cart"
-                className="fa-solid fa-cart-plus group-hover:text-green-500 transition-all"
-              ></i>
-            </button>
+            <AddToCartButton
+              children={
+                <button className="p-5 group bg-gray-100 rounded-full hover:bg-gray-200 transition-all">
+                  Add to cart{" "}
+                  <i
+                    id="product-card-cart"
+                    className="fa-solid fa-cart-plus group-hover:text-green-500 transition-all"
+                  ></i>
+                </button>
+              }
+            />
           </div>
         </div>
       </div>

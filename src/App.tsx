@@ -8,7 +8,7 @@ import Login from "./Pages/Login";
 
 function App() {
   return (
-    <div>
+    <div id="App">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/product/:id" element={<Product />} />

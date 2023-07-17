@@ -44,7 +44,7 @@ function NavBar(): JSX.Element {
   return (
     <div
       id="navbar"
-      className="flex flex-col sticky top-0 p-5 pb-1 transition-all bg-neutral-50 dark:bg-neutral-900 z-50"
+      className="flex flex-col sticky top-0 p-5 pb-1 transition-all bg-neutral-50 dark:bg-neutral-900 z-40"
     >
       <div className="flex flex-col space-y-2 sm:flex-row justify-between mb-2 items-center text-sm sm:text-lg md:text-xl lg:text-2xl text-neutral-950 bg-neutral-50 dark:bg-neutral-900 dark:text-neutral-50 transition-all">
         <div className="flex justify-between items-center w-full sm:w-auto">

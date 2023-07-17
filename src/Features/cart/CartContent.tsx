@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import SideShortcuts from "../../Components/SideShortcuts";
 import ProductCardCart from "../../Components/ProductCardCart";
 

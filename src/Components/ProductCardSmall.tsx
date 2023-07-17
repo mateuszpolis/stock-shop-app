@@ -1,6 +1,7 @@
 import React from "react";
 import picture from "../images/iphone14pro.webp";
 import { Link } from "react-router-dom";
+import AddToCartButton from "./AddToCartButton";
 
 type Props = {
   id: number;
@@ -43,9 +44,11 @@ function ProductCardSmall({
           </div>
         </Link>
         <div className="flex justify-center flex-shrink-0 flex-col text-lg">
-          <button>
-            <i className="fa-solid fa-cart-plus hover:text-green-500 transition-all"></i>
-          </button>
+          <AddToCartButton
+            children={
+              <i className="fa-solid fa-cart-plus hover:text-green-500 transition-all"></i>
+            }
+          />
           <button>
             <i
               onMouseEnter={() => {
@@ -91,9 +94,11 @@ function ProductCardSmall({
           </div>
         </Link>
         <div className="flex justify-center flex-shrink-0 flex-col text-lg">
-          <button>
-            <i className="fa-solid fa-cart-plus hover:text-green-500 transition-all"></i>
-          </button>
+          <AddToCartButton
+            children={
+              <i className="fa-solid fa-cart-plus hover:text-green-500 transition-all"></i>
+            }
+          />
           <button>
             <i
               onMouseEnter={() => {

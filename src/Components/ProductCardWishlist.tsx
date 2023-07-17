@@ -1,6 +1,7 @@
 import React from "react";
 import picture from "../images/iphone14pro.webp";
 import { Link } from "react-router-dom";
+import AddToCartButton from "./AddToCartButton";
 
 type Props = {
   id: number;
@@ -24,14 +25,16 @@ function ProductCardWishlist({
     priceP = (
       <p className="text-neutral-500 text-sm dark:text-neutral-300">
         Price:{" "}
-        <span className="line-through text-neutral-400">
-          ${price_before}
-        </span>{" "}
-        ${price}
+        <span className="line-through text-neutral-400">${price_before}</span> $
+        {price}
       </p>
     );
   } else {
-    priceP = <p className="text-neutral-500 text-sm dark:text-neutral-300">Price: ${price}</p>;
+    priceP = (
+      <p className="text-neutral-500 text-sm dark:text-neutral-300">
+        Price: ${price}
+      </p>
+    );
   }
 
   return (
@@ -48,7 +51,9 @@ function ProductCardWishlist({
       <Link to={`/product/${id}`}>
         <div>
           <h1 className="font-bold text-lg dark:text-neutral-50">{name}</h1>
-          <p className="text-neutral-500 text-sm dark:text-neutral-300">{producer}</p>
+          <p className="text-neutral-500 text-sm dark:text-neutral-300">
+            {producer}
+          </p>
           {priceP}
         </div>
       </Link>
@@ -59,9 +64,11 @@ function ProductCardWishlist({
             className="fa-solid fa-heart-broken hover:text-red-600 transition-all"
           ></i>
         </button>
-        <button>
-          <i className="fa-solid fa-cart-plus hover:text-green-500 transition-all"></i>
-        </button>
+        <AddToCartButton
+          children={
+            <i className="fa-solid fa-cart-plus hover:text-green-500 transition-all"></i>
+          }
+        />
       </div>
     </div>
   );

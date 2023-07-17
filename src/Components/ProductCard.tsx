@@ -3,6 +3,7 @@ import picture from "../images/iphone14pro.webp";
 import { Link } from "react-router-dom";
 import { Product } from "../Models/ProductModel";
 import CategoryXs from "./CategoryXs";
+import AddToCartButton from "./AddToCartButton";
 
 function ProductCard({
   id,
@@ -79,9 +80,11 @@ function ProductCard({
               className="fa-regular fa-heart hover:text-red-600 mr-2 transition-all"
             ></i>
           </button>
-          <button>
-            <i className="fa-solid fa-cart-plus hover:text-green-500 transition-all"></i>
-          </button>
+          <AddToCartButton
+            children={
+              <i className="fa-solid fa-cart-plus hover:text-green-500 transition-all"></i>
+            }
+          />
         </div>
       </div>
     </div>
