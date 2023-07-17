@@ -5,13 +5,12 @@ import Bestsellers from "../Features/bestsellers/Bestsellers";
 import Footer from "../Components/Footer";
 
 export default function Home() {
-
   useEffect(() => {
     document.title = "StockShop | Home";
   }, []);
 
   return (
-    <div className="relative bg-neutral-50 dark:bg-neutral-900">
+    <div className="relative bg-neutral-50 dark:bg-neutral-900 flex flex-col min-h-screen">
       <NavBar />
       <Offers />
       <Bestsellers />

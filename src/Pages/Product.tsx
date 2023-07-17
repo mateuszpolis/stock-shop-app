@@ -6,7 +6,7 @@ import SimiliarProducts from "../Features/similiarProducts/SimiliarProducts";
 
 function Product() {
   return (
-    <div className="relative bg-neutral-50 dark:bg-neutral-900">
+    <div className="relative bg-neutral-50 dark:bg-neutral-900 flex flex-col min-h-screen">
       <NavBar />
       <ProductInfo />
       <SimiliarProducts />

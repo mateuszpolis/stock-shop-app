@@ -22,20 +22,20 @@ function ProductCardWishlist({
   let priceP;
   if (price_before != null) {
     priceP = (
-      <p className="text-neutral-500 text-sm">
+      <p className="text-neutral-500 text-sm dark:text-neutral-300">
         Price:{" "}
-        <span className="line-through text-neutral-400 dark:text-neutral-500">
+        <span className="line-through text-neutral-400">
           ${price_before}
         </span>{" "}
         ${price}
       </p>
     );
   } else {
-    priceP = <p className="text-neutral-500 text-sm">Price: ${price}</p>;
+    priceP = <p className="text-neutral-500 text-sm dark:text-neutral-300">Price: ${price}</p>;
   }
 
   return (
-    <div className="w-full h-28 p-2 flex justify-between items-center no-scrollbar">
+    <div className="w-full h-28 p-2 flex justify-between items-center no-scrollbar rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-700">
       <div className="h-full">
         <Link to={`/product/${id}`}>
           <img
@@ -47,12 +47,12 @@ function ProductCardWishlist({
       </div>
       <Link to={`/product/${id}`}>
         <div>
-          <h1 className="font-bold text-lg">{name}</h1>
-          <p className="text-neutral-500 text-sm">{producer}</p>
+          <h1 className="font-bold text-lg dark:text-neutral-50">{name}</h1>
+          <p className="text-neutral-500 text-sm dark:text-neutral-300">{producer}</p>
           {priceP}
         </div>
       </Link>
-      <div className="flex flex-col justify-center items-center text-2xl">
+      <div className="flex flex-col justify-center items-center text-2xl dark:text-neutral-50">
         <button>
           <i
             id={`product-card-heart-id`}

@@ -6,7 +6,7 @@ import Wishlist from "./Pages/Wishlist";
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/product/:id" element={<Product />} />
