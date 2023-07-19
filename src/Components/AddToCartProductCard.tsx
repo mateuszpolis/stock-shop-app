@@ -1,7 +1,6 @@
 import React from "react";
 import picture from "../images/iphone14pro.webp";
 import { Link } from "react-router-dom";
-import AddToCartButton from "./AddToCartButton";
 
 type Props = {
   id: number;
@@ -12,7 +11,7 @@ type Props = {
   img?: string;
 };
 
-function ProductCardWishlist({
+function AddToCartProductCard({
   id,
   name,
   producer,
@@ -38,7 +37,7 @@ function ProductCardWishlist({
   }
 
   return (
-    <div className="w-full h-28 p-2 flex justify-between items-center no-scrollbar rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-700">
+    <div className="w-full h-24 p-2 flex justify-around items-center no-scrollbar rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-700">
       <div className="h-full">
         <Link to={`/product/${id}`}>
           <img
@@ -57,31 +56,8 @@ function ProductCardWishlist({
           {priceP}
         </div>
       </Link>
-      <div className="flex flex-col md:flex-row md:space-x-2 justify-center items-center text-2xl dark:text-neutral-50">
-        <button>
-          <i
-            id={`product-card-heart-id`}
-            className="fa-solid fa-heart-broken hover:text-red-600 transition-all"
-          ></i>
-        </button>
-        <AddToCartButton
-          children={
-            <i className="fa-solid fa-cart-plus hover:text-green-500 transition-all"></i>
-          }
-          products={[
-            {
-              id: id,
-              name: name,
-              producer: producer,
-              price: price,
-              price_before: price_before,
-              img: img,
-            },
-          ]}
-        />
-      </div>
     </div>
   );
 }
 
-export default ProductCardWishlist;
+export default AddToCartProductCard;

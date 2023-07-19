@@ -4,7 +4,6 @@ import StarRating from "../../Components/StarRating";
 import Reviews from "../reviews/Reviews";
 import Description from "../description/Description";
 import Specification from "../specification/Specification";
-import AddToCart from "../../Components/Modal/AddToCart";
 import AddToCartButton from "../../Components/AddToCartButton";
 
 function ProductInfo() {
@@ -92,6 +91,9 @@ function ProductInfo() {
                   ></i>
                 </button>
               }
+              products={[
+                { id: 1, name: "iPhone 14Pro", producer: "Apple", price: 999 },
+              ]}
             />
           </div>
         </div>

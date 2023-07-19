@@ -1,12 +1,21 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Backdrop from "../Backdrop";
-import ProductCardCart from "../ProductCardCart";
 import { useNavigate } from "react-router";
+import AddToCartProductCard from "../AddToCartProductCard";
+
+type Product = {
+  id: number;
+  name: string;
+  producer: string;
+  price: number;
+  price_before?: number;
+  img?: string;
+};
 
 type Props = {
   handleClose: () => void;
-  text: string;
+  products: Product[];
 };
 
 const dropIn = {
@@ -30,7 +39,7 @@ const dropIn = {
   },
 };
 
-function AddToCart({ handleClose, text }: Props) {
+function AddToCart({ handleClose, products }: Props) {
   const navigate = useNavigate();
 
   return (
@@ -48,16 +57,23 @@ function AddToCart({ handleClose, text }: Props) {
         <div className="flex flex-col w-full space-y-4">
           <div className="flex justify-around items-center">
             <h1 className="text-2xl font-bold font-display sm:text-3xl">
-              {text}
+              Added to Cart!
             </h1>
             <i className="fa-solid fa-check-circle text-4xl"></i>
           </div>
-          <ProductCardCart
-            id={1}
-            name="Product Name"
-            price={100}
-            producer="Producer"
-          />
+          <div className="flex flex-col max-h-32 overflow-y-scroll">
+            {products.map((product) => (
+              <AddToCartProductCard
+                key={product.id}
+                id={product.id}
+                name={product.name}
+                price={product.price}
+                producer={product.producer}
+                price_before={product.price_before}
+                img={product.img}
+              />
+            ))}
+          </div>
           <div className="flex justify-around items-center">
             <button
               onClick={handleClose}

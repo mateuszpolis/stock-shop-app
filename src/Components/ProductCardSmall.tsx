@@ -6,18 +6,18 @@ import AddToCartButton from "./AddToCartButton";
 type Props = {
   id: number;
   name: string;
-  description: string;
+  producer: string;
   price: number;
   price_before?: number;
-  image?: string;
+  img?: string;
 };
 
 function ProductCardSmall({
   id,
   name,
-  description,
+  producer,
   price,
-  image,
+  img,
   price_before,
 }: Props) {
   if (price_before != null) {
@@ -26,14 +26,14 @@ function ProductCardSmall({
         <Link to={`/product/${id}`}>
           <img
             alt={name}
-            src={image ? image : picture}
+            src={img ? img : picture}
             className="object-cover flex-shrink-0 rounded-lg object-left h-full w-20"
           />
         </Link>
         <Link to={`/product/${id}`}>
           <div className="flex-shrink-0">
             <h1 className="font-bold text-sm">{name}</h1>
-            <p className="text-neutral-500 text-xs">{description}</p>
+            <p className="text-neutral-500 text-xs">{producer}</p>
             <p className="text-neutral-500 text-xs">
               Price:{" "}
               <span className="line-through text-neutral-400 dark:text-neutral-500">
@@ -48,6 +48,16 @@ function ProductCardSmall({
             children={
               <i className="fa-solid fa-cart-plus hover:text-green-500 transition-all"></i>
             }
+            products={[
+              {
+                id: id,
+                name: name,
+                producer: producer,
+                price: price,
+                price_before: price_before,
+                img: img,
+              },
+            ]}
           />
           <button>
             <i
@@ -82,14 +92,14 @@ function ProductCardSmall({
         <Link to={`/product/${id}`}>
           <img
             alt={name}
-            src={image ? image : picture}
+            src={img ? img : picture}
             className="object-cover flex-shrink-0 rounded-lg object-left h-full w-20"
           />
         </Link>
         <Link to={`/product/${id}`}>
           <div className="flex-shrink-0">
             <h1 className="font-bold text-sm">{name}</h1>
-            <p className="text-neutral-500 text-xs">{description}</p>
+            <p className="text-neutral-500 text-xs">{producer}</p>
             <p className="text-neutral-500 text-xs">Price: ${price}</p>
           </div>
         </Link>
@@ -98,6 +108,16 @@ function ProductCardSmall({
             children={
               <i className="fa-solid fa-cart-plus hover:text-green-500 transition-all"></i>
             }
+            products={[
+              {
+                id: id,
+                name: name,
+                producer: producer,
+                price: price,
+                price_before: price_before,
+                img: img,
+              },
+            ]}
           />
           <button>
             <i

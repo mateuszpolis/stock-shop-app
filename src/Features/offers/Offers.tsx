@@ -11,62 +11,62 @@ function Offers() {
         <ProductCard
           id={1}
           name="iPhone 14 pro"
-          description="Apple"
+          producer="Apple"
           price_before={999}
-          price_current={799}
+          price={799}
           discount={20}
           categories={["Smartphones", "Apple"]}
-          image="https://cdn.pixabay.com/photo/2022/09/25/22/25/iphone-7479306_1280.jpg"
+          img="https://cdn.pixabay.com/photo/2022/09/25/22/25/iphone-7479306_1280.jpg"
         />
         <ProductCard
           id={2}
           name="Macbook Pro 16inch"
-          description="Apple"
+          producer="Apple"
           price_before={1999}
-          price_current={1799}
+          price={1799}
           discount={10}
           categories={["Laptops", "Apple"]}
-          image="https://cdn.pixabay.com/photo/2020/10/21/18/07/laptop-5673901_1280.jpg"
+          img="https://cdn.pixabay.com/photo/2020/10/21/18/07/laptop-5673901_1280.jpg"
         />
         <ProductCard
           id={3}
           name="iMac 27inch"
-          description="Apple"
+          producer="Apple"
           price_before={1999}
-          price_current={1799}
+          price={1799}
           discount={10}
           categories={["Desktops", "Apple"]}
-          image="https://cdn.pixabay.com/photo/2014/09/28/11/25/imac-464737_1280.jpg"
+          img="https://cdn.pixabay.com/photo/2014/09/28/11/25/imac-464737_1280.jpg"
         />
         <ProductCard
           id={4}
           name="Printer"
-          description="Samsung"
+          producer="Samsung"
           price_before={99}
-          price_current={79}
+          price={79}
           discount={20}
           categories={["Printers", "Samsung"]}
-          image="https://cdn.pixabay.com/photo/2015/05/30/15/45/printer-790396_1280.jpg"
+          img="https://cdn.pixabay.com/photo/2015/05/30/15/45/printer-790396_1280.jpg"
         />
         <ProductCard
           id={5}
           name="Playstation 5"
-          description="Sony"
+          producer="Sony"
           price_before={499}
-          price_current={399}
+          price={399}
           discount={20}
           categories={["Consoles", "Sony"]}
-          image="https://cdn.pixabay.com/photo/2020/10/15/07/45/playstation-5656248_1280.jpg"
+          img="https://cdn.pixabay.com/photo/2020/10/15/07/45/playstation-5656248_1280.jpg"
         />
         <ProductCard
           id={6}
           name="Xbox One"
-          description="Microsoft"
+          producer="Microsoft"
           price_before={499}
-          price_current={399}
+          price={399}
           discount={20}
           categories={["Consoles", "Microsoft"]}
-          image="https://cdn.pixabay.com/photo/2017/04/04/18/19/video-game-console-2202666_1280.jpg"
+          img="https://cdn.pixabay.com/photo/2017/04/04/18/19/video-game-console-2202666_1280.jpg"
         />
       </div>
     </div>

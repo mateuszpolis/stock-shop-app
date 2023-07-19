@@ -1,19 +1,29 @@
 import React from "react";
 import picture from "../images/iphone14pro.webp";
 import { Link } from "react-router-dom";
-import { Product } from "../Models/ProductModel";
 import CategoryXs from "./CategoryXs";
 import AddToCartButton from "./AddToCartButton";
+
+type Product = {
+  id: number;
+  name: string;
+  producer: string;
+  discount?: number;
+  price: number;
+  price_before?: number;
+  categories: string[];
+  img?: string;
+};
 
 function ProductCard({
   id,
   name,
-  description,
-  price_current,
+  producer,
+  price,
   price_before,
   discount,
   categories,
-  image,
+  img,
 }: Product) {
   let priceInfo;
   if (price_before != null) {
@@ -44,16 +54,16 @@ function ProductCard({
       <img
         alt={name}
         className="absolute h-24 w-full object-cover object-top hover:h-56 transition-all z-20"
-        src={image ? image : picture}
+        src={img ? img : picture}
       />
       <Link to={`/product/${id}`}>
         <div className="p-4 absolute top-24 z-10">
           <h1 className="font-bold text-lg dark:text-neutral-50">{name}</h1>
           <p className="text-neutral-500 dark:text-neutral-300">
-            {description}
+            {producer}
           </p>
           <p className="font-bold text-md dark:text-neutral-50">
-            Price: {priceInfo} ${price_current}
+            Price: {priceInfo} ${price}
           </p>
           <p className="text-xs">
             <br />
@@ -84,6 +94,16 @@ function ProductCard({
             children={
               <i className="fa-solid fa-cart-plus hover:text-green-500 transition-all"></i>
             }
+            products={[
+              {
+                id: id,
+                name: name,
+                producer: producer,
+                price: price,
+                price_before: price_before,
+                img: img,
+              },
+            ]}
           />
         </div>
       </div>

@@ -4,11 +4,21 @@ import AddToCart from "./Modal/AddToCart";
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
 
-type Props = {
-  children: React.ReactNode;
+type Product = {
+  id: number;
+  name: string;
+  producer: string;
+  price: number;
+  price_before?: number;
+  img?: string;
 };
 
-function AddToCartButton({children}: Props) {
+type Props = {
+  children: React.ReactNode;
+  products: Product[];
+};
+
+function AddToCartButton({ children, products }: Props) {
   const [showModal, setShowModal] = useState(false);
 
   const handleShowModal = () => {
@@ -21,7 +31,7 @@ function AddToCartButton({children}: Props) {
 
   return (
     <div>
-      <button
+      <button className="w-full"
         onClick={() => {
           if (!showModal) {
             handleShowModal();
@@ -37,7 +47,7 @@ function AddToCartButton({children}: Props) {
         <AnimatePresence initial={false} mode="wait">
           {showModal && (
             <div className="fixed z-50 top-0 left-0 w-full h-full flex justify-center items-center">
-              <AddToCart handleClose={handleCloseModal} text="Added to cart!" />
+              <AddToCart handleClose={handleCloseModal} products={products} />
             </div>
           )}
         </AnimatePresence>,

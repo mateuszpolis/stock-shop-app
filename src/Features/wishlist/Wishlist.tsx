@@ -35,24 +35,24 @@ function Wishlist() {
           <ProductCardSmall
             id={1}
             name="iPhone 14 pro"
-            description="Apple"
+            producer="Apple"
             price={799}
-            image="https://cdn.pixabay.com/photo/2022/09/25/22/25/iphone-7479306_1280.jpg"
+            img="https://cdn.pixabay.com/photo/2022/09/25/22/25/iphone-7479306_1280.jpg"
           />
           <ProductCardSmall
             id={2}
             name="Macbook Pro 16inch"
-            description="Apple"
+            producer="Apple"
             price={1799}
-            image="https://cdn.pixabay.com/photo/2020/10/21/18/07/laptop-5673901_1280.jpg"
+            img="https://cdn.pixabay.com/photo/2020/10/21/18/07/laptop-5673901_1280.jpg"
           />
           <ProductCardSmall
             id={3}
             name="iMac 27inch"
-            description="Apple"
+            producer="Apple"
             price={1799}
             price_before={1999}
-            image="https://cdn.pixabay.com/photo/2014/09/28/11/25/imac-464737_1280.jpg"
+            img="https://cdn.pixabay.com/photo/2014/09/28/11/25/imac-464737_1280.jpg"
           />
         </div>
         <div className="flex space-between">

@@ -1,6 +1,7 @@
 import React from "react";
 import ProductCardWishlist from "../../Components/ProductCardWishlist";
 import SideShortcuts from "../../Components/SideShortcuts";
+import AddToCartButton from "../../Components/AddToCartButton";
 
 type product = {
   id: number;
@@ -87,9 +88,14 @@ function WishlistContent() {
             {productsDiv}
           </div>
           <div>
-            <button className="mt-2 w-full bg-green-500 hover:bg-green-600 transition-all text-white font-semibold rounded-lg py-2">
-              Add all to cart <i className="fa-solid fa-cart-plus"></i>
-            </button>
+            <AddToCartButton
+              children={
+                <button className="mt-2 w-full bg-green-500 hover:bg-green-600 transition-all text-white font-semibold rounded-lg py-2">
+                  Add all to cart <i className="fa-solid fa-cart-plus"></i>
+                </button>
+              }
+              products={products}
+            />
           </div>
         </div>
       </div>
