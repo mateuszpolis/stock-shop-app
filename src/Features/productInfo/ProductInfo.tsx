@@ -5,6 +5,7 @@ import Reviews from "../reviews/Reviews";
 import Description from "../description/Description";
 import Specification from "../specification/Specification";
 import AddToCartButton from "../../Components/AddToCartButton";
+import AddToListButton from "../../Components/AddToListButton";
 
 function ProductInfo() {
   const images: string[] = [
@@ -27,10 +28,11 @@ function ProductInfo() {
   };
 
   const rating: number = 4.2;
+  let inList = true;
 
   useEffect(() => {
     document.title = "StockShop | Product";
-  }, []);
+  }, [inList]);
 
   return (
     <div className="p-5 pt-1 flex flex-col">
@@ -71,16 +73,21 @@ function ProductInfo() {
             </div>
           </div>
           <div className="flex justify-around mt-2 items-center lg:w-full">
-            <button
-              onClick={handleAddToList}
-              className="p-5 group bg-gray-100 rounded-full hover:bg-gray-200 transition-all"
-            >
-              Add to list{" "}
-              <i
-                id={`product-card-heart`}
-                className="fa-regular fa-heart group-hover:text-red-600 mr-2 transition-all"
-              ></i>
-            </button>
+            <AddToListButton
+              children={
+                <button
+                  onClick={handleAddToList}
+                  className="p-5 group bg-gray-100 rounded-full hover:bg-gray-200 transition-all"
+                >
+                  Add to list{" "}
+                  <i
+                    id={`product-card-heart`}
+                    className="fa-regular fa-heart group-hover:text-red-600 mr-2 transition-all"
+                  ></i>
+                </button>
+              }
+              inList={inList}
+            />
             <AddToCartButton
               children={
                 <button className="p-5 group bg-gray-100 rounded-full hover:bg-gray-200 transition-all">
