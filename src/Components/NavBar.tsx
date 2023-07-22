@@ -3,9 +3,12 @@ import SearchBar from "../Features/searchBar/SearchBar";
 import { Link } from "react-router-dom";
 import Wishlist from "../Features/wishlist/Wishlist";
 import Categories from "../Features/categories/Categories";
+import { useSelector } from "react-redux";
+import { selectTotalQuantity } from "../Features/cart/cartSlice";
 
 function NavBar(): JSX.Element {
   const loggedIn: boolean = false;
+  const cartQuantity: number = useSelector(selectTotalQuantity);
 
   let userIcon1;
   let userIcon2;
@@ -73,7 +76,7 @@ function NavBar(): JSX.Element {
                 <i className="fa-solid fa-cart-shopping"></i>
               </Link>
               <span className="absolute -top-1 -right-2 text-xs text-neutral-50 bg-green-500 rounded-full w-4 h-4 flex justify-center items-center">
-                5
+                {cartQuantity}
               </span>
             </div>
           </div>
@@ -89,7 +92,7 @@ function NavBar(): JSX.Element {
               <i className="fa-solid fa-cart-shopping"></i>
             </Link>
             <span className="absolute -top-1 -right-2 text-xs text-neutral-50 bg-green-500 rounded-full w-4 h-4 flex justify-center items-center">
-              5
+              {cartQuantity}
             </span>
           </div>
         </div>

@@ -3,6 +3,9 @@ import ReactDOM from "react-dom";
 import AddToCart from "./Modal/AddToCart";
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
+import { Dispatch } from "redux";
+import { useAppDispatch } from "../Store/store";
+import { addProduct } from "../Features/cart/cartSlice";
 
 type Product = {
   id: number;
@@ -19,9 +22,14 @@ type Props = {
 };
 
 function AddToCartButton({ children, products }: Props) {
+  const dispatch: Dispatch<any> = useAppDispatch();
+
   const [showModal, setShowModal] = useState(false);
 
   const handleShowModal = () => {
+    for (const product of products) {
+      dispatch(addProduct(product));
+    }
     setShowModal(true);
   };
 
@@ -31,7 +39,8 @@ function AddToCartButton({ children, products }: Props) {
 
   return (
     <div>
-      <button className="w-full"
+      <button
+        className="w-full"
         onClick={() => {
           if (!showModal) {
             handleShowModal();

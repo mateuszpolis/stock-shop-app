@@ -2,6 +2,9 @@ import React from "react";
 import picture from "../images/iphone14pro.webp";
 import { Link } from "react-router-dom";
 import AddToListButton from "./AddToListButton";
+import { Dispatch } from "redux";
+import { useAppDispatch } from "../Store/store";
+import { decrementProduct, incrementProduct, removeProduct } from "../Features/cart/cartSlice";
 
 type Props = {
   id: number;
@@ -10,6 +13,7 @@ type Props = {
   price: number;
   price_before?: number;
   img?: string;
+  quantity: number;
 };
 
 function ProductCardCart({
@@ -19,7 +23,10 @@ function ProductCardCart({
   price,
   price_before,
   img,
+  quantity,
 }: Props) {
+  const dispatch: Dispatch = useAppDispatch();
+
   let priceP;
   if (price_before != null) {
     priceP = (
@@ -39,24 +46,12 @@ function ProductCardCart({
 
   const handleDecrement = (e: any) => {
     e.preventDefault();
-    const id = e.target.id.split("-")[1];
-    const productCount = document.getElementById(`product-count-${id}`);
-    if (productCount) {
-      const count = parseInt(productCount.innerText);
-      if (count > 1) {
-        productCount.innerText = (count - 1).toString();
-      }
-    }
+    dispatch(decrementProduct({ id: id, price: price }));
   };
 
   const handleIncrement = (e: any) => {
     e.preventDefault();
-    const id = e.target.id.split("-")[1];
-    const productCount = document.getElementById(`product-count-${id}`);
-    if (productCount) {
-      const count = parseInt(productCount.innerText);
-      productCount.innerText = (count + 1).toString();
-    }
+    dispatch(incrementProduct({ id: id, price: price }));
   };
 
   return (
@@ -90,7 +85,7 @@ function ProductCardCart({
           id={`product-count-${id}`}
           className="text-neutral-500 dark:text-neutral-50"
         >
-          1
+          {quantity}
         </p>
         <button
           onClick={handleIncrement}
@@ -111,7 +106,12 @@ function ProductCardCart({
           }
           inList={false}
         />
-        <button>
+        <button
+          onClick={() => {
+            console.log("remove product");
+            dispatch(removeProduct({ id: id, price: price }));
+          }}
+        >
           <i className="fa-solid fa-trash hover:text-neutral-800 dark:hover:text-neutral-200 transition-all"></i>
         </button>
       </div>

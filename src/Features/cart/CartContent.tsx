@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import SideShortcuts from "../../Components/SideShortcuts";
 import ProductCardCart from "../../Components/ProductCardCart";
+import { useSelector } from "react-redux";
+import { selectProducts, selectTotalPrice } from "./cartSlice";
 
 type product = {
   id: number;
@@ -9,25 +11,15 @@ type product = {
   price: number;
   price_before?: number;
   img?: string;
+  quantity: number;
 };
 
-const products: product[] = [
-  {
-    id: 1,
-    name: "iPhone 14 Pro",
-    producer: "Apple",
-    price: 999,
-    price_before: 1299,
-  },
-  {
-    id: 2,
-    name: "iMac 2021",
-    producer: "Apple",
-    price: 999,
-  },
-];
-
 function CartContent() {
+  const products: product[] = useSelector(selectProducts);
+  const totalAmount: number = useSelector(selectTotalPrice);
+
+  useEffect(() => {}, [products, totalAmount]);
+
   let productsDiv;
   let checkoutButton;
   if (products.length > 0) {
@@ -40,6 +32,7 @@ function CartContent() {
         price={product.price}
         price_before={product.price_before}
         img={product.img}
+        quantity={product.quantity}
       />
     ));
     checkoutButton = (
@@ -84,7 +77,7 @@ function CartContent() {
               id="total"
               className="text-2xl font-semibold dark:text-neutral-50"
             >
-              Total amount: $0
+              Total amount: ${totalAmount}
             </h1>
             {checkoutButton}
           </div>
