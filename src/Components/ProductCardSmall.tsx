@@ -119,7 +119,7 @@ function ProductCardSmall({
               },
             ]}
           />
-          <button>
+          <div>
             <i
               onMouseEnter={() => {
                 const heart = document.getElementById(
@@ -142,7 +142,7 @@ function ProductCardSmall({
               id={`whislist-card-heart-${id}`}
               className="fa-solid fa-heart hover:text-red-600 transition-all"
             ></i>
-          </button>
+          </div>
         </div>
       </div>
     );

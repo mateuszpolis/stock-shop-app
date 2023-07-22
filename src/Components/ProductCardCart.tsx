@@ -1,6 +1,7 @@
 import React from "react";
 import picture from "../images/iphone14pro.webp";
 import { Link } from "react-router-dom";
+import AddToListButton from "./AddToListButton";
 
 type Props = {
   id: number;
@@ -99,12 +100,17 @@ function ProductCardCart({
         </button>
       </div>
       <div className="flex flex-col md:flex-row md:space-x-2 justify-center items-center text-2xl dark:text-neutral-50">
-        <button>
-          <i
-            id={`product-card-heart-id`}
-            className="fa-regular fa-heart hover:text-red-600 transition-all"
-          ></i>
-        </button>
+        <AddToListButton
+          children={
+            <div>
+              <i
+                id={`product-card-heart-id`}
+                className="fa-regular fa-heart hover:text-red-600 transition-all"
+              ></i>
+            </div>
+          }
+          inList={false}
+        />
         <button>
           <i className="fa-solid fa-trash hover:text-neutral-800 dark:hover:text-neutral-200 transition-all"></i>
         </button>

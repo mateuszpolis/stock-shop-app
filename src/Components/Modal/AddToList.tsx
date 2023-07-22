@@ -27,16 +27,21 @@ const dropIn = {
 };
 
 function AddToList({ handleClose }: Props) {
-  setTimeout(() => {
+  const close = setTimeout(() => {
     handleClose();
-  }, 2000);
+  }, 4000);
+
+  function handleRemoveFromList() {
+    clearTimeout(close);
+    handleClose();
+  }
 
   return (
     <motion.div
       onClick={(e) => {
         e.stopPropagation();
       }}
-      className="bg-neutral-50 rounded-lg p-4 shadow-lg dark:bg-neutral-900 dark:text-neutral-50"
+      className="bg-neutral-50 rounded-lg p-4 shadow-lg dark:bg-neutral-800 dark:text-neutral-50"
       variants={dropIn}
       initial="hidden"
       animate="visible"
@@ -46,6 +51,11 @@ function AddToList({ handleClose }: Props) {
         <h1 className="text-xl font-bold">
           <i className="fa-solid fa-heart text-red-600"></i> Added to List
         </h1>
+        <div>
+          <button onClick={handleRemoveFromList} className="p-2 transition-all">
+            <i className="fa-solid fa-times"></i>
+          </button>
+        </div>
       </div>
     </motion.div>
   );

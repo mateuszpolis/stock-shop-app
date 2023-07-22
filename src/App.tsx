@@ -8,7 +8,7 @@ import Login from "./Pages/Login";
 
 function App() {
   return (
-    <div id="App">
+    <div id="App" className="relative">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/product/:id" element={<Product />} />
@@ -17,6 +17,10 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/about" element={<div>About</div>} />
       </Routes>
+      <div
+        id="notifications-container"
+        className="z-50 fixed top-6 right-4 h-full flex flex-col justify-start items-end space-y-2 transition-all"
+      ></div>
     </div>
   );
 }

@@ -27,30 +27,6 @@ function WishlistContent() {
       producer: "Apple",
       price: 999,
     },
-    {
-      id: 2,
-      name: "iMac 2021",
-      producer: "Apple",
-      price: 999,
-    },
-    {
-      id: 2,
-      name: "iMac 2021",
-      producer: "Apple",
-      price: 999,
-    },
-    {
-      id: 2,
-      name: "iMac 2021",
-      producer: "Apple",
-      price: 999,
-    },
-    {
-      id: 2,
-      name: "iMac 2021",
-      producer: "Apple",
-      price: 999,
-    },
   ];
 
   let productsDiv;
@@ -90,9 +66,9 @@ function WishlistContent() {
           <div>
             <AddToCartButton
               children={
-                <button className="mt-2 w-full bg-green-500 hover:bg-green-600 transition-all text-white font-semibold rounded-lg py-2">
+                <div className="mt-2 w-full bg-green-500 hover:bg-green-600 transition-all text-white font-semibold rounded-lg py-2">
                   Add all to cart <i className="fa-solid fa-cart-plus"></i>
-                </button>
+                </div>
               }
               products={products}
             />

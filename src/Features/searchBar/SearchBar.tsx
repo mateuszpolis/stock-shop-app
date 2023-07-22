@@ -30,7 +30,6 @@ export default function SearchBar(): JSX.Element {
             placeholder="What are you looking for?"
             value={searchTerm}
             onChange={handleInputChange}
-            required
           />
           <ButtonDefault
             type="submit"

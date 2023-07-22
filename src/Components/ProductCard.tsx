@@ -3,6 +3,7 @@ import picture from "../images/iphone14pro.webp";
 import { Link } from "react-router-dom";
 import CategoryXs from "./CategoryXs";
 import AddToCartButton from "./AddToCartButton";
+import AddToListButton from "./AddToListButton";
 
 type Product = {
   id: number;
@@ -25,6 +26,8 @@ function ProductCard({
   categories,
   img,
 }: Product) {
+  const inList = Math.random() < 0.5;
+
   let priceInfo;
   if (price_before != null) {
     priceInfo = (
@@ -59,9 +62,7 @@ function ProductCard({
       <Link to={`/product/${id}`}>
         <div className="p-4 absolute top-24 z-10">
           <h1 className="font-bold text-lg dark:text-neutral-50">{name}</h1>
-          <p className="text-neutral-500 dark:text-neutral-300">
-            {producer}
-          </p>
+          <p className="text-neutral-500 dark:text-neutral-300">{producer}</p>
           <p className="font-bold text-md dark:text-neutral-50">
             Price: {priceInfo} ${price}
           </p>
@@ -84,12 +85,17 @@ function ProductCard({
           </Link>
         </div>
         <div className="flex justify-normal">
-          <button onClick={handleAddToList}>
-            <i
-              id={`product-card-heart-${id}`}
-              className="fa-regular fa-heart hover:text-red-600 mr-2 transition-all"
-            ></i>
-          </button>
+          <AddToListButton
+            children={
+              <div onClick={handleAddToList}>
+                <i
+                  id={`product-card-heart-${id}`}
+                  className="fa-regular fa-heart hover:text-red-600 mr-2 transition-all"
+                ></i>
+              </div>
+            }
+            inList={inList}
+          />
           <AddToCartButton
             children={
               <i className="fa-solid fa-cart-plus hover:text-green-500 transition-all"></i>

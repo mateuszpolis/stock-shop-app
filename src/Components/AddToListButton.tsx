@@ -10,49 +10,45 @@ type Props = {
   inList: boolean;
 };
 
-function AddToCartButton({ children, inList }: Props) {
-  const [showModal, setShowModal] = useState(false);
+function AddToListButton({ children, inList }: Props) {
+  const [activeModal, setActiveModal] = useState<string | null>(null);
 
-  const handleShowModal = () => {
-    setShowModal(true);
+  const handleShowModal = (modalType: string) => {
+    setActiveModal(modalType);
   };
 
   const handleCloseModal = () => {
-    setShowModal(false);
+    setActiveModal(null);
   };
 
-  let modal;
-  if (!inList) {
-    modal = <AddToList handleClose={handleCloseModal} />;
-  } else {
-    modal = <RemoveFromList handleClose={handleCloseModal} />;
-  }
+  const getActiveModalComponent = () => {
+    if (activeModal === "addToList" && !inList) {
+      return <AddToList handleClose={handleCloseModal} />;
+    } else if (activeModal === "removeFromList" && inList) {
+      return <RemoveFromList handleClose={handleCloseModal} />;
+    }
+    return null;
+  };
 
   return (
     <div>
       <button
         className="w-full"
         onClick={() => {
-          if (!showModal) {
-            handleShowModal();
-          } else {
-            handleCloseModal();
-          }
+          handleShowModal(inList ? "removeFromList" : "addToList");
         }}
       >
         {children}
       </button>
 
-      {ReactDOM.createPortal(
+      {/* {ReactDOM.createPortal(
         <AnimatePresence initial={false} mode="wait">
-          {showModal && (
-            <div className="fixed z-50 top-6 right-6 w-fit h-fit">{modal}</div>
-          )}
+          {getActiveModalComponent()}
         </AnimatePresence>,
-        document.getElementById("root")!
-      )}
+        document.getElementById("notifications-container")!
+      )} */}
     </div>
   );
 }
 
-export default AddToCartButton;
+export default AddToListButton;
