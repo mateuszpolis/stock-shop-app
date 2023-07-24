@@ -5,6 +5,8 @@ import AddToListButton from "./AddToListButton";
 import { Dispatch } from "redux";
 import { useAppDispatch } from "../Store/store";
 import { decrementProduct, incrementProduct, removeProduct } from "../Features/cart/cartSlice";
+import { useSelector } from "react-redux";
+import { WishlistState, inWishlist } from "../Features/wishlist/wishlistSlice";
 
 type Props = {
   id: number;
@@ -26,6 +28,10 @@ function ProductCardCart({
   quantity,
 }: Props) {
   const dispatch: Dispatch = useAppDispatch();
+
+  const inList = useSelector((state: { wishlist: WishlistState }) =>
+    inWishlist(state, id)
+  );
 
   let priceP;
   if (price_before != null) {
@@ -104,7 +110,14 @@ function ProductCardCart({
               ></i>
             </div>
           }
-          inList={false}
+          inList={inList}
+          product={{
+            id: id,
+            name: name,
+            producer: producer,
+            price: price,
+            img: img,
+          }}
         />
         <button
           onClick={() => {

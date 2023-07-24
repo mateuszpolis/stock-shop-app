@@ -4,12 +4,14 @@ import { Link } from "react-router-dom";
 import CategoryXs from "./CategoryXs";
 import AddToCartButton from "./AddToCartButton";
 import AddToListButton from "./AddToListButton";
+import { useSelector } from "react-redux";
+import { inWishlist } from "../Features/wishlist/wishlistSlice";
+import { WishlistState } from "../Features/wishlist/wishlistSlice";
 
 type Product = {
   id: number;
   name: string;
   producer: string;
-  discount?: number;
   price: number;
   price_before?: number;
   categories: string[];
@@ -22,11 +24,12 @@ function ProductCard({
   producer,
   price,
   price_before,
-  discount,
   categories,
   img,
 }: Product) {
-  const inList = Math.random() < 0.5;
+  const inList = useSelector((state: { wishlist: WishlistState }) =>
+    inWishlist(state, id)
+  );
 
   let priceInfo;
   if (price_before != null) {
@@ -53,17 +56,31 @@ function ProductCard({
   };
 
   return (
-    <div className="relative z-10 shrink-0 mb-6 ml-2 mr-4 overflow-hidden rounded-lg h-72 w-60 bg-neutral-50 shadow-md shadow-neutral-400 dark:bg-neutral-800 dark:shadow-none hover:shadow-lg dark:hover:shadow-none hover:shadow-neutral-400 transition-all">
-      <img
-        alt={name}
-        className="absolute h-24 w-full object-cover object-top hover:h-56 transition-all z-20"
-        src={img ? img : picture}
-      />
+    <div
+      style={{
+        position: "relative",
+        backgroundImage: `url(${img ? img : picture})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+      className="relative z-10 shrink-0 mb-6 ml-2 mr-4 overflow-hidden rounded-lg h-72 w-60 bg-neutral-50  dark:bg-neutral-800 transition-all"
+    >
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundImage:
+            "linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.9))",
+        }}
+      ></div>
       <Link to={`/product/${id}`}>
         <div className="p-4 absolute top-24 z-10">
-          <h1 className="font-bold text-lg dark:text-neutral-50">{name}</h1>
-          <p className="text-neutral-500 dark:text-neutral-300">{producer}</p>
-          <p className="font-bold text-md dark:text-neutral-50">
+          <h1 className="font-bold text-lg text-neutral-50">{name}</h1>
+          <p className="text-neutral-300">{producer}</p>
+          <p className="font-bold text-md text-neutral-50">
             Price: {priceInfo} ${price}
           </p>
           <p className="text-xs">
@@ -76,10 +93,10 @@ function ProductCard({
           </div>
         </div>
       </Link>
-      <div className="absolute bottom-0 p-4 w-full z-10 flex justify-between items-center text-2xl dark:text-neutral-50">
+      <div className="absolute bottom-0 p-4 w-full z-10 flex justify-between items-center text-2xl text-neutral-50">
         <div>
           <Link to={`/product/${id}`}>
-            <span className="font-bold text-lg text-neutral-500 hover:text-neutral-950 dark:text-neutral-400 dark:hover:text-neutral-50 hover:cursor-pointer transition-all">
+            <span className="font-bold text-lg text-neutral-400 hover:text-neutral-50 hover:cursor-pointer transition-all">
               Go to <i className="fa-solid fa-chevron-right"></i>
             </span>
           </Link>
@@ -95,6 +112,14 @@ function ProductCard({
               </div>
             }
             inList={inList}
+            product={{
+              id: id,
+              name: name,
+              producer: producer,
+              price: price,
+              price_before: price_before,
+              img: img,
+            }}
           />
           <AddToCartButton
             children={

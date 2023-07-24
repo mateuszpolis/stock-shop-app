@@ -2,6 +2,9 @@ import React from "react";
 import picture from "../images/iphone14pro.webp";
 import { Link } from "react-router-dom";
 import AddToCartButton from "./AddToCartButton";
+import { Dispatch } from "redux";
+import { useAppDispatch } from "../Store/store";
+import { removeProduct } from "../Features/wishlist/wishlistSlice";
 
 type Props = {
   id: number;
@@ -20,6 +23,8 @@ function ProductCardWishlist({
   price_before,
   img,
 }: Props) {
+  const dispatch: Dispatch = useAppDispatch();
+
   let priceP;
   if (price_before != null) {
     priceP = (
@@ -58,7 +63,11 @@ function ProductCardWishlist({
         </div>
       </Link>
       <div className="flex flex-col md:flex-row md:space-x-2 justify-center items-center text-2xl dark:text-neutral-50">
-        <button>
+        <button
+          onClick={() => {
+            dispatch(removeProduct({ id: id }));
+          }}
+        >
           <i
             id={`product-card-heart-id`}
             className="fa-solid fa-heart-broken hover:text-red-600 transition-all"

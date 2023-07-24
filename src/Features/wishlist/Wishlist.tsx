@@ -1,8 +1,12 @@
 import React from "react";
 import ProductCardSmall from "../../Components/ProductCardSmall";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectNumberOfElements } from "./wishlistSlice";
 
 function Wishlist() {
+  const wishlistQuantity: number = useSelector(selectNumberOfElements);
+
   const handleToggleWishlist = () => {
     const wishlist = document.getElementById("wishlist");
     const wishlistToggler = document.getElementById("wishlistToggler");
@@ -25,7 +29,7 @@ function Wishlist() {
         className="fa-solid fa-heart hover:text-red-600 cursor-pointer transition-all"
       ></i>
       <span className="absolute -top-1 -right-2 text-xs text-neutral-50 bg-red-600 rounded-full w-4 h-4 flex justify-center items-center">
-        2
+        {wishlistQuantity}
       </span>
       <div
         id="wishlist"

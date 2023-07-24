@@ -6,8 +6,16 @@ import Description from "../description/Description";
 import Specification from "../specification/Specification";
 import AddToCartButton from "../../Components/AddToCartButton";
 import AddToListButton from "../../Components/AddToListButton";
+import { useSelector } from "react-redux";
+import { WishlistState, inWishlist } from "../wishlist/wishlistSlice";
 
 function ProductInfo() {
+  const id = 1;
+
+  const inList = useSelector((state: { wishlist: WishlistState }) =>
+    inWishlist(state, id)
+  );
+
   const images: string[] = [
     "https://cdn.pixabay.com/photo/2022/09/25/22/25/iphone-7479306_1280.jpg",
     "https://cdn.pixabay.com/photo/2020/10/21/18/07/laptop-5673901_1280.jpg",
@@ -28,7 +36,6 @@ function ProductInfo() {
   };
 
   const rating: number = 4.2;
-  let inList = true;
 
   useEffect(() => {
     document.title = "StockShop | Product";
@@ -87,6 +94,13 @@ function ProductInfo() {
                 </button>
               }
               inList={inList}
+              product={{
+                id: 1,
+                name: "iPhone 14Pro",
+                producer: "Apple",
+                price: 999,
+                img: images[0],
+              }}
             />
             <AddToCartButton
               children={

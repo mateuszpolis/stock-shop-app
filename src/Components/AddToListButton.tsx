@@ -4,16 +4,37 @@ import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import AddToList from "./Modal/AddToList";
 import RemoveFromList from "./Modal/RemoveFromList";
+import { Dispatch } from "redux";
+import { useAppDispatch } from "../Store/store";
+import { addProduct, removeProduct } from "../Features/wishlist/wishlistSlice";
+
+type product = {
+  id: number;
+  name: string;
+  producer: string;
+  price: number;
+  price_before?: number;
+  img?: string;
+};
 
 type Props = {
   children: React.ReactNode;
   inList: boolean;
+  product: product;
 };
 
-function AddToListButton({ children, inList }: Props) {
+function AddToListButton({ children, inList, product }: Props) {
+  const dispatch: Dispatch<any> = useAppDispatch();
+
   const [activeModal, setActiveModal] = useState<string | null>(null);
 
   const handleShowModal = (modalType: string) => {
+    if (modalType === "addToList" && !inList) {
+      dispatch(addProduct(product));
+    } else {
+      dispatch(removeProduct(product.id));
+    }
+
     setActiveModal(modalType);
   };
 

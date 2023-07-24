@@ -5,10 +5,12 @@ import Wishlist from "../Features/wishlist/Wishlist";
 import Categories from "../Features/categories/Categories";
 import { useSelector } from "react-redux";
 import { selectTotalQuantity } from "../Features/cart/cartSlice";
+import { selectNumberOfElements } from "../Features/wishlist/wishlistSlice";
 
 function NavBar(): JSX.Element {
   const loggedIn: boolean = false;
   const cartQuantity: number = useSelector(selectTotalQuantity);
+  const wishlistQuantity: number = useSelector(selectNumberOfElements);
 
   let userIcon1;
   let userIcon2;
@@ -67,7 +69,7 @@ function NavBar(): JSX.Element {
                   className="fa-solid fa-heart hover:text-red-600 cursor-pointer transition-all"
                 ></i>
                 <span className="absolute -top-1 -right-2 text-xs text-neutral-50 bg-red-600 rounded-full w-4 h-4 flex justify-center items-center">
-                  2
+                  {wishlistQuantity}
                 </span>
               </Link>
             </div>

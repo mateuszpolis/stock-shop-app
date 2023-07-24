@@ -11,6 +11,7 @@ function App() {
     <div id="App" className="relative">
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/search/:query" element={<Home />} />
         <Route path="/product/:id" element={<Product />} />
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/cart" element={<Cart />} />

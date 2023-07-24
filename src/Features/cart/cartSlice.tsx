@@ -59,12 +59,10 @@ const cartSlice = createSlice({
           state.products.splice(productIndex, 1);
         } else {
           state.products[productIndex].quantity -= 1;
-          state.totalQuantity -= 1;
-          state.totalPrice -= action.payload.price;
         }
+        state.totalQuantity -= 1;
+        state.totalPrice -= action.payload.price;
       }
-      state.totalQuantity -= 1;
-      state.totalPrice -= action.payload.price;
     },
     incrementProduct: (state, action) => {
       const productIndex = state.products.findIndex(

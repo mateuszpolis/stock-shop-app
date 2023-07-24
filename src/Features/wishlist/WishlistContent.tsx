@@ -2,6 +2,8 @@ import React from "react";
 import ProductCardWishlist from "../../Components/ProductCardWishlist";
 import SideShortcuts from "../../Components/SideShortcuts";
 import AddToCartButton from "../../Components/AddToCartButton";
+import { useSelector } from "react-redux";
+import { selectProducts } from "./wishlistSlice";
 
 type product = {
   id: number;
@@ -13,21 +15,27 @@ type product = {
 };
 
 function WishlistContent() {
-  const products: product[] = [
-    {
-      id: 1,
-      name: "iPhone 14 Pro",
-      producer: "Apple",
-      price: 999,
-      price_before: 1299,
-    },
-    {
-      id: 2,
-      name: "iMac 2021",
-      producer: "Apple",
-      price: 999,
-    },
-  ];
+  const products: product[] = useSelector(selectProducts);
+
+  let addToCartButton;
+  if (products.length > 0) {
+    addToCartButton = (
+      <AddToCartButton
+        children={
+          <div className="mt-2 w-full bg-green-500 hover:bg-green-600 transition-all text-white font-semibold rounded-lg py-2">
+            Add all to cart <i className="fa-solid fa-cart-plus"></i>
+          </div>
+        }
+        products={products}
+      />
+    );
+  } else {
+    addToCartButton = (
+      <div className="text-center cursor-not-allowed mt-2 w-full bg-green-500 opacity-50 transition-all text-white font-semibold rounded-lg py-2">
+        Add all to cart <i className="fa-solid fa-cart-plus"></i>
+      </div>
+    );
+  }
 
   let productsDiv;
   if (products.length > 0) {
@@ -63,16 +71,7 @@ function WishlistContent() {
           <div className="overflow-y-scroll overscroll-auto max-h-[400px] relative flex flex-col w-full rounded-lg border-y-2 border-neutral-200 dark:border-neutral-500">
             {productsDiv}
           </div>
-          <div>
-            <AddToCartButton
-              children={
-                <div className="mt-2 w-full bg-green-500 hover:bg-green-600 transition-all text-white font-semibold rounded-lg py-2">
-                  Add all to cart <i className="fa-solid fa-cart-plus"></i>
-                </div>
-              }
-              products={products}
-            />
-          </div>
+          <div>{addToCartButton}</div>
         </div>
       </div>
       <SideShortcuts />

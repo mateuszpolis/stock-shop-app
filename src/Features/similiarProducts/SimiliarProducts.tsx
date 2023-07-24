@@ -20,7 +20,6 @@ function SimiliarProducts() {
           producer="Apple"
           price={49}
           price_before={59}
-          discount={10}
           categories={["Accessories", "Mice", "Apple"]}
           img="https://cdn.pixabay.com/photo/2017/05/24/21/33/workplace-2341642_1280.jpg"
         />
