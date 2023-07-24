@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Dispatch } from "redux";
 import Category from "../../Components/Category";
 import { useSelector } from "react-redux";
@@ -8,6 +8,7 @@ import {
   setSearchQuery,
 } from "./categoriesSlice";
 import { useAppDispatch } from "../../Store/store";
+import { motion } from "framer-motion";
 
 function Categories() {
   const categories = useSelector(selectFilteredCategories);
@@ -51,7 +52,7 @@ function Categories() {
       id="categories"
       className="flex items-center relative z-40 bg-neutral-50 pt-2 mb-0 px-0 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50 transition-all"
     >
-      <div
+      <motion.div
         id="searchCategoriesBar"
         className="hidden relative w-full lg:w-96 lg:block lg:shrink-0 lg:mr-1"
       >
@@ -76,7 +77,7 @@ function Categories() {
             </span>
           </button>
         </div>
-      </div>
+      </motion.div>
       <div
         id="categories-list"
         className="flex w-full justify-normal items-center flex-nowrap overflow-x-scroll no-scrollbar"

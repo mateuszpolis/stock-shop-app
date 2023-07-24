@@ -67,7 +67,7 @@ function SortFilter({ query, categories, sorting }: Props): JSX.Element {
           {isDropdownOpen && (
             <motion.div
               className="absolute top-full -right-[50%] mt-1 bg-neutral-50 dark:bg-neutral-800 shadow-md rounded-lg overflow-hidden"
-              initial={{ opacity: 0 }}
+              initial={{ opacity: 0, zIndex: 10 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
             >
@@ -78,7 +78,7 @@ function SortFilter({ query, categories, sorting }: Props): JSX.Element {
                     selectedOption === option.value
                       ? "bg-neutral-100 dark:bg-neutral-900"
                       : "hover:bg-neutral-200 dark:hover:bg-neutral-700"
-                  } cursor-pointer transition-all duration-75 whitespace-nowrap`}
+                  } cursor-pointer transition-all duration-75 whitespace-nowrap relative z-20`}
                   onClick={() => {
                     handleOptionSelect(option.value);
                     handleDropdownToggle();

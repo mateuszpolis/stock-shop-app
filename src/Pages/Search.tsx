@@ -3,6 +3,7 @@ import NavBar from "../Components/NavBar";
 import Footer from "../Components/Footer";
 import { useParams } from "react-router";
 import SortFilter from "../Features/sortFilter/SortFilter";
+import SearchResults from "../Features/searchResults/SearchResults";
 
 function Search() {
   const { query, categories, sorting } = useParams();
@@ -14,6 +15,7 @@ function Search() {
     <div className="relative bg-neutral-50 dark:bg-neutral-900 flex flex-col min-h-screen">
       <NavBar />
       <SortFilter query={query} categories={categories} sorting={sorting} />
+      <SearchResults />
       <Footer />
     </div>
   );

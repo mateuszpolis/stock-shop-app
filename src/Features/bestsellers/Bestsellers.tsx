@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 function Bestsellers() {
   return (
     <div className="p-5">
-      <div className="p-5 bg-neutral-900 dark:bg-neutral-50 relative z-10 rounded-lg shadow-md">
+      <div className="p-5 bg-neutral-900 dark:bg-neutral-50 relative z-10 rounded-lg">
         <h1 className="text-4xl font-bold mb-4 text-neutral-50 dark:text-neutral-950">
           Bestsellers
         </h1>
