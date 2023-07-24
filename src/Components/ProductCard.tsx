@@ -60,7 +60,7 @@ function ProductCard({
           right: 0,
           bottom: 0,
           backgroundImage:
-            "linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.9))",
+            "linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))",
         }}
       ></div>
       <Link to={`/product/${id}`}>

@@ -1,17 +1,27 @@
-import React from "react";
-import { Routes, Route } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Home from "./Pages/Home";
 import Product from "./Pages/Product";
 import Wishlist from "./Pages/Wishlist";
 import Cart from "./Pages/Cart";
 import Login from "./Pages/Login";
+import Search from "./Pages/Search";
 
 function App() {
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
   return (
     <div id="App" className="relative">
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/search/:query" element={<Home />} />
+        <Route
+          path="/search/:query?/:categories?/:sorting?"
+          element={<Search />}
+        />
         <Route path="/product/:id" element={<Product />} />
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/cart" element={<Cart />} />

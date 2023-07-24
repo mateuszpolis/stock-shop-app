@@ -4,6 +4,7 @@ import SideShortcuts from "../../Components/SideShortcuts";
 import AddToCartButton from "../../Components/AddToCartButton";
 import { useSelector } from "react-redux";
 import { selectProducts } from "./wishlistSlice";
+import { motion } from "framer-motion";
 
 type product = {
   id: number;
@@ -61,7 +62,12 @@ function WishlistContent() {
 
   return (
     <div className="p-5 flex">
-      <div className="w-full lg:w-1/2 lg:p-2">
+      <motion.div
+        className="w-full lg:w-1/2 lg:p-2"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      >
         <div>
           <h1 className="text-2xl font-semibold dark:text-neutral-50">
             Your wishlist <i className="fa-solid fa-heart text-red-600" />{" "}
@@ -73,7 +79,7 @@ function WishlistContent() {
           </div>
           <div>{addToCartButton}</div>
         </div>
-      </div>
+      </motion.div>
       <SideShortcuts />
     </div>
   );

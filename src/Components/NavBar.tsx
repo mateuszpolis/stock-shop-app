@@ -1,7 +1,6 @@
 import React from "react";
 import SearchBar from "../Features/searchBar/SearchBar";
 import { Link } from "react-router-dom";
-import Wishlist from "../Features/wishlist/Wishlist";
 import Categories from "../Features/categories/Categories";
 import { useSelector } from "react-redux";
 import { selectTotalQuantity } from "../Features/cart/cartSlice";
@@ -87,7 +86,15 @@ function NavBar(): JSX.Element {
         <div className="hidden sm:flex sm:text-2xl md:text-3xl justify-between space-x-2 sm:space-x-4 md:space-x-10 mr-5">
           {userIcon2}
           <div className="relative">
-            <Wishlist />
+            <Link to="/wishlist">
+              <i
+                id="wishlistToggler"
+                className="fa-solid fa-heart hover:text-red-600 cursor-pointer transition-all"
+              ></i>
+              <span className="absolute -top-1 -right-2 text-xs text-neutral-50 bg-red-600 rounded-full w-4 h-4 flex justify-center items-center">
+                {wishlistQuantity}
+              </span>
+            </Link>
           </div>
           <div className="relative hover:text-neutral-500 dark:hover:text-neutral-200  cursor-pointer transition-all">
             <Link to="/cart">

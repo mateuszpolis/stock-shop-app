@@ -5,7 +5,7 @@ function SimiliarProducts() {
   return (
     <div className="p-5 pt-0">
       <h1 className="text-xl lg:text-3xl font-bold dark:text-neutral-50 mb-2">You might also like:</h1>
-      <div className="flex overflow-x-scroll">
+      <div className="flex overflow-x-scroll snap-x snap-mandatory no-scrollbar">
         <ProductCard
           id={1}
           name="iPhone 14 pro"

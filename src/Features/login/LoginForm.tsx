@@ -1,5 +1,6 @@
 import React from "react";
 import SideShortcuts from "../../Components/SideShortcuts";
+import { motion } from "framer-motion";
 
 function LoginForm() {
   const [email, setEmail] = React.useState("");
@@ -11,7 +12,12 @@ function LoginForm() {
 
   return (
     <div className="p-5 lg:flex lg:flex-row">
-      <div className="flex flex-col lg:p-2 lg:w-1/2">
+      <motion.div
+        className="flex flex-col lg:p-2 lg:w-1/2"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      >
         <h1 className="text-2xl font-black font-mono text-center dark:text-neutral-50">
           Login with your StockShop account:
         </h1>
@@ -89,7 +95,7 @@ function LoginForm() {
             Register
           </a>
         </h1>
-      </div>
+      </motion.div>
       <SideShortcuts />
     </div>
   );

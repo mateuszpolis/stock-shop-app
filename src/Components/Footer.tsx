@@ -19,13 +19,13 @@ function Footer() {
         <div className="flex justify-normal items-center text-3xl">
           <a
             href="https://github.com/mateuszpolis"
-            className="text-neutral-50 dark:text-neutral-950 mr-4 hover:text-neutral-950  dark:hover:text-neutral-50 hover:cursor-pointer transition-all"
+            className="text-neutral-50 dark:text-neutral-950 mr-4 hover:text-neutral-50  dark:hover:text-neutral-950 hover:cursor-pointer transition-all"
           >
             <i className="fa-brands fa-github"></i>
           </a>
           <a
             href="https://www.linkedin.com/in/mateuszpolis/"
-            className="text-neutral-50 dark:text-neutral-950 hover:text-neutral-950  dark:hover:text-neutral-50 hover:cursor-pointer transition-all"
+            className="text-neutral-50 dark:text-neutral-950 hover:text-neutral-50  dark:hover:text-neutral-950 hover:cursor-pointer transition-all"
           >
             <i className="fa-brands fa-linkedin"></i>
           </a>

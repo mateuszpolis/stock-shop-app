@@ -45,7 +45,7 @@ function Bestsellers() {
           />
         </div>
         <Link to="/search">
-          <div className="">
+          <div className="flex flex-row-reverse">
             <span className="font-bold text-lg text-neutral-300 dark:text-neutral-600 hover:text-neutral-50 hover:dark:text-neutral-950 hover:cursor-pointer transition-all">
               See more <i className="fa-solid fa-chevron-right"></i>
             </span>

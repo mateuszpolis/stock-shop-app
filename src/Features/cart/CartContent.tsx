@@ -3,6 +3,7 @@ import SideShortcuts from "../../Components/SideShortcuts";
 import ProductCardCart from "../../Components/ProductCardCart";
 import { useSelector } from "react-redux";
 import { selectProducts, selectTotalPrice } from "./cartSlice";
+import { motion } from "framer-motion";
 
 type product = {
   id: number;
@@ -62,7 +63,12 @@ function CartContent() {
 
   return (
     <div className="p-5 flex">
-      <div className="w-full lg:w-1/2 lg:p-2">
+      <motion.div
+        className="w-full lg:w-1/2 lg:p-2"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      >
         <div>
           <h1 className="text-2xl font-semibold dark:text-neutral-50">
             Your cart <i className="fa-solid fa-cart-shopping text-green-500" />{" "}
@@ -82,7 +88,7 @@ function CartContent() {
             {checkoutButton}
           </div>
         </div>
-      </div>
+      </motion.div>
       <SideShortcuts />
     </div>
   );

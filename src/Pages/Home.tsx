@@ -3,6 +3,7 @@ import NavBar from "../Components/NavBar";
 import Offers from "../Features/offers/Offers";
 import Bestsellers from "../Features/bestsellers/Bestsellers";
 import Footer from "../Components/Footer";
+import { motion } from "framer-motion";
 
 export default function Home() {
   useEffect(() => {
@@ -12,7 +13,12 @@ export default function Home() {
   return (
     <div className="relative bg-neutral-50 dark:bg-neutral-900 flex flex-col min-h-screen">
       <NavBar />
-      <div className="flex justify-center">
+      <motion.div
+        className="flex justify-center"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      >
         <div className="w-full max-w-[1280px]">
           <div className="p-5">
             <div className="p-8 bg-neutral-900 dark:bg-neutral-50 text-neutral-50 dark:text-neutral-950 rounded-lg shadow-md transition-all">
@@ -33,9 +39,11 @@ export default function Home() {
                   <i className="fa-solid fa-headset text-xl"></i>
                 </li>
               </ul>
-              <button className="mt-4 bg-white text-pink-500 font-semibold px-4 py-2 rounded-lg shadow-md hover:bg-pink-500 hover:text-white transition-all">
-                Browse Products
-              </button>
+              <div className="flex flex-row-reverse">
+                <button className="mt-4 bg-white text-pink-500 font-semibold px-4 py-2 rounded-lg shadow-md hover:bg-pink-500 hover:text-white transition-all">
+                  Browse Products
+                </button>
+              </div>
             </div>
           </div>
           <Offers />
@@ -53,15 +61,16 @@ export default function Home() {
                 <li>30-day money-back guarantee</li>
                 <li>24/7 Customer Support</li>
               </ul>
-              <button className="mt-4 bg-white text-teal-500 font-semibold px-4 py-2 rounded-lg shadow-md hover:bg-teal-500 hover:text-white transition-all">
-                Browse Products
-              </button>
+              <div className="flex flex-row-reverse">
+                <button className="mt-4 bg-white text-teal-500 font-semibold px-4 py-2 rounded-lg shadow-md hover:bg-teal-500 hover:text-white transition-all">
+                  Browse Products
+                </button>
+              </div>
             </div>
           </div>
           <Bestsellers />
         </div>
-      </div>
-
+      </motion.div>
       <Footer />
     </div>
   );

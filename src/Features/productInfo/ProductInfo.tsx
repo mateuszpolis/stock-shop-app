@@ -8,6 +8,7 @@ import AddToCartButton from "../../Components/AddToCartButton";
 import AddToListButton from "../../Components/AddToListButton";
 import { useSelector } from "react-redux";
 import { WishlistState, inWishlist } from "../wishlist/wishlistSlice";
+import { motion } from "framer-motion";
 
 function ProductInfo() {
   const id = 1;
@@ -29,7 +30,12 @@ function ProductInfo() {
   }, [inList]);
 
   return (
-    <div className="p-5 pt-1 flex flex-col">
+    <motion.div
+      className="p-5 pt-1 flex flex-col"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <div className="lg:grid lg:grid-cols-2">
         <Gallery images={images} />
         <div className="lg:mt-24 lg:flex lg:items-center lg:flex-col lg:text-xl">
@@ -109,7 +115,7 @@ function ProductInfo() {
         <Specification />
         <Reviews />
       </div>
-    </div>
+    </motion.div>
   );
 }
 
