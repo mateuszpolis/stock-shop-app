@@ -42,19 +42,6 @@ function ProductCard({
     priceInfo = "";
   }
 
-  const handleAddToList = () => {
-    const heart = document.getElementById(`product-card-heart-${id}`);
-    if (heart?.classList.contains("fa-regular")) {
-      heart?.classList.add("fa-solid");
-      heart?.classList.add("text-red-600");
-      heart?.classList.remove("fa-regular");
-    } else {
-      heart?.classList.add("fa-regular");
-      heart?.classList.remove("text-red-600");
-      heart?.classList.remove("fa-solid");
-    }
-  };
-
   return (
     <div
       style={{
@@ -63,7 +50,7 @@ function ProductCard({
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
-      className="relative z-10 shrink-0 mb-6 ml-2 mr-4 overflow-hidden rounded-lg h-72 w-60 bg-neutral-50  dark:bg-neutral-800 transition-all"
+      className="snap-center relative z-10 shrink-0 mb-6 ml-2 mr-4 overflow-hidden rounded-lg h-72 w-60 bg-neutral-50  dark:bg-neutral-800 transition-all"
     >
       <div
         style={{
@@ -101,14 +88,15 @@ function ProductCard({
             </span>
           </Link>
         </div>
-        <div className="flex justify-normal">
+        <div className="flex justify-normal space-x-2">
           <AddToListButton
             children={
-              <div onClick={handleAddToList}>
-                <i
-                  id={`product-card-heart-${id}`}
-                  className="fa-regular fa-heart hover:text-red-600 mr-2 transition-all"
-                ></i>
+              <div>
+                {inList ? (
+                  <i className="fa-solid fa-heart text-red-600 hover:text-red-500 transition-all"></i>
+                ) : (
+                  <i className="fa-regular fa-heart hover:text-red-500 transition-all"></i>
+                )}
               </div>
             }
             inList={inList}

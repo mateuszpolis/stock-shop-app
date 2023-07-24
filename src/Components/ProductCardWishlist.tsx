@@ -43,13 +43,13 @@ function ProductCardWishlist({
   }
 
   return (
-    <div className="w-full h-28 p-2 flex justify-between items-center no-scrollbar rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-700">
-      <div className="h-full">
+    <div className="w-full p-2 grid grid-cols-3 no-scrollbar rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-700">
+      <div className="h-24">
         <Link to={`/product/${id}`}>
           <img
             alt={name}
             src={img ? img : picture}
-            className="h-full aspect-square object-cover object-center"
+            className="h-full aspect-square rounded-lg object-cover object-center"
           />
         </Link>
       </div>
@@ -65,7 +65,7 @@ function ProductCardWishlist({
       <div className="flex flex-col md:flex-row md:space-x-2 justify-center items-center text-2xl dark:text-neutral-50">
         <button
           onClick={() => {
-            dispatch(removeProduct({ id: id }));
+            dispatch(removeProduct(id));
           }}
         >
           <i

@@ -22,19 +22,6 @@ function ProductInfo() {
     "https://cdn.pixabay.com/photo/2014/09/28/11/25/imac-464737_1280.jpg",
   ];
 
-  const handleAddToList = () => {
-    const heart = document.getElementById(`product-card-heart`);
-    if (heart?.classList.contains("fa-regular")) {
-      heart?.classList.add("fa-solid");
-      heart?.classList.add("text-red-600");
-      heart?.classList.remove("fa-regular");
-    } else {
-      heart?.classList.add("fa-regular");
-      heart?.classList.remove("text-red-600");
-      heart?.classList.remove("fa-solid");
-    }
-  };
-
   const rating: number = 4.2;
 
   useEffect(() => {
@@ -82,16 +69,14 @@ function ProductInfo() {
           <div className="flex justify-around mt-2 items-center lg:w-full">
             <AddToListButton
               children={
-                <button
-                  onClick={handleAddToList}
-                  className="p-5 group bg-gray-100 rounded-full hover:bg-gray-200 transition-all"
-                >
+                <div className="p-5 group bg-gray-100 rounded-full hover:bg-gray-200 transition-all">
                   Add to list{" "}
-                  <i
-                    id={`product-card-heart`}
-                    className="fa-regular fa-heart group-hover:text-red-600 mr-2 transition-all"
-                  ></i>
-                </button>
+                  {inList ? (
+                    <i className="fa-solid fa-heart text-red-600 hover:text-red-500 transition-all"></i>
+                  ) : (
+                    <i className="fa-regular fa-heart hover:text-red-500 transition-all"></i>
+                  )}
+                </div>
               }
               inList={inList}
               product={{

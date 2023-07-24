@@ -9,7 +9,7 @@ function Offers() {
         <h1 className="text-4xl font-bold mb-4 text-neutral-50 dark:text-neutral-950">
           Products on Sale
         </h1>
-        <div className="flex justify-normal items-center overflow-x-scroll">
+        <div className="flex justify-normal items-center overflow-x-scroll snap-x snap-mandatory no-scrollbar">
           <ProductCard
             id={1}
             name="iPhone 14 Pro"

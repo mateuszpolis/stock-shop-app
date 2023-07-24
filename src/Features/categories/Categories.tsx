@@ -79,7 +79,7 @@ function Categories() {
       </div>
       <div
         id="categories-list"
-        className="flex w-full justify-normal items-center flex-nowrap overflow-x-scroll"
+        className="flex w-full justify-normal items-center flex-nowrap overflow-x-scroll no-scrollbar"
       >
         {categories.slice(0, 15).map((category, index) => (
           <Category

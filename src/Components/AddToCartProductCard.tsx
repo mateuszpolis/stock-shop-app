@@ -37,13 +37,13 @@ function AddToCartProductCard({
   }
 
   return (
-    <div className="w-full h-24 p-2 flex justify-around items-center no-scrollbar rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-700">
-      <div className="h-full">
+    <div className="w-full p-2 grid grid-cols-2 no-scrollbar rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-700">
+      <div className="h-24">
         <Link to={`/product/${id}`}>
           <img
             alt={name}
             src={img ? img : picture}
-            className="h-full aspect-square object-cover object-center"
+            className="h-full rounded-lg aspect-square object-cover object-center"
           />
         </Link>
       </div>
