@@ -30,7 +30,7 @@ function Category({ category, selected }: CategoryProps) {
     <div
       onClick={handleCategoryClick}
       id={`category-${category}`}
-      className="relative text-sm sm:text-base whitespace-nowrap py-2 px-2 w-fit sm:px-4 mr-2 my-1 rounded-3xl bg-gray-950 text-gray-50 hover:cursor-pointer hover:bg-gray-500 dark:bg-gray-50 dark:text-gray-950 dark:hover:bg-gray-200 transition-all"
+      className="relative flex-grow-0 text-sm sm:text-base whitespace-nowrap py-2 px-2 w-fit sm:px-4 mr-2 my-1 rounded-3xl bg-gray-950 text-gray-50 hover:cursor-pointer hover:bg-gray-500 dark:bg-gray-50 dark:text-gray-950 dark:hover:bg-gray-200 transition-all"
     >
       {category}
       {tick}

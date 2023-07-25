@@ -49,7 +49,7 @@ function ProductCardList({
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
-      className="snap-center relative shrink-0 overflow-hidden rounded-lg h-72 bg-neutral-50  dark:bg-neutral-800 transition-all"
+      className="snap-center relative shrink-0 overflow-hidden rounded-lg h-72 sm:h-80 md:h-96 bg-neutral-50  dark:bg-neutral-800 transition-all"
     >
       <div
         style={{
@@ -64,9 +64,9 @@ function ProductCardList({
       ></div>
       <Link to={`/product/${id}`}>
         <div className="p-4 absolute top-24 z-10">
-          <h1 className="font-bold text-lg text-neutral-50">{name}</h1>
-          <p className="text-neutral-300">{producer}</p>
-          <p className="font-bold text-md text-neutral-50">
+          <h1 className="font-bold text-lg sm:text-xl text-neutral-50">{name}</h1>
+          <p className="text-neutral-300 sm:text-lg">{producer}</p>
+          <p className="font-bold text-md sm:text-lg text-neutral-50">
             Price: {priceInfo} ${price}
           </p>
           <p className="text-xs">

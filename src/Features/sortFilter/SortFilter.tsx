@@ -49,12 +49,12 @@ function SortFilter({ query, categories, sorting }: Props): JSX.Element {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <div className="p-5 grid grid-cols-4 dark:text-neutral-50">
+      <div className="p-5 grid grid-cols-4 lg:grid-cols-3 dark:text-neutral-50">
         <div className="text-center border-e-2 flex flex-col">
           <i className="fa-solid fa-list"></i>
           <p className="text-xs">Display</p>
         </div>
-        <div className="text-center border-e-2 flex flex-col">
+        <div className="text-center border-e-2 flex flex-col lg:hidden">
           <i className="fa-solid fa-filter"></i>
           <p className="text-xs">Filter</p>
         </div>
