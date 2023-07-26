@@ -11,6 +11,7 @@ import descriptionReducer from "../Features/description/descriptionSlice";
 import similiarProductsReducer from "../Features/similiarProducts/similiarProductsSlice";
 import cartReducer from "../Features/cart/cartSlice";
 import loginReducer from "../Features/login/loginSlice";
+import searchResultsReducer from "../Features/searchResults/searchResultsSlice";
 
 export const store = configureStore({
   reducer: {
@@ -25,6 +26,7 @@ export const store = configureStore({
     similiarProducts: similiarProductsReducer,
     cart: cartReducer,
     login: loginReducer,
+    searchResults: searchResultsReducer,
   },
 });
 

@@ -13,8 +13,9 @@ type Props = {
   name: string;
   producer: string;
   price: number;
-  categories?: string[];
+  categories?: string;
   price_before?: number;
+  rating: number;
   img?: string;
 };
 
@@ -26,6 +27,7 @@ function ProductCardList({
   categories,
   price_before,
   img,
+  rating,
 }: Props) {
   const inList = useSelector((state: { wishlist: WishlistState }) =>
     inWishlist(state, id)
@@ -72,9 +74,9 @@ function ProductCardList({
           <p className="font-bold text-md sm:text-lg text-neutral-50">
             Price: {priceInfo} ${price}
           </p>
-          <StarRating rating={4} review_id={id} />
+          <StarRating rating={rating} review_id={id} />
           <div className="flex justify-normal items-center mt-1">
-            {categories?.map((category, index) => (
+            {categories?.split(" ")?.map((category, index) => (
               <CategoryXs key={index} category={category} />
             ))}
           </div>

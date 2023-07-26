@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { createSelector } from "reselect";
 
 type category = {
   category: string;
@@ -59,10 +60,11 @@ export const selectFilteredCategories = (state: any): category[] => {
   return filterCategories(categories, searchQuery);
 };
 
-export const selectSelectedCategories = (state: any): category[] => {
-  const categories = state.categories.categoriesList;
-  return categories.filter((category: { selected: any; }) => category.selected);
-};
+export const selectSelectedCategories = createSelector(
+  [selectFilteredCategories],
+  (categoriesList) =>
+    categoriesList.filter((category: { selected: any }) => category.selected)
+);
 
 export const selectSearchQuery = (state: any): string => {
   return state.categories.searchQuery;
