@@ -66,7 +66,7 @@ function SortFilter({ query, categories, sorting }: Props): JSX.Element {
           <p className="text-xs">Sort</p>
           {isDropdownOpen && (
             <motion.div
-              className="absolute top-full -right-[50%] mt-1 bg-neutral-50 dark:bg-neutral-800 shadow-md rounded-lg overflow-hidden"
+              className="absolute top-full min-w-fit w-full mt-1 bg-neutral-50 dark:bg-neutral-800 shadow-md rounded-lg overflow-hidden"
               initial={{ opacity: 0, zIndex: 10 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}

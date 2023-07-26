@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { selectSelectedCategories } from "../Features/categories/categoriesSlice";
 import Category from "./Category";
 import Filter from "./Filter";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 type Props = {};
 
@@ -40,6 +40,11 @@ function FiltersCategoriesSide({}: Props) {
           Selected Categoreis:
         </h2>
         <div className="flex flex-row flex-wrap flex-grow-0 justify-start max-h-28 overflow-y-scroll no-scrollbar">
+          {selectedCategories.length === 0 && (
+            <p className="text-base text-neutral-500 dark:text-neutral-400">
+              No categories selected
+            </p>
+          )}
           {selectedCategories.map((category, index) => (
             <Category
               category={category.category}
@@ -61,26 +66,31 @@ function FiltersCategoriesSide({}: Props) {
             }}
             className="relative fa-regular fa-circle-question hover:cursor-pointer"
           ></i>
-          {isDropdownOpen && (
-            <motion.div
-              initial={{ opacity: 0, zIndex: 10 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="p-2 rounded-lg shadow-md absolute z-20 bg-neutral-50 w-56"
-            >
-              <p className="text-base">
-                Only common filters are shown. Filters are based on selected
-                categories. If you want to see more filters, please select less
-                categories.
-              </p>
-            </motion.div>
-          )}
+          <AnimatePresence initial={false} mode="wait">
+            {isDropdownOpen && (
+              <motion.div
+                initial={{ opacity: 0, zIndex: 10 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="p-2 rounded-lg shadow-md absolute z-20 bg-neutral-50 w-56"
+              >
+                <p className="text-base">
+                  Only common filters are shown. Filters are based on selected
+                  categories. If you want to see more filters, please select
+                  fewer categories.
+                </p>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </h2>
-        <div className="flex flex-wrap">
-          {Object.entries(filters).map(([filterKey, filter]) => (
+        <div className="max-h-[96] overflow-y-scroll no-scrollbar">
+          {/* <Filter key={0} type="range" name="price" min={10} max={100} />
+          <Filter key={1} type="range" name="rating" min={10} max={100} /> */}
+          {Object.entries(filters).map(([filterKey, filter], index) => (
             <Filter
-              key={filterKey}
-              filterType={filter.type}
+              key={index}
+              type={filter.type}
+              name={filterKey}
               min={filter.min}
               max={filter.max}
               options={filter.options}

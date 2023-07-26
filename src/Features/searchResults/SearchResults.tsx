@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ProductCard from "../../Components/ProductCard";
 import { useSelector } from "react-redux";
 import { selectSearchTerm } from "../searchBar/searchBarSlice";
@@ -42,17 +42,32 @@ const products = [
 ];
 
 function SearchResults() {
-  const nOfResults: number = products.length;
   const searchTerm = useSelector(selectSearchTerm);
+  const nOfResults = products.length;
+
+  const elementRef = useRef<HTMLDivElement | null>(null);
+  const [distanceFromTop, setDistanceFromTop] = useState<number>(0);
+
+  useEffect(() => {
+    if (elementRef.current) {
+      const { top } = elementRef.current.getBoundingClientRect();
+      const distanceFromTop = top + window.scrollY;
+      setDistanceFromTop(distanceFromTop);
+    }
+  }, []);
+  const remainingHeight = `calc(80vh - ${distanceFromTop}px)`;
 
   return (
     <div className="lg:grid lg:grid-cols-[2fr_4fr] lg:gap-5 lg:p-5">
       <FiltersCategoriesSide />
-      <div id="search-resulst" className="p-5 pt-0 lg:p-0">
+      <div id="search-resulst" className="p-5 pt-0 lg:p-0" ref={elementRef}>
         <h2 className="text-2xl font-bold mb-4 text-neutral-950 dark:text-neutral-50">
           {nOfResults} results for "{searchTerm}"
         </h2>
-        <div className="relative h-[46vh] flex space-y-2 flex-col overflow-y-scroll snap-y snap-mandatory no-scrollbar">
+        <div
+          style={{ height: `calc(${remainingHeight})` }}
+          className={`relative flex space-y-2 flex-col overflow-y-scroll snap-y snap-mandatory no-scrollbar`}
+        >
           {products.map((product) => (
             <ProductCardList
               key={product.id}

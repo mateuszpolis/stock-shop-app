@@ -66,7 +66,7 @@ function AddToListButton({ children, inList, product }: Props) {
         <AnimatePresence initial={false} mode="wait">
           {getActiveModalComponent()}
         </AnimatePresence>,
-        document.getElementById("notifications-container")!
+        document.getElementById("root")!
       )} */}
     </div>
   );

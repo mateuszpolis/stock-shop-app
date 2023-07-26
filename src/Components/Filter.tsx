@@ -1,86 +1,63 @@
-import React, { useState } from "react";
+import React from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import RangeFilter from "./RangeFilter";
+import CheckboxFilter from "./CheckboxFilter";
 
-interface FilterProps {
-  filterType: string;
+type Props = {
+  type: string;
+  name: string;
   min?: number;
   max?: number;
   options?: string[];
-}
+};
 
-interface RangeValue {
-  min: number;
-  max: number;
-}
+function Filter({ name, min, max, type, options }: Props) {
+  const [isDropdownOpen, setIsDropdownOpen] = React.useState<boolean>(false);
 
-const Filter: React.FC<FilterProps> = ({ filterType, min, max, options }) => {
-  const [rangeValue, setRangeValue] = useState<RangeValue>({ min: min || 0, max: max || 0 });
-  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
-
-  const handleRangeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
-    setRangeValue((prevRange) => ({
-      ...prevRange,
-      [name]: Number(value),
-    }));
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
   };
 
-  const handleCheckboxChange = (option: string) => {
-    setSelectedOptions((prevOptions) =>
-      prevOptions.includes(option)
-        ? prevOptions.filter((item) => item !== option)
-        : [...prevOptions, option]
-    );
-  };
+  let filterComponent = null;
+  if (type === "range" && min != null && max != null) {
+    filterComponent = <RangeFilter min={min} max={max} />;
+  } else if (type === "checkbox" && options != null) {
+    filterComponent = <CheckboxFilter options={options} />;
+  }
 
   return (
-    <div className="border p-4 m-2">
-      {filterType === "range" && (
-        <>
-          <h4 className="font-semibold mb-2">Price Range</h4>
-          <input
-            type="number"
-            name="min"
-            value={rangeValue.min}
-            min={min}
-            max={rangeValue.max}
-            onChange={handleRangeChange}
-            className="w-16 mr-2"
-          />
-          to
-          <input
-            type="number"
-            name="max"
-            value={rangeValue.max}
-            min={rangeValue.min}
-            max={max}
-            onChange={handleRangeChange}
-            className="w-16 ml-2"
-          />
-        </>
-      )}
-
-      {filterType === "checkbox" && (
-        <>
-          <h4 className="font-semibold mb-2">Brands</h4>
-          <ul>
-            {options &&
-              options.map((option) => (
-                <li key={option} className="flex items-center mb-1">
-                  <input
-                    type="checkbox"
-                    id={option}
-                    checked={selectedOptions.includes(option)}
-                    onChange={() => handleCheckboxChange(option)}
-                    className="mr-2"
-                  />
-                  <label htmlFor={option}>{option}</label>
-                </li>
-              ))}
-          </ul>
-        </>
-      )}
+    <div id={`filter-${name}`}>
+      <div
+        className="cursor-pointer text-lg"
+        onClick={() => {
+          toggleDropdown();
+          const chevron = document.getElementById(`chevron-${name}`);
+          if (chevron) {
+            chevron.classList.toggle("rotate-90");
+          }
+        }}
+      >
+        {name}{" "}
+        <i
+          id={`chevron-${name}`}
+          className="fas fa-chevron-right transition-all"
+        ></i>
+      </div>
+      <AnimatePresence>
+        {isDropdownOpen && (
+          <motion.div
+            initial={{ maxHeight: 0 }}
+            animate={{ maxHeight: "200px" }}
+            exit={{ maxHeight: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="overflow-hidden"
+          >
+            {filterComponent}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
-};
+}
 
 export default Filter;
