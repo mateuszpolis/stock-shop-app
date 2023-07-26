@@ -1,5 +1,9 @@
 # E-commerce store website (work in progress)
 
+## How it works at the moment: 
+
+https://github.com/mateuszpolis/stock-shop-app/assets/77580875/ffc161b3-c552-43dd-9b97-bedce02a1425
+
 E-commerce store made in React.
 
 ## Technologies
