@@ -29,12 +29,30 @@ function FiltersCategoriesSide({}: Props) {
       max: 0,
       options: ["Apple", "Samsung", "HP", "Dell", "Lenovo", "Asus"],
     },
+    color: {
+      type: "checkbox",
+      min: 0,
+      max: 0,
+      options: ["Black", "White", "Red", "Blue", "Green", "Yellow"],
+    },
+    storage: {
+      type: "checkbox",
+      min: 0,
+      max: 0,
+      options: ["128GB", "256GB", "512GB", "1TB"],
+    },
+    ram: {
+      type: "checkbox",
+      min: 0,
+      max: 0,
+      options: ["4GB", "8GB", "16GB", "32GB"],
+    },  
   };
 
   const selectedCategories = useSelector(selectSelectedCategories);
 
   return (
-    <div className="hidden lg:flex flex-col rounded-lg space-y-4">
+    <div className="overscroll-none w-full max-h-[80vh] flex flex-col rounded-lg space-y-4 bg-neutral-50 dark:bg-neutral-900 z-50 overflow-y-scroll">
       <div className="flex flex-col">
         <h2 className="text-2xl font-bold mb-4 text-neutral-950 dark:text-neutral-50">
           Selected Categoreis:
@@ -74,7 +92,7 @@ function FiltersCategoriesSide({}: Props) {
                 exit={{ opacity: 0 }}
                 className="p-2 rounded-lg shadow-md absolute z-20 bg-neutral-50 w-56"
               >
-                <p className="text-base">
+                <p className="text-base dark:text-neutral-950">
                   Only common filters are shown. Filters are based on selected
                   categories. If you want to see more filters, please select
                   fewer categories.
@@ -83,9 +101,7 @@ function FiltersCategoriesSide({}: Props) {
             )}
           </AnimatePresence>
         </h2>
-        <div className="max-h-[96] overflow-y-scroll no-scrollbar">
-          {/* <Filter key={0} type="range" name="price" min={10} max={100} />
-          <Filter key={1} type="range" name="rating" min={10} max={100} /> */}
+        <div className="overflow-y-scroll no-scrollbar">
           {Object.entries(filters).map(([filterKey, filter], index) => (
             <Filter
               key={index}

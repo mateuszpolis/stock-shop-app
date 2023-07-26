@@ -20,11 +20,11 @@ function StarRating({ rating, review_id }: Props) {
 
   return (
     <div id={`stars-box-${review_id}`}>
-      <i className={`fa-regular fa-star ${review_id}`}></i>
-      <i className={`fa-regular fa-star ${review_id}`}></i>
-      <i className={`fa-regular fa-star ${review_id}`}></i>
-      <i className={`fa-regular fa-star ${review_id}`}></i>
-      <i className={`fa-regular fa-star ${review_id}`}></i>
+      <i className={`fa-regular fa-star ${review_id} text-yellow-500`}></i>
+      <i className={`fa-regular fa-star ${review_id} text-yellow-500`}></i>
+      <i className={`fa-regular fa-star ${review_id} text-yellow-500`}></i>
+      <i className={`fa-regular fa-star ${review_id} text-yellow-500`}></i>
+      <i className={`fa-regular fa-star ${review_id} text-yellow-500`}></i>
     </div>
   );
 }

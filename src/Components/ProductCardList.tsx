@@ -6,6 +6,7 @@ import AddToListButton from "./AddToListButton";
 import { useSelector } from "react-redux";
 import { WishlistState, inWishlist } from "../Features/wishlist/wishlistSlice";
 import CategoryXs from "./CategoryXs";
+import StarRating from "./StarRating";
 
 type Props = {
   id: number;
@@ -63,16 +64,16 @@ function ProductCardList({
         }}
       ></div>
       <Link to={`/product/${id}`}>
-        <div className="p-4 absolute top-24 z-10">
-          <h1 className="font-bold text-lg sm:text-xl text-neutral-50">{name}</h1>
+        <div className="p-4 absolute top-[50%] translate-y-[-50%] z-10">
+          <h1 className="font-bold text-lg sm:text-xl text-neutral-50">
+            {name}
+          </h1>
           <p className="text-neutral-300 sm:text-lg">{producer}</p>
           <p className="font-bold text-md sm:text-lg text-neutral-50">
             Price: {priceInfo} ${price}
           </p>
-          <p className="text-xs">
-            <br />
-          </p>
-          <div className="flex justify-normal items-center">
+          <StarRating rating={4} review_id={id} />
+          <div className="flex justify-normal items-center mt-1">
             {categories?.map((category, index) => (
               <CategoryXs key={index} category={category} />
             ))}

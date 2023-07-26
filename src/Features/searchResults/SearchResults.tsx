@@ -55,11 +55,14 @@ function SearchResults() {
       setDistanceFromTop(distanceFromTop);
     }
   }, []);
+
   const remainingHeight = `calc(80vh - ${distanceFromTop}px)`;
 
   return (
     <div className="lg:grid lg:grid-cols-[2fr_4fr] lg:gap-5 lg:p-5">
-      <FiltersCategoriesSide />
+      <div className="hidden lg:block">
+        <FiltersCategoriesSide />
+      </div>
       <div id="search-resulst" className="p-5 pt-0 lg:p-0" ref={elementRef}>
         <h2 className="text-2xl font-bold mb-4 text-neutral-950 dark:text-neutral-50">
           {nOfResults} results for "{searchTerm}"

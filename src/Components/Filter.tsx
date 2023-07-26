@@ -28,7 +28,7 @@ function Filter({ name, min, max, type, options }: Props) {
   return (
     <div id={`filter-${name}`}>
       <div
-        className="cursor-pointer text-lg"
+        className="cursor-pointer text-lg dark:text-neutral-50"
         onClick={() => {
           toggleDropdown();
           const chevron = document.getElementById(`chevron-${name}`);

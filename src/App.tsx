@@ -19,7 +19,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
-          path="/search/:query?/:categories?/:sorting?"
+          path="/search/:query?/:categories?/:sorting?/:filters?"
           element={<Search />}
         />
         <Route path="/product/:id" element={<Product />} />
