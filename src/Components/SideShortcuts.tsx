@@ -28,7 +28,7 @@ function SideShortcuts() {
   return (
     <div className="hidden lg:flex w-1/2 lg:p-2 items-center justify-start flex-col dark:text-neutral-50">
       <h1 className="text-2xl font-semibold">Go to</h1>
-      <div className="flex flex-col justify-center items-center w-[80%] space-y-3 rounded-lg border-y-2 border-neutral-200 dark:border-neutral-500">
+      <div className="flex flex-col justify-center items-center w-[80%] space-y-3 rounded-lg border-neutral-200 dark:border-neutral-500">
         <Link
           to="/"
           className="flex space-x-2 justify-center items-center w-full h-14 dark:bg-neutral-900 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-all rounded-lg"

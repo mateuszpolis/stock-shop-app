@@ -61,9 +61,9 @@ function WishlistContent() {
   }
 
   return (
-    <div className="p-5 flex">
+    <div className="p-2 flex">
       <motion.div
-        className="w-full lg:w-1/2 lg:p-2"
+        className="w-full lg:w-1/2 p-3 shadow-lg rounded-lg"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -74,7 +74,7 @@ function WishlistContent() {
           </h1>
         </div>
         <div>
-          <div className="overflow-y-scroll overscroll-auto max-h-[400px] relative flex flex-col w-full rounded-lg border-y-2 border-neutral-200 dark:border-neutral-500">
+          <div className="overflow-y-scroll overscroll-auto max-h-[400px] relative flex flex-col w-full rounded-lg border-neutral-200 dark:border-neutral-500">
             {productsDiv}
           </div>
           <div>{addToCartButton}</div>

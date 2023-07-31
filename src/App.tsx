@@ -6,6 +6,7 @@ import Wishlist from "./Pages/Wishlist";
 import Cart from "./Pages/Cart";
 import Login from "./Pages/Login";
 import Search from "./Pages/Search";
+import Signup from "./Pages/Signup";
 
 function App() {
   const location = useLocation();
@@ -26,6 +27,7 @@ function App() {
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Signup />} />
         <Route path="/about" element={<div>About</div>} />
       </Routes>
       <div
