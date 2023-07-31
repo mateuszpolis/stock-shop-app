@@ -1,8 +1,16 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch } from "../../Store/store";
+import { login, selectError, selectIsLoading, logout } from "./loginSlice";
+import ReactDOM from "react-dom";
 
 function LoginForm() {
+  const dispatch = useDispatch<AppDispatch>();
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
+
   const [email, setEmail] = React.useState("");
 
   function isEmailValid(email: string): boolean {
@@ -10,6 +18,14 @@ function LoginForm() {
     return emailRegex.test(email);
   }
 
+  function handleLogin(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const email = formData.get("email") as string;
+    const password = formData.get("password") as string;
+    const remember = formData.get("remember") as string;
+    dispatch(login({ email, password }));
+  }
   return (
     <div className="p-2 flex flex-row justify-center my-2">
       <motion.div
@@ -21,7 +37,10 @@ function LoginForm() {
         <h1 className="text-2xl my-4 font-black font-mono text-center dark:text-neutral-50">
           Login with your StockShop account:
         </h1>
-        <form className="flex flex-col space-y-2 border-neutral-200 dark:border-neutral-500 rounded-lg dark:text-neutral-50">
+        <form
+          onSubmit={handleLogin}
+          className="flex flex-col space-y-2 border-neutral-200 dark:border-neutral-500 rounded-lg dark:text-neutral-50"
+        >
           <label className="text-xl" htmlFor="email">
             Email
           </label>
@@ -141,6 +160,36 @@ function LoginForm() {
           </Link>
         </h1>
       </motion.div>
+
+      {ReactDOM.createPortal(
+        isLoading && (
+          <div className="z-50 fixed top-0 left-0 w-screen h-screen bg-black bg-opacity-50 flex flex-row justify-center items-center">
+            <div className="animate-spin rounded-full h-24 w-24 border-8 border-b-transparent border-neutral-950 dark:border-neutral-50 dark:border-b-transparent"></div>
+          </div>
+        ),
+        document.getElementById("root")!
+      )}
+      {ReactDOM.createPortal(
+        <AnimatePresence initial={false} mode="wait">
+          {error && (
+            <motion.div
+              className="z-50 fixed top-4 right-4 w-fit h-fit bg-red-500 py-2 px-4 text-2xl font-bold text-red-950 flex flex-row space-x-2 items-center rounded-lg border-4 border-red-700"
+              initial={{ opacity: 0, x: 100 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 100 }}
+            >
+              <div>{error}</div>
+              <div
+                className="cursor-pointer"
+                onClick={() => dispatch(logout())}
+              >
+                <i className="fas fa-times"></i>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>,
+        document.getElementById("root")!
+      )}
     </div>
   );
 }

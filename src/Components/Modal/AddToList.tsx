@@ -41,7 +41,7 @@ function AddToList({ handleClose }: Props) {
       onClick={(e) => {
         e.stopPropagation();
       }}
-      className="bg-neutral-50 rounded-lg p-4 shadow-lg dark:bg-neutral-800 dark:text-neutral-50"
+      className="fixed top-4 right-4 z-50 bg-neutral-50 rounded-lg p-4 shadow-lg dark:bg-neutral-800 dark:text-neutral-50"
       variants={dropIn}
       initial="hidden"
       animate="visible"
