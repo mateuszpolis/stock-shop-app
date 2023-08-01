@@ -5,12 +5,14 @@ import ProductCardList from "../../Components/ProductCardList";
 import FiltersCategoriesSide from "../../Components/FiltersCategoriesSide";
 import {
   loadProducts,
+  selectError,
   selectFailedLoading,
   selectHasLoaded,
   selectIsLoading,
   selectProducts,
 } from "./searchResultsSlice";
 import { AppDispatch } from "../../Store/store";
+import ReactDOM from "react-dom";
 
 type Product = {
   id: number;
@@ -39,6 +41,8 @@ function SearchResults() {
   const searchTerm = useSelector(selectSearchTerm);
   const nOfResults = products.length;
 
+  const error = useSelector(selectError);
+
   const elementRef = useRef<HTMLDivElement | null>(null);
   const [distanceFromTop, setDistanceFromTop] = useState<number>(0);
 
@@ -53,9 +57,16 @@ function SearchResults() {
   const remainingHeight = `calc(80vh - ${distanceFromTop}px)`;
 
   if (isLoading) {
-    productsDiv = <div>Loading...</div>;
+    productsDiv = ReactDOM.createPortal(
+      isLoading && (
+        <div className="z-50 absolute top-0 left-0 w-screen h-screen bg-black bg-opacity-50 flex flex-row justify-center items-center">
+          <div className="animate-spin rounded-full h-24 w-24 border-8 border-b-transparent border-neutral-950 dark:border-neutral-50 dark:border-b-transparent"></div>
+        </div>
+      ),
+      document.getElementById("root")!
+    );
   } else if (failedLoading) {
-    productsDiv = <div>Failed to load products</div>;
+    productsDiv = <div>{error}</div>;
   } else if (hasLoaded) {
     productsDiv = (
       <div
@@ -80,7 +91,7 @@ function SearchResults() {
   }
 
   return (
-    <div className="lg:grid lg:grid-cols-[2fr_4fr] lg:gap-5 lg:p-5">
+    <div className="lg:grid lg:grid-cols-[2fr_4fr] lg:gap-5 lg:p-5 w-full xl:w-[1280px]">
       <div className="hidden lg:block">
         <FiltersCategoriesSide />
       </div>

@@ -61,9 +61,9 @@ function WishlistContent() {
   }
 
   return (
-    <div className="p-2 flex">
+    <div className="p-5 flex xl:w-[1280px] ">
       <motion.div
-        className="w-full lg:w-1/2 p-3 shadow-lg rounded-lg"
+        className="w-full p-3 shadow-lg rounded-lg"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -80,7 +80,6 @@ function WishlistContent() {
           <div>{addToCartButton}</div>
         </div>
       </motion.div>
-      <SideShortcuts />
     </div>
   );
 }

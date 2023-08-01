@@ -31,7 +31,7 @@ function ProductInfo() {
 
   return (
     <motion.div
-      className="p-5 pt-1 flex flex-col"
+      className="p-5 pt-1 flex flex-col w-full xl:w-[1280px]"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}

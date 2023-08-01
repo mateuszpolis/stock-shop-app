@@ -9,7 +9,7 @@ function Wishlist() {
   }, []);
 
   return (
-    <div className="relative bg-neutral-50 dark:bg-neutral-900 flex flex-col min-h-screen">
+    <div className="relative bg-neutral-50 dark:bg-neutral-900 flex flex-col xl:items-center min-h-screen">
       <NavBar />
       <WishlistContent />
       <Footer />

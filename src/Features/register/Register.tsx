@@ -9,13 +9,13 @@ function Register() {
   return (
     <div className="p-2 flex flex-row justify-center my-2 relative">
       <motion.div
-        className="flex flex-col rounded-lg shadow-lg p-3 py-20 w-full md:w-[650px]"
+        className="flex flex-col rounded-lg shadow-lg p-3 w-full md:w-[650px]"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
       >
-        <h1 className="text-2xl font-black font-mono text-center dark:text-neutral-50">
-          Create an account:
+        <h1 className="text-2xl font-black font-mono py-4 text-center dark:text-neutral-50">
+          Create new StockShop account:
         </h1>
         <div className="flex flex-col space-y-2">
           <button
