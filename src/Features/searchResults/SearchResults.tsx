@@ -12,7 +12,6 @@ import {
   selectProducts,
 } from "./searchResultsSlice";
 import { AppDispatch } from "../../Store/store";
-import ReactDOM from "react-dom";
 
 type Product = {
   id: number;

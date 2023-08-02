@@ -1,6 +1,5 @@
 import React from "react";
 import ProductCardWishlist from "../../Components/ProductCardWishlist";
-import SideShortcuts from "../../Components/SideShortcuts";
 import AddToCartButton from "../../Components/AddToCartButton";
 import { useSelector } from "react-redux";
 import { selectProducts } from "./wishlistSlice";

@@ -7,6 +7,7 @@ import Cart from "./Pages/Cart";
 import Login from "./Pages/Login";
 import Search from "./Pages/Search";
 import Signup from "./Pages/Signup";
+import Profile from "./Pages/Profile";
 
 function App() {
   const location = useLocation();
@@ -29,6 +30,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Signup />} />
         <Route path="/about" element={<div>About</div>} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
       <div
         id="notifications-container"

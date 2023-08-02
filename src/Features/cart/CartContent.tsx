@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import SideShortcuts from "../../Components/SideShortcuts";
 import ProductCardCart from "../../Components/ProductCardCart";
 import { useSelector } from "react-redux";
 import { selectProducts, selectTotalPrice } from "./cartSlice";

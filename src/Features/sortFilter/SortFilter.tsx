@@ -3,7 +3,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useNavigate } from "react-router";
 import FiltersCategoriesSide from "../../Components/FiltersCategoriesSide";
 import ReactDOM from "react-dom";
-import Backdrop from "../../Components/Backdrop";
 
 type Props = {
   query?: string;

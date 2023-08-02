@@ -1,5 +1,4 @@
 import axios from "axios";
-import jwt_decode from "jwt-decode";
 
 const API_URL = "https://localhost:7010/api/Auth/";
 

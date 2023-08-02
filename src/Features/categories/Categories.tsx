@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Dispatch } from "redux";
 import Category from "../../Components/Category";
 import { useSelector } from "react-redux";

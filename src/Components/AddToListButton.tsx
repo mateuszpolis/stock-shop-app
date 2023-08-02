@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import ReactDOM from "react-dom";
 import AddToList from "./Modal/AddToList";
@@ -7,7 +7,6 @@ import RemoveFromList from "./Modal/RemoveFromList";
 import { Dispatch } from "redux";
 import { useAppDispatch } from "../Store/store";
 import { addProduct, removeProduct } from "../Features/wishlist/wishlistSlice";
-import { bool, boolean } from "yup";
 
 type product = {
   id: number;

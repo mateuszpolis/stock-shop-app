@@ -11,40 +11,6 @@ function NavBar(): JSX.Element {
   const cartQuantity: number = useSelector(selectTotalQuantity);
   const wishlistQuantity: number = useSelector(selectNumberOfElements);
 
-  let userIcon1;
-  let userIcon2;
-  if (loggedIn) {
-    userIcon1 = (
-      <Link to="/user">
-        <div className="text-3xl sm:hidden hover:text-neutral-500 dark:hover:text-neutral-200 cursor-pointer transition-all">
-          <i className="fa-solid fa-user"></i>
-        </div>
-      </Link>
-    );
-    userIcon2 = (
-      <Link to="/user">
-        <div className="hover:text-neutral-500 dark:hover:text-neutral-200 cursor-pointer transition-all">
-          <i className="fa-solid fa-user"></i>
-        </div>
-      </Link>
-    );
-  } else {
-    userIcon1 = (
-      <Link to="/login">
-        <div className="text-3xl sm:hidden hover:text-neutral-500 dark:hover:text-neutral-200 cursor-pointer transition-all">
-          <i className="fa-solid fa-user"></i>
-        </div>
-      </Link>
-    );
-    userIcon2 = (
-      <Link to="/login">
-        <div className="hover:text-neutral-500 dark:hover:text-neutral-200 cursor-pointer transition-all">
-          <i className="fa-solid fa-user"></i>
-        </div>
-      </Link>
-    );
-  }
-
   return (
     <div
       id="navbar"
@@ -52,7 +18,11 @@ function NavBar(): JSX.Element {
     >
       <div className="flex flex-col space-y-2 sm:flex-row justify-between mb-2 items-center text-sm sm:text-lg md:text-xl lg:text-2xl text-neutral-950 bg-neutral-50 dark:bg-neutral-900 dark:text-neutral-50 transition-all">
         <div className="flex justify-between items-center w-full sm:w-auto">
-          {userIcon1}
+          <Link to={`/${loggedIn ? "profile" : "login"}`}>
+            <div className="text-3xl sm:hidden hover:text-neutral-500 dark:hover:text-neutral-200 cursor-pointer transition-all">
+              <i className="fa-solid fa-user"></i>
+            </div>
+          </Link>
           <div>
             <Link to="/">
               <h1 className="text-3xl sm:text-2xl md:text-3xl lg:text-4xl font-black font-display">
@@ -84,7 +54,11 @@ function NavBar(): JSX.Element {
         </div>
         <SearchBar />
         <div className="hidden sm:flex sm:text-2xl md:text-3xl justify-between space-x-2 sm:space-x-4 md:space-x-10 mr-5">
-          {userIcon2}
+          <Link to={`/${loggedIn ? "profile" : "login"}`}>
+            <div className="hover:text-neutral-500 dark:hover:text-neutral-200 cursor-pointer transition-all">
+              <i className="fa-solid fa-user"></i>
+            </div>
+          </Link>
           <div className="relative">
             <Link to="/wishlist">
               <i
