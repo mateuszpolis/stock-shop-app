@@ -1,5 +1,6 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
 import authService from "../../services/auth.service";
+import { useNavigate } from "react-router";
 
 export const login = createAsyncThunk(
   "login/login",
@@ -17,6 +18,7 @@ export const loginSlice = createSlice({
   name: "login",
   initialState: {
     loading: false,
+    loggedIn: false,
     error: null,
   },
   reducers: {
@@ -30,13 +32,16 @@ export const loginSlice = createSlice({
     [login.pending.type]: (state, action) => {
       state.loading = true;
       state.error = null;
+      state.loggedIn = false;
     },
     [login.fulfilled.type]: (state, action) => {
       state.loading = false;
       state.error = null;
+      state.loggedIn = true;
     },
     [login.rejected.type]: (state, action) => {
       state.loading = false;
+      state.loggedIn = false;
       const error = action.error;
       const resMessage =
         (error.response &&
@@ -56,6 +61,10 @@ export const selectIsLoading = (state: any) => {
 
 export const selectError = (state: any) => {
   return state.login.error;
+};
+
+export const selectLoggedIn = (state: any) => {
+  return state.login.loggedIn;
 };
 
 export const { logout } = loginSlice.actions;

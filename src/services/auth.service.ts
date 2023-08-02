@@ -1,19 +1,21 @@
 import axios from "axios";
+import jwt_decode from "jwt-decode";
 
-const API_URL = "http://localhost:7010/api/auth/";
+const API_URL = "https://localhost:7010/api/Auth/";
 
 interface UserData {
+  data: any;
   accessToken: string;
   // Add other properties if present in the response data
 }
 
 class AuthService {
-  async login(username: string, password: string): Promise<UserData> {
-    const response = await axios.post<UserData>(API_URL + "signin", {
-      username,
+  async login(email: string, password: string): Promise<UserData> {
+    const response = await axios.post<UserData>(API_URL + "login", {
+      email,
       password,
     });
-    if (response.data.accessToken) {
+    if (response.data) {
       localStorage.setItem("user", JSON.stringify(response.data));
     }
     return response.data;
@@ -23,9 +25,15 @@ class AuthService {
     localStorage.removeItem("user");
   }
 
-  register(username: string, email: string, password: string): Promise<void> {
-    return axios.post(API_URL + "signup", {
-      username,
+  register(
+    firstName: string,
+    lastName: string,
+    email: string,
+    password: string
+  ): Promise<void> {
+    return axios.post(API_URL + "register", {
+      firstName,
+      lastName,
       email,
       password,
     });

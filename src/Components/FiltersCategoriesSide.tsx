@@ -5,9 +5,7 @@ import Category from "./Category";
 import Filter from "./Filter";
 import { AnimatePresence, motion } from "framer-motion";
 
-type Props = {};
-
-function FiltersCategoriesSide({}: Props) {
+function FiltersCategoriesSide() {
   const [isDropdownOpen, setIsDropdownOpen] = React.useState<boolean>(false);
 
   const filters = {
@@ -46,7 +44,7 @@ function FiltersCategoriesSide({}: Props) {
       min: 0,
       max: 0,
       options: ["4GB", "8GB", "16GB", "32GB"],
-    },  
+    },
   };
 
   const selectedCategories = useSelector(selectSelectedCategories);
@@ -72,7 +70,7 @@ function FiltersCategoriesSide({}: Props) {
           ))}
         </div>
       </div>
-      <div className="flex flex-col">
+      <div className="flex flex-col pb-5">
         <h2 className="text-2xl font-bold mb-4 text-neutral-950 dark:text-neutral-50">
           Filters:{" "}
           <i

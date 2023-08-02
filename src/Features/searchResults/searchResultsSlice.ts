@@ -45,7 +45,7 @@ const searchResultsSlice = createSlice({
   extraReducers: {
     [loadProducts.fulfilled.type]: (state, action) => {
       state.hasLoaded = true;
-      state.isLoading = true;
+      state.isLoading = false;
       state.products = action.payload;
       state.error = null;
     },

@@ -57,16 +57,9 @@ function SearchResults() {
   const remainingHeight = `calc(80vh - ${distanceFromTop}px)`;
 
   if (isLoading) {
-    productsDiv = ReactDOM.createPortal(
-      isLoading && (
-        <div className="z-50 absolute top-0 left-0 w-screen h-screen bg-black bg-opacity-50 flex flex-row justify-center items-center">
-          <div className="animate-spin rounded-full h-24 w-24 border-8 border-b-transparent border-neutral-950 dark:border-neutral-50 dark:border-b-transparent"></div>
-        </div>
-      ),
-      document.getElementById("root")!
-    );
+    productsDiv = <div className="relative">Loading...</div>;
   } else if (failedLoading) {
-    productsDiv = <div>{error}</div>;
+    productsDiv = <div className="relative">{error}</div>;
   } else if (hasLoaded) {
     productsDiv = (
       <div
@@ -95,11 +88,20 @@ function SearchResults() {
       <div className="hidden lg:block">
         <FiltersCategoriesSide />
       </div>
-      <div id="search-resulst" className="p-5 pt-0 lg:p-0" ref={elementRef}>
+      <div
+        id="relative search-resulst"
+        className="p-5 pt-0 lg:p-0"
+        ref={elementRef}
+      >
         <h2 className="text-2xl font-bold mb-4 text-neutral-950 dark:text-neutral-50">
           {nOfResults} results for "{searchTerm}"
         </h2>
         {productsDiv}
+        {isLoading && (
+          <div className="z-50 top-0 left-0 w-full h-full bg-black bg-opacity-50 flex flex-row justify-center items-center">
+            <div className="animate-spin rounded-full h-24 w-24 border-8 border-b-transparent border-neutral-950 dark:border-neutral-50 dark:border-b-transparent"></div>
+          </div>
+        )}
         {/* <div className="flex flex-row flex-wrap justify-center">
         {products.map((product) => (
           <ProductCard

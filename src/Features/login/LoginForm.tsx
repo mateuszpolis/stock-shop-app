@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "../../Store/store";
-import { login, selectError, selectIsLoading, logout } from "./loginSlice";
+import { login, selectError, selectIsLoading, logout, selectLoggedIn } from "./loginSlice";
 import ReactDOM from "react-dom";
+import authService from "../../services/auth.service";
 
 function LoginForm() {
   const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
   const isLoading = useSelector(selectIsLoading);
+  const isLoggedIn = useSelector(selectLoggedIn);
   const error = useSelector(selectError);
 
   const [email, setEmail] = React.useState("");
@@ -26,6 +29,15 @@ function LoginForm() {
     const remember = formData.get("remember") as string;
     dispatch(login({ email, password }));
   }
+
+  useEffect(() => {
+    const currentUser = authService.getCurrentUser();
+  
+    if (currentUser) {
+      navigate("/profile");
+    }
+  }, [isLoggedIn, navigate]);
+
   return (
     <div className="p-2 flex flex-row justify-center my-2">
       <motion.div
