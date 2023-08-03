@@ -9,6 +9,7 @@ import Search from "./Pages/Search";
 import Signup from "./Pages/Signup";
 import Profile from "./Pages/Profile";
 import AuthVerify from "./services/AuthVerify";
+import ProfileEdit from "./Pages/ProfileEdit";
 
 function App() {
   const location = useLocation();
@@ -32,6 +33,8 @@ function App() {
         <Route path="/register" element={<Signup />} />
         <Route path="/about" element={<div>About</div>} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/profile/edit" element={<ProfileEdit />} />
+        <Route path="*" element={<div>404</div>} />
       </Routes>
 
       <AuthVerify />

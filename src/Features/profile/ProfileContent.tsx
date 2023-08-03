@@ -6,6 +6,7 @@ import { useNavigate } from "react-router";
 import { AppDispatch } from "../../Store/store";
 import ReactDOM from "react-dom";
 import Backdrop from "../../Components/Backdrop";
+import { Link } from "react-router-dom";
 
 function ProfileContent() {
   const dispatch = useDispatch<AppDispatch>();
@@ -55,9 +56,11 @@ function ProfileContent() {
               </div>
             </div>
             <div className="flex justify-end">
-              <button className="bg-white text-pink-500 font-semibold px-4 py-2 rounded-lg shadow-md hover:bg-pink-500 hover:text-white transition-all">
-                Edit <i className="fa-solid fa-user-pen"></i>
-              </button>
+              <Link to="/profile/edit">
+                <button className="bg-white text-pink-500 font-semibold px-4 py-2 rounded-lg shadow-md hover:bg-pink-500 hover:text-white transition-all">
+                  Edit <i className="fa-solid fa-user-pen"></i>
+                </button>
+              </Link>
             </div>
           </div>
           <div className="bg-neutral-900 rounded-lg p-5 flex-grow flex flex-col justify-around xl:h-72">
