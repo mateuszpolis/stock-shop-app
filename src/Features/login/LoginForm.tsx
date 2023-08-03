@@ -3,7 +3,13 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "../../Store/store";
-import { login, selectError, selectIsLoading, logout, selectLoggedIn } from "./loginSlice";
+import {
+  login,
+  selectError,
+  selectIsLoading,
+  logout,
+  selectLoggedIn,
+} from "./loginSlice";
 import ReactDOM from "react-dom";
 import authService from "../../services/auth.service";
 
@@ -27,13 +33,12 @@ function LoginForm() {
     const email = formData.get("email") as string;
     const password = formData.get("password") as string;
     const remember = formData.get("remember") as string;
-    dispatch(login({ email, password }));
+    const rememberUser = remember === "on" ? true : false;
+    dispatch(login({ email, password, rememberUser }));
   }
 
   useEffect(() => {
-    const currentUser = authService.getCurrentUser();
-  
-    if (currentUser) {
+    if (isLoggedIn) {
       navigate("/profile");
     }
   }, [isLoggedIn, navigate]);

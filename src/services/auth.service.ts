@@ -9,11 +9,13 @@ interface UserData {
 }
 
 class AuthService {
-  async login(email: string, password: string): Promise<UserData> {
+  async login(email: string, password: string, rememberUser: boolean): Promise<UserData> {
     const response = await axios.post<UserData>(API_URL + "login", {
       email,
       password,
+      rememberUser
     });
+    console.log(response);
     if (response.data) {
       localStorage.setItem("user", JSON.stringify(response.data));
     }

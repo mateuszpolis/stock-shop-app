@@ -8,6 +8,7 @@ import Login from "./Pages/Login";
 import Search from "./Pages/Search";
 import Signup from "./Pages/Signup";
 import Profile from "./Pages/Profile";
+import AuthVerify from "./services/AuthVerify";
 
 function App() {
   const location = useLocation();
@@ -32,10 +33,8 @@ function App() {
         <Route path="/about" element={<div>About</div>} />
         <Route path="/profile" element={<Profile />} />
       </Routes>
-      <div
-        id="notifications-container"
-        className="z-50 fixed top-6 right-4 h-full flex flex-col justify-start items-end space-y-2 transition-all"
-      ></div>
+
+      <AuthVerify />
     </div>
   );
 }
