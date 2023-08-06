@@ -17,7 +17,8 @@ import {
   selectIsLoading,
   selectProduct,
 } from "./productInfoSlice";
-import { number } from "yup";
+import Loading from "../../Components/Loading";
+import SimiliarProducts from "../similiarProducts/SimiliarProducts";
 
 type Product = {
   id: number;
@@ -64,6 +65,17 @@ function ProductInfo({ id }: { id: number }) {
   useEffect(() => {
     document.title = "StockShop | Product";
   }, [inList]);
+
+  if (failedLoading) {
+    return (
+      <div className="flex flex-col items-center justify-center mt-24">
+        <h1 className="text-4xl font-bold font-display">Error</h1>
+        <p className="text-xl font-display">Failed to load product</p>
+      </div>
+    );
+  } else if (isLoading || !hasLoaded) {
+    return <Loading />;
+  }
 
   return (
     <motion.div
@@ -123,21 +135,21 @@ function ProductInfo({ id }: { id: number }) {
               }
               inList={inList}
               product={{
-                id: 1,
-                name: "iPhone 14Pro",
-                producer: "Apple",
-                price: 999,
+                id: product.id,
+                name: product.name,
+                producer: product.brand,
+                price: product.price,
               }}
             />
             <AddToCartButton
               children={
-                <button className="p-5 group bg-gray-100 rounded-full hover:bg-gray-200 transition-all">
+                <div className="p-5 group bg-gray-100 rounded-full hover:bg-gray-200 transition-all">
                   Add to cart{" "}
                   <i
                     id="product-card-cart"
                     className="fa-solid fa-cart-plus group-hover:text-green-500 transition-all"
                   ></i>
-                </button>
+                </div>
               }
               products={[
                 { id: 1, name: "iPhone 14Pro", producer: "Apple", price: 999 },
@@ -147,10 +159,12 @@ function ProductInfo({ id }: { id: number }) {
         </div>
       </div>
       <div className="mt-5 dark:text-neutral-50">
-        <Description />
+        <Description description={product.description}/>
         <Specification />
         <Reviews />
       </div>
+      <SimiliarProducts />
+      {isLoading && <Loading />}
     </motion.div>
   );
 }

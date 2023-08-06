@@ -1,19 +1,17 @@
+import { AnimatePresence, motion } from "framer-motion";
 import React from "react";
 
-function Description() {
+function Description({ description }: { description: string }) {
+  const [isDropdownOpen, setIsDropdownOpen] = React.useState<boolean>(false);
+
   const handleToggleDescription = () => {
-    const description = document.getElementById("description");
     const angle = document.getElementById("description-angle");
-    if (description?.classList.contains("block")) {
-      description?.classList.remove("block");
-      description?.classList.add("hidden");
-      angle?.classList.remove("fa-angle-up");
-      angle?.classList.add("fa-angle-down");
+    if (isDropdownOpen) {
+      angle?.classList.remove("rotate-180");
+      setIsDropdownOpen(false);
     } else {
-      description?.classList.add("block");
-      description?.classList.remove("hidden");
-      angle?.classList.add("fa-angle-up");
-      angle?.classList.remove("fa-angle-down");
+      angle?.classList.add("rotate-180");
+      setIsDropdownOpen(true);
     }
   };
 
@@ -29,17 +27,19 @@ function Description() {
           className="fa-solid fa-angle-down transition-all"
         />
       </div>
-      <div id="description" className="p-2 hidden">
-        <p className="text-sm lg:text-base">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-          voluptatum, quibusdam, voluptates, quia voluptate quod quos
-          voluptatibus quas doloribus quidem fugiat. Quisquam voluptatum,
-          quibusdam, voluptates, quia voluptate quod quos voluptatibus quas
-          doloribus quidem fugiat. Quisquam voluptatum, quibusdam, voluptates,
-          quia voluptate quod quos voluptatibus quas doloribus quidem fugiat.
-          Quisquam voluptatum, quibusdam, voluptates, quia
-        </p>
-      </div>
+      <AnimatePresence>
+        {isDropdownOpen && (
+          <motion.div
+            initial={{ maxHeight: 0 }}
+            animate={{ maxHeight: "200px" }}
+            exit={{ maxHeight: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="p-2"
+          >
+            <p className="text-sm lg:text-base">{description}</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

@@ -3,7 +3,7 @@ import ProductCard from "../../Components/ProductCard";
 
 function SimiliarProducts() {
   return (
-    <div className="p-5 pt-0 w-full xl:w-[1280px]">
+    <div className="pt-0 w-full xl:w-[1280px]">
       <h1 className="text-xl lg:text-3xl font-bold dark:text-neutral-50 mb-2">You might also like:</h1>
       <div className="flex overflow-x-scroll snap-x snap-mandatory no-scrollbar">
         <ProductCard

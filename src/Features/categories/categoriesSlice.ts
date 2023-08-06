@@ -1,76 +1,118 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { createSelector } from "reselect";
+import { createSlice, createAsyncThunk, current } from "@reduxjs/toolkit";
+import axios from "axios";
 
-type category = {
-  category: string;
-  selected: boolean;
+type Category = {
+  id: number;
+  name: string;
+  description: string;
+  hasChildren: boolean;
+  parentCategory: number;
 };
 
-function filterCategories(
-  categories: category[],
-  searchQuery: string
-): category[] {
-  return categories.filter((category) =>
-    category.category.toLowerCase().includes(searchQuery)
-  );
-}
+type CategoriesState = {
+  isLoading: boolean;
+  failedLoading: boolean;
+  hasLoaded: boolean;
+  breadcrumbs: Category[];
+  currentParentId: number;
+  categories: Category[];
+};
 
-interface CategoriesState {
-  categoriesList: category[];
-  searchQuery?: string;
-}
+export const fetchCategories = createAsyncThunk(
+  "categories/fetchCategories",
+  async (id: number) => {
+    try {
+      const response = await axios.get<Category[]>(
+        `https://localhost:7010/api/Categories/${id}`
+      );
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+);
 
 const categoriesSlice = createSlice({
   name: "categories",
   initialState: {
-    categoriesList: [
-      { category: "Tablets", selected: false },
-      { category: "Smartphones", selected: false },
-      { category: "Laptops", selected: false },
-      { category: "Desktops", selected: false },
-      { category: "Monitors", selected: false },
-      { category: "TVs", selected: false },
-      { category: "Headphones", selected: false },
-      { category: "Speakers", selected: false },
-      { category: "Keyboards", selected: false },
-      { category: "Mice", selected: false },
-      { category: "Printers", selected: false },
-      { category: "Scanners", selected: false },
+    isLoading: false,
+    failedLoading: false,
+    hasLoaded: false,
+    breadcrumbs: [
+      {
+        id: -1,
+        name: "All",
+        description: "",
+        hasChildren: true,
+        parentCategory: -1,
+      },
     ],
-    searchQuery: "",
+    currentParentId: -1,
+    categories: [],
   } as CategoriesState,
   reducers: {
-    setSearchQuery(state, action) {
-      state.searchQuery = action.payload.toLowerCase().trim();
+    addBreadcrumb: (state, action) => {
+      state.breadcrumbs.push(action.payload);
     },
-    updateSelectCategoriesList(state, action) {
-      const categories = state.categoriesList;
-      const category = action.payload;
-      const index = categories.findIndex(
-        (categoryItem) => categoryItem.category === category
-      );
-      categories[index].selected = !categories[index].selected;
+    removeBreadcrumbs: (state, action) => {
+      for (let i = 0; i < state.breadcrumbs.length; i++) {
+        if (state.breadcrumbs[i].id === action.payload.id) {
+          state.breadcrumbs = state.breadcrumbs.slice(0, i + 1);
+        }
+      }
+      state.currentParentId = action.payload.id;
+    },
+    setCurrentParentId: (state, action) => {
+      state.currentParentId = action.payload;
+    },
+  },
+  extraReducers: {
+    [fetchCategories.fulfilled.type]: (state, action) => {
+      state.hasLoaded = true;
+      state.isLoading = false;
+      state.failedLoading = false;
+      state.categories = action.payload;
+    },
+    [fetchCategories.pending.type]: (state, action) => {
+      state.isLoading = true;
+      state.failedLoading = false;
+      state.hasLoaded = false;
+    },
+    [fetchCategories.rejected.type]: (state, action) => {
+      state.isLoading = false;
+      state.failedLoading = true;
+      state.hasLoaded = false;
     },
   },
 });
 
-export const selectFilteredCategories = (state: any): category[] => {
-  const categories = state.categories.categoriesList;
-  const searchQuery = state.categories.searchQuery;
-  return filterCategories(categories, searchQuery);
+export const selectCategories = (state: { categories: CategoriesState }) => {
+  return state.categories.categories;
 };
 
-export const selectSelectedCategories = createSelector(
-  [selectFilteredCategories],
-  (categoriesList) =>
-    categoriesList.filter((category: { selected: any }) => category.selected)
-);
-
-export const selectSearchQuery = (state: any): string => {
-  return state.categories.searchQuery;
+export const selectIsLoading = (state: { categories: CategoriesState }) => {
+  return state.categories.isLoading;
 };
 
-export const { setSearchQuery, updateSelectCategoriesList } =
+export const selectHasLoaded = (state: { categories: CategoriesState }) => {
+  return state.categories.hasLoaded;
+};
+
+export const selectFailedLoading = (state: { categories: CategoriesState }) => {
+  return state.categories.failedLoading;
+};
+
+export const selectBreadcrumbs = (state: { categories: CategoriesState }) => {
+  return state.categories.breadcrumbs;
+};
+
+export const selectCurrentParentId = (state: {
+  categories: CategoriesState;
+}) => {
+  return state.categories.currentParentId;
+};
+
+export const { addBreadcrumb, removeBreadcrumbs, setCurrentParentId } =
   categoriesSlice.actions;
 
 export default categoriesSlice.reducer;

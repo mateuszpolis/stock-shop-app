@@ -81,7 +81,6 @@ function NavBar(): JSX.Element {
           </div>
         </div>
       </div>
-      <Categories />
     </div>
   );
 }

@@ -6,13 +6,9 @@ import { updateSearchBar } from "./searchBarSlice";
 import { useAppDispatch } from "../../Store/store";
 import ButtonDefault from "../../Components/Buttons/ButtonDefault";
 import { useNavigate } from "react-router-dom";
-import { selectSelectedCategories } from "../categories/categoriesSlice";
 
 export default function SearchBar(): JSX.Element {
   const searchTerm = useSelector(selectSearchTerm);
-  const selectedCategories = useSelector(selectSelectedCategories).map(
-    (category) => category.category
-  );
   const dispatch: Dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -25,7 +21,7 @@ export default function SearchBar(): JSX.Element {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const searchQuery = encodeURIComponent(searchTerm ? searchTerm : " ");
-    const categories = encodeURIComponent(selectedCategories.join(",")); // Replace with your desired default value or remove this line if empty is fine.
+    const categories = encodeURIComponent(" "); // Replace with your desired default value or remove this line if empty is fine.
     const sorting = encodeURIComponent(""); // Replace with your desired default value or remove this line if empty is fine.
     const url = `/search/${searchQuery}/${categories}/${sorting}`;
     navigate(url);

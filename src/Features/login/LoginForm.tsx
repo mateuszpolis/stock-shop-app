@@ -11,7 +11,6 @@ import {
   selectLoggedIn,
 } from "./loginSlice";
 import ReactDOM from "react-dom";
-import authService from "../../services/auth.service";
 import Error from "../../Components/Error";
 import Loading from "../../Components/Loading";
 

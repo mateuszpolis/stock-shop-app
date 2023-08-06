@@ -1,9 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { selectSelectedCategories } from "../Features/categories/categoriesSlice";
-import Category from "./Category";
 import Filter from "./Filter";
 import { AnimatePresence, motion } from "framer-motion";
+import Categories from "../Features/categories/Categories";
 
 function FiltersCategoriesSide() {
   const [isDropdownOpen, setIsDropdownOpen] = React.useState<boolean>(false);
@@ -47,30 +46,15 @@ function FiltersCategoriesSide() {
     },
   };
 
-  const selectedCategories = useSelector(selectSelectedCategories);
-
   return (
-    <div className="w-full max-h-[80vh] flex flex-col rounded-lg space-y-4 bg-neutral-50 dark:bg-neutral-900 z-50 overflow-y-scroll">
-      <div className="flex flex-col">
+    <div className="w-full h-[80vh] flex flex-col rounded-lg space-y-4 bg-neutral-50 dark:bg-neutral-900 z-50 overflow-y-scroll">
+      <div className="flex flex-col w-full">
         <h2 className="text-2xl font-bold mb-4 text-neutral-950 dark:text-neutral-50">
-          Selected Categoreis:
+          Categories:
         </h2>
-        <div className="flex flex-row flex-wrap flex-grow-0 justify-start max-h-28 overflow-y-scroll no-scrollbar">
-          {selectedCategories.length === 0 && (
-            <p className="text-base text-neutral-500 dark:text-neutral-400">
-              No categories selected
-            </p>
-          )}
-          {selectedCategories.map((category, index) => (
-            <Category
-              category={category.category}
-              selected={category.selected}
-              key={index}
-            />
-          ))}
-        </div>
+        <Categories />
       </div>
-      <div className="flex flex-col pb-5">
+      <div className="flex flex-col pb-5 transition-all will-change-transform">
         <h2 className="text-2xl font-bold mb-4 text-neutral-950 dark:text-neutral-50">
           Filters:{" "}
           <i
@@ -99,7 +83,7 @@ function FiltersCategoriesSide() {
             )}
           </AnimatePresence>
         </h2>
-        <div className="overflow-y-scroll no-scrollbar">
+        <div className="">
           {Object.entries(filters).map(([filterKey, filter], index) => (
             <Filter
               key={index}
