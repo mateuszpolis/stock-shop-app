@@ -8,6 +8,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "../../Store/store";
 import { useNavigate } from "react-router";
+import Loading from "../../Components/Loading";
 
 type passwordCheck = {
   message: string;
@@ -97,7 +98,7 @@ function RegisterForm() {
   return (
     <div className="flex flex-col">
       <form
-        className="flex flex-col space-y-2 dark:text-neutral-50"
+        className="relative flex flex-col space-y-2 dark:text-neutral-50"
         onSubmit={handleRegister}
       >
         <label className="text-xl" htmlFor="name">
@@ -239,6 +240,7 @@ function RegisterForm() {
               name="terms"
               id="terms"
               className="rounded-md"
+              required={true}
             />
             <label htmlFor="terms">
               I accept the{" "}
@@ -264,6 +266,8 @@ function RegisterForm() {
         >
           Register
         </button>
+
+        {isLoading && <Loading />}
       </form>
     </div>
   );

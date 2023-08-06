@@ -1,4 +1,5 @@
 import axios from "axios";
+import authHeader from "./auth-header";
 
 const API_URL = "https://localhost:7010/api/Auth/";
 
@@ -9,17 +10,45 @@ interface UserData {
 }
 
 class AuthService {
-  async login(email: string, password: string, rememberUser: boolean): Promise<UserData> {
+  async login(
+    email: string,
+    password: string,
+    rememberUser: boolean
+  ): Promise<UserData> {
     const response = await axios.post<UserData>(API_URL + "login", {
       email,
       password,
-      rememberUser
+      rememberUser,
     });
-    console.log(response);
     if (response.data) {
       localStorage.setItem("user", JSON.stringify(response.data));
     }
     return response.data;
+  }
+
+  async editUserDetails(
+    firstName: string,
+    lastName: string,
+    email: string
+  ): Promise<UserData> {
+    try {
+      const response = await axios.put<UserData>(
+        API_URL + "edit",
+        {
+          firstName: firstName,
+          lastName: lastName,
+          email: email,
+        },
+        {
+          headers: authHeader(),
+        }
+      );
+
+      localStorage.setItem("user", JSON.stringify(response.data));
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
   }
 
   logout(): void {

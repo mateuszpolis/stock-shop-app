@@ -23,7 +23,7 @@ function AuthVerify() {
       const expDate = new Date(exp * 1000);
       const now = new Date();
       if (expDate < now) {
-        dispatch(logout);
+        dispatch(logout());
       }
     }
   }, [location, exp, dispatch, isLoggedIn]);

@@ -12,6 +12,8 @@ import {
 } from "./loginSlice";
 import ReactDOM from "react-dom";
 import authService from "../../services/auth.service";
+import Error from "../../Components/Error";
+import Loading from "../../Components/Loading";
 
 function LoginForm() {
   const dispatch = useDispatch<AppDispatch>();
@@ -179,30 +181,18 @@ function LoginForm() {
       </motion.div>
 
       {ReactDOM.createPortal(
-        isLoading && (
-          <div className="z-50 fixed top-0 left-0 w-screen h-screen bg-black bg-opacity-50 flex flex-row justify-center items-center">
-            <div className="animate-spin rounded-full h-24 w-24 border-8 border-b-transparent border-neutral-950 dark:border-neutral-50 dark:border-b-transparent"></div>
-          </div>
-        ),
+        isLoading && <Loading />,
         document.getElementById("root")!
       )}
       {ReactDOM.createPortal(
         <AnimatePresence initial={false} mode="wait">
           {error && (
-            <motion.div
-              className="z-50 fixed top-4 right-4 w-fit h-fit bg-red-500 py-2 px-4 text-2xl font-bold text-red-950 flex flex-row space-x-2 items-center rounded-lg border-4 border-red-700"
-              initial={{ opacity: 0, x: 100 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 100 }}
-            >
-              <div>{error}</div>
-              <div
-                className="cursor-pointer"
-                onClick={() => dispatch(logout())}
-              >
-                <i className="fas fa-times"></i>
-              </div>
-            </motion.div>
+            <Error
+              error={error}
+              onclick={() => {
+                dispatch(logout());
+              }}
+            />
           )}
         </AnimatePresence>,
         document.getElementById("root")!

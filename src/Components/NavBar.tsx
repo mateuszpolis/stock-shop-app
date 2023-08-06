@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import SearchBar from "../Features/searchBar/SearchBar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Categories from "../Features/categories/Categories";
 import { useSelector } from "react-redux";
 import { selectTotalQuantity } from "../Features/cart/cartSlice";
 import { selectNumberOfElements } from "../Features/wishlist/wishlistSlice";
+import { selectLoggedIn } from "../Features/login/loginSlice";
 
 function NavBar(): JSX.Element {
-  const loggedIn: boolean = false;
+  const isLoggedin = useSelector(selectLoggedIn);
   const cartQuantity: number = useSelector(selectTotalQuantity);
   const wishlistQuantity: number = useSelector(selectNumberOfElements);
 
@@ -18,7 +19,7 @@ function NavBar(): JSX.Element {
     >
       <div className="flex flex-col space-y-2 sm:flex-row justify-between mb-2 items-center text-sm sm:text-lg md:text-xl lg:text-2xl text-neutral-950 bg-neutral-50 dark:bg-neutral-900 dark:text-neutral-50 transition-all">
         <div className="flex justify-between items-center w-full sm:w-auto">
-          <Link to={`/${loggedIn ? "profile" : "login"}`}>
+          <Link to={`/${isLoggedin ? "profile" : "login"}`}>
             <div className="text-3xl sm:hidden hover:text-neutral-500 dark:hover:text-neutral-200 cursor-pointer transition-all">
               <i className="fa-solid fa-user"></i>
             </div>
@@ -54,7 +55,7 @@ function NavBar(): JSX.Element {
         </div>
         <SearchBar />
         <div className="hidden sm:flex sm:text-2xl md:text-3xl justify-between space-x-2 sm:space-x-4 md:space-x-10 mr-5">
-          <Link to={`/${loggedIn ? "profile" : "login"}`}>
+          <Link to={`/${isLoggedin ? "profile" : "login"}`}>
             <div className="hover:text-neutral-500 dark:hover:text-neutral-200 cursor-pointer transition-all">
               <i className="fa-solid fa-user"></i>
             </div>

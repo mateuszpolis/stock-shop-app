@@ -12,16 +12,26 @@ import {
   selectProducts,
 } from "./searchResultsSlice";
 import { AppDispatch } from "../../Store/store";
+import Loading from "../../Components/Loading";
 
 type Product = {
   id: number;
   name: string;
-  producer: string;
+  brand: string;
   price: number;
-  price_before?: number;
-  categories?: string;
+  description: string;
+  priceHistory: number[];
+  discount: number;
+  stockQuantity: number;
+  categories: string[];
+  images: string[];
+  reviews: string[];
+  available: boolean;
+  createdTime: string;
+  updatedTime: string;
+  weight: number; 
+  dimensions: string;
   rating: number;
-  img?: string;
 };
 
 function SearchResults() {
@@ -70,12 +80,12 @@ function SearchResults() {
             key={product.id}
             id={product.id}
             name={product.name}
-            producer={product.producer}
+            producer={product.brand}
             price={product.price}
-            price_before={product.price_before}
+            price_before={product.priceHistory[product.priceHistory.length - 2]}
             categories={product.categories}
             rating={product.rating}
-            img={product.img}
+            img={product.images[0]}
           />
         ))}
       </div>
@@ -97,9 +107,7 @@ function SearchResults() {
         </h2>
         {productsDiv}
         {isLoading && (
-          <div className="z-50 top-0 left-0 w-full h-full bg-black bg-opacity-50 flex flex-row justify-center items-center">
-            <div className="animate-spin rounded-full h-24 w-24 border-8 border-b-transparent border-neutral-950 dark:border-neutral-50 dark:border-b-transparent"></div>
-          </div>
+          <Loading />
         )}
         {/* <div className="flex flex-row flex-wrap justify-center">
         {products.map((product) => (
