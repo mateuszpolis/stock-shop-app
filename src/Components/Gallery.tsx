@@ -8,7 +8,7 @@ function Gallery({ images }: Props) {
   const [currentImage, setCurrentImage] = React.useState(0);
 
   const nextImage = () => {
-    if (currentImage === images.length - 1) {
+    if (currentImage === images?.length - 1) {
       setCurrentImage(0);
     } else {
       setCurrentImage(currentImage + 1);
@@ -17,7 +17,7 @@ function Gallery({ images }: Props) {
 
   const previousImage = () => {
     if (currentImage === 0) {
-      setCurrentImage(images.length - 1);
+      setCurrentImage(images?.length - 1);
     } else {
       setCurrentImage(currentImage - 1);
     }
@@ -26,7 +26,7 @@ function Gallery({ images }: Props) {
   return (
     <div className="group w-full h-60 sm:h-80 md:h-96  md:mt-10 rounded-lg overflow-hidden bg-gray-200 relative transition-all">
       <div
-        style={{ backgroundImage: `url(${images[currentImage]})` }}
+        style={{ backgroundImage: `url({images[currentImage]})` }}
         className="w-full h-full bg-center bg-cover duration-500"
       ></div>
       <div
@@ -42,7 +42,7 @@ function Gallery({ images }: Props) {
         <i className="fa-solid fa-angle-right"></i>
       </div>
       <div className="flex absolute bottom-2 left-[50%] transform translate-x-[-50%] justify-center py-2">
-        {images.map((image, index) => (
+        {images?.map((image, index) => (
           <div
             key={index}
             onClick={() => setCurrentImage(index)}

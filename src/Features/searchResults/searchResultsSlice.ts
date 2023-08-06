@@ -3,12 +3,21 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 type Product = {
   id: number;
   name: string;
-  producer: string;
+  brand: string;
   price: number;
-  priceBefore: number;
+  description: string;
+  priceHistory: number[];
+  discount: number;
+  stockQuantity: number;
   categories: string[];
+  images: string[];
+  reviews: string[];
+  available: boolean;
+  createdTime: string;
+  updatedTime: string;
+  weight: number; 
+  dimensions: string;
   rating: number;
-  img: string;
 };
 
 interface SearchResultsState {

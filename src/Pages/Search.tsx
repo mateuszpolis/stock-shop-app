@@ -13,8 +13,10 @@ function Search() {
 
   return (
     <div className="relative bg-neutral-50 dark:bg-neutral-900 flex flex-col xl:items-center min-h-screen">
-      <NavBar />
-      <SortFilter query={query} categories={categories} sorting={sorting} />
+      <div className="sticky top-0 z-40">
+        <NavBar />
+        <SortFilter query={query} categories={categories} sorting={sorting} />
+      </div>
       <SearchResults />
       <Footer />
     </div>

@@ -63,8 +63,6 @@ function SearchResults() {
     }
   }, []);
 
-  const remainingHeight = `calc(80vh - ${distanceFromTop}px)`;
-
   if (isLoading) {
     productsDiv = <div className="relative">Loading...</div>;
   } else if (failedLoading) {
@@ -72,7 +70,6 @@ function SearchResults() {
   } else if (hasLoaded) {
     productsDiv = (
       <div
-        style={{ height: `calc(${remainingHeight})` }}
         className={`relative flex space-y-2 flex-col overflow-y-scroll snap-y snap-mandatory no-scrollbar`}
       >
         {products.map((product: Product) => (
