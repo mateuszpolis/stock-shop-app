@@ -50,7 +50,7 @@ function FiltersCategoriesSide() {
   const selectedCategories = useSelector(selectSelectedCategories);
 
   return (
-    <div className="overscroll-none w-full max-h-[80vh] flex flex-col rounded-lg space-y-4 bg-neutral-50 dark:bg-neutral-900 z-50 overflow-y-scroll">
+    <div className="w-full max-h-[80vh] flex flex-col rounded-lg space-y-4 bg-neutral-50 dark:bg-neutral-900 z-50 overflow-y-scroll">
       <div className="flex flex-col">
         <h2 className="text-2xl font-bold mb-4 text-neutral-950 dark:text-neutral-50">
           Selected Categoreis:

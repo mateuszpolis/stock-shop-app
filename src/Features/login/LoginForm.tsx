@@ -46,14 +46,14 @@ function LoginForm() {
   }, [isLoggedIn, navigate]);
 
   return (
-    <div className="p-2 flex flex-row justify-center my-2">
+    <div className="p-5 flex flex-row justify-center my-2">
       <motion.div
-        className="flex flex-col rounded-lg shadow-lg p-3 w-full md:w-[650px]"
+        className="flex flex-col rounded-lg w-full md:w-[650px]"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
       >
-        <h1 className="text-2xl my-4 font-black font-mono text-center dark:text-neutral-50">
+        <h1 className="text-2xl my-4 font-black font-mono dark:text-neutral-50">
           Login with your StockShop account:
         </h1>
         <form

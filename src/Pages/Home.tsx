@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
-import NavBar from "../Components/NavBar";
 import Offers from "../Features/offers/Offers";
 import Bestsellers from "../Features/bestsellers/Bestsellers";
-import Footer from "../Components/Footer";
 import { motion } from "framer-motion";
 
 export default function Home() {
@@ -12,7 +10,6 @@ export default function Home() {
 
   return (
     <div className="relative bg-neutral-50 dark:bg-neutral-900 flex flex-col xl:items-center min-h-screen">
-      <NavBar />
       <motion.div
         className="flex justify-center"
         initial={{ opacity: 0 }}
@@ -71,7 +68,6 @@ export default function Home() {
           <Bestsellers />
         </div>
       </motion.div>
-      <Footer />
     </div>
   );
 }

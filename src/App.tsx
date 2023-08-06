@@ -11,6 +11,9 @@ import Profile from "./Pages/Profile";
 import AuthVerify from "./services/AuthVerify";
 import ProfileEdit from "./Pages/ProfileEdit";
 import PrivateRoute from "./Components/PrivateRoute";
+import ScrollUp from "./Components/ScrollUp";
+import NavBar from "./Components/NavBar";
+import Footer from "./Components/Footer";
 
 function App() {
   const location = useLocation();
@@ -20,7 +23,11 @@ function App() {
   }, [location]);
 
   return (
-    <div id="App" className="relative">
+    <div
+      id="App"
+      className="relative bg-neutral-50 dark:bg-neutral-900 flex flex-col xl:items-center min-h-screen"
+    >
+      <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
@@ -51,7 +58,9 @@ function App() {
         />
         <Route path="*" element={<div>404</div>} />
       </Routes>
+      <Footer />
 
+      <ScrollUp />
       <AuthVerify />
     </div>
   );

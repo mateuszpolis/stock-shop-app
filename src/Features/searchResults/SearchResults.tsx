@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectSearchTerm } from "../searchBar/searchBarSlice";
 import ProductCardList from "../../Components/ProductCardList";
@@ -53,15 +53,6 @@ function SearchResults() {
   const error = useSelector(selectError);
 
   const elementRef = useRef<HTMLDivElement | null>(null);
-  const [distanceFromTop, setDistanceFromTop] = useState<number>(0);
-
-  useEffect(() => {
-    if (elementRef.current) {
-      const { top } = elementRef.current.getBoundingClientRect();
-      const distanceFromTop = top + window.scrollY;
-      setDistanceFromTop(distanceFromTop);
-    }
-  }, []);
 
   if (isLoading) {
     productsDiv = <div className="relative">Loading...</div>;

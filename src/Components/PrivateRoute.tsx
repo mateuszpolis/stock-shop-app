@@ -1,7 +1,7 @@
 // PrivateRoute.tsx
 import React, { ReactElement, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Navigate, Route, useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { selectLoggedIn } from "../Features/login/loginSlice";
 
 interface Props {
@@ -14,7 +14,6 @@ const PrivateRoute: React.FC<Props> = ({ children }) => {
 
   useEffect(() => {
     const user = localStorage.getItem("user");
-    console.log(user != null);
     if (!user) {
       navigate("/login", { replace: true });
     }
