@@ -1,13 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import SearchBar from "../Features/searchBar/SearchBar";
-import { Link, useNavigate } from "react-router-dom";
-import Categories from "../Features/categories/Categories";
+import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectTotalQuantity } from "../Features/cart/cartSlice";
 import { selectNumberOfElements } from "../Features/wishlist/wishlistSlice";
 import { selectLoggedIn } from "../Features/login/loginSlice";
-import FiltersCategoriesSide from "./FiltersCategoriesSide";
-import FilterCategories from "./FilterCategories";
 
 function NavBar(): JSX.Element {
   const isLoggedin = useSelector(selectLoggedIn);

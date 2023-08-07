@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectSearchTerm } from "../searchBar/searchBarSlice";
 import ProductCardList from "../../Components/ProductCardList";
-import FiltersCategoriesSide from "../../Components/FiltersCategoriesSide";
 import {
   loadProducts,
   selectError,

@@ -3,9 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   checkIfSearchQueryIsEmpty,
   fetchProducts,
-  selectFailedLoading,
-  selectHasLoaded,
-  selectIsLoading,
   selectProducts,
   selectSearchTerm,
 } from "./searchBarSlice";
@@ -14,7 +11,6 @@ import { AppDispatch } from "../../Store/store";
 import { useNavigate } from "react-router-dom";
 import FilterCategories from "../../Components/FilterCategories";
 import AddToCartProductCard from "../../Components/AddToCartProductCard";
-import Loading from "../../Components/Loading";
 import { AnimatePresence, motion } from "framer-motion";
 
 export default function SearchBar(): JSX.Element {
@@ -25,9 +21,6 @@ export default function SearchBar(): JSX.Element {
   const [searchActive, setSearchActive] = React.useState(false);
 
   const products = useSelector(selectProducts);
-  const hasLoaded = useSelector(selectHasLoaded);
-  const isLoading = useSelector(selectIsLoading);
-  const failedLoading = useSelector(selectFailedLoading);
 
   useEffect(() => {
     dispatch(checkIfSearchQueryIsEmpty());

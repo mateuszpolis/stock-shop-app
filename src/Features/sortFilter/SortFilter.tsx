@@ -1,9 +1,6 @@
 import React, { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useNavigate } from "react-router";
-import FiltersCategoriesSide from "../../Components/FiltersCategoriesSide";
-import ReactDOM from "react-dom";
-import Backdrop from "../../Components/Backdrop";
 import FilterCategories from "../../Components/FilterCategories";
 
 type Props = {
@@ -21,7 +18,6 @@ function SortFilter({ query, categories, sorting }: Props): JSX.Element {
   const navigate = useNavigate();
 
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
-  const [isFiltersOpen, setIsFiltersOpen] = useState<boolean>(false);
   const [selectedOption, setSelectedOption] = useState<string>(
     sorting ? sorting : "default"
   );

@@ -8,7 +8,6 @@ import {
   selectCurrentParentId,
   selectFailedLoading,
   selectHasLoaded,
-  selectIsLoading,
   setCurrentParentId,
 } from "./categoriesSlice";
 import { AnimatePresence, motion } from "framer-motion";

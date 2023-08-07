@@ -1,8 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
-import React, { useEffect, useState } from "react";
-import { logout, selectLoggedIn, selectUser } from "../login/loginSlice";
+import React, { useState } from "react";
+import { logout, selectUser } from "../login/loginSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router";
 import { AppDispatch } from "../../Store/store";
 import ReactDOM from "react-dom";
 import Backdrop from "../../Components/Backdrop";
