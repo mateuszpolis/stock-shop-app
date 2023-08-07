@@ -12,7 +12,7 @@ function ButtonDefault({ type, content, additionalStyle }: Props) {
       type={type}
       className={
         additionalStyle +
-        " text-gray-50 text-base dark:text-gray-950 bg-gray-950 hover:bg-gray-500 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg px-4 py-2 dark:bg-gray-50 dark:hover:bg-gray-200 dark:focus:ring-gray-300 transition-all"
+        " text-neutral-50 text-base dark:text-neutral-950 bg-neutral-950 hover:bg-neutral-500 focus:ring-4 focus:outline-none focus:ring-neutral-300 font-medium rounded-lg px-4 py-2 dark:bg-neutral-50 dark:hover:bg-neutral-200 dark:focus:ring-neutral-300 transition-all"
       }
     >
       {content}

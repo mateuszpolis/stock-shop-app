@@ -6,6 +6,8 @@ import { useSelector } from "react-redux";
 import { selectTotalQuantity } from "../Features/cart/cartSlice";
 import { selectNumberOfElements } from "../Features/wishlist/wishlistSlice";
 import { selectLoggedIn } from "../Features/login/loginSlice";
+import FiltersCategoriesSide from "./FiltersCategoriesSide";
+import FilterCategories from "./FilterCategories";
 
 function NavBar(): JSX.Element {
   const isLoggedin = useSelector(selectLoggedIn);
@@ -53,7 +55,9 @@ function NavBar(): JSX.Element {
             </div>
           </div>
         </div>
-        <SearchBar />
+        <div className="flex justify-evenly w-full items-center">
+          <SearchBar />
+        </div>
         <div className="hidden sm:flex sm:text-2xl md:text-3xl justify-between space-x-2 sm:space-x-4 md:space-x-10 mr-5">
           <Link to={`/${isLoggedin ? "profile" : "login"}`}>
             <div className="hover:text-neutral-500 dark:hover:text-neutral-200 cursor-pointer transition-all">

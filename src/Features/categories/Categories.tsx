@@ -30,14 +30,14 @@ function Categories() {
   const categories = useSelector(selectCategories);
 
   return (
-    <div className="overflow-x-hidden h-full overflow-y-scroll w-full no-scrollbar">
+    <div className="overflow-x-hidden h-full overflow-y-scroll w-full no-scrollbar dark:text-neutral-50">
       <Breadcrumbs />
       {failedLoading && (
         <div className="text-xl font-bold text-red-500">
           Failed to load categories.
         </div>
       )}
-      <AnimatePresence mode="wait">
+      <AnimatePresence mode="wait" initial={false}>
         {hasLoaded && (
           <motion.div
             className="flex flex-col"

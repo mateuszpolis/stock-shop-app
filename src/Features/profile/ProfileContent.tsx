@@ -15,14 +15,16 @@ function ProfileContent() {
   const [showLogoutModal, setShowLogoutModal] = useState(false);
 
   return (
-    <div className="p-5 flex xl:w-[1280px] ">
+    <div className="p-5 flex xl:w-[1280px]">
       <motion.div
         className="w-full rounded-lg flex flex-col space-y-4"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
       >
-        <h1 className="text-3xl font-bold">Hi, {user.name}</h1>
+        <h1 className="text-3xl dark:text-neutral-50 font-bold">
+          Hi, {user.name}
+        </h1>
         <div className="flex flex-col space-y-4 xl:flex-row xl:space-x-4 xl:space-y-0">
           <div className="bg-neutral-50 shadow-lg rounded-lg p-5 flex-grow flex flex-col justify-around xl:h-72">
             <h2 className="text-2xl font-semibold mb-4">Profile Details:</h2>

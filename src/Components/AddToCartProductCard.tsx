@@ -37,7 +37,7 @@ function AddToCartProductCard({
   }
 
   return (
-    <div className="w-full p-2 grid grid-cols-2 no-scrollbar rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-700">
+    <div className="w-full p-2 grid grid-cols-2 items-center no-scrollbar rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-700">
       <div className="h-24">
         <Link to={`/product/${id}`}>
           <img

@@ -3,6 +3,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useNavigate } from "react-router";
 import FiltersCategoriesSide from "../../Components/FiltersCategoriesSide";
 import ReactDOM from "react-dom";
+import Backdrop from "../../Components/Backdrop";
+import FilterCategories from "../../Components/FilterCategories";
 
 type Props = {
   query?: string;
@@ -54,45 +56,17 @@ function SortFilter({ query, categories, sorting }: Props): JSX.Element {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <div className="bg-neutral-50 p-5 grid grid-cols-4 lg:grid-cols-3 dark:text-neutral-50 xl:w-[1280px]">
+      <div className="bg-neutral-50 p-5 grid grid-cols-4 dark:text-neutral-50 xl:w-[1280px]">
         <div className="text-center border-e-2 flex flex-col">
           <i className="fa-solid fa-list"></i>
           <p className="text-xs">Display</p>
         </div>
-        <div
-          className="text-center border-e-2 flex flex-col lg:hidden cursor-pointer"
-          onClick={() => {
-            setIsFiltersOpen(!isFiltersOpen);
-          }}
-        >
-          <i className="fa-solid fa-filter"></i>
-          <p className="text-xs">Filter</p>
-        </div>
-        {ReactDOM.createPortal(
-          <AnimatePresence initial={false} mode="wait">
-            {isFiltersOpen && (
-              <motion.div
-                initial={{ height: 0, y: "100%" }}
-                animate={{ height: "100%", y: 0 }}
-                exit={{ height: 0, y: "100%" }}
-                transition={{ duration: 0.3, ease: "easeInOut" }}
-                className="fixed bottom-0 z-50 left-0 w-full h-full p-5 bg-neutral-50 dark:bg-neutral-900 overscroll-none"
-              >
-                <button
-                  className="text-neutral-900 dark:text-neutral-50 text-2xl mb-8 hover:cursor-pointer font-bold"
-                  onClick={() => {
-                    setIsFiltersOpen(false);
-                  }}
-                >
-                  Close <i className="fa-solid fa-times"></i>
-                </button>
-
-                <FiltersCategoriesSide />
-              </motion.div>
-            )}
-          </AnimatePresence>,
-          document.getElementById("root")!
-        )}
+        <FilterCategories>
+          <div className="text-center border-e-2 flex flex-col hover:cursor-pointer relative">
+            <i className="fa-solid fa-filter"></i>
+            <p className="text-xs">Filters and Categories</p>
+          </div>
+        </FilterCategories>
         <motion.div
           className="text-center border-e-2 flex flex-col hover:cursor-pointer relative"
           onClick={handleDropdownToggle}

@@ -22,16 +22,16 @@ function ProfileEditContent() {
         exit={{ opacity: 0 }}
       >
         <Link to="/profile">
-          <i className="fa-solid fa-arrow-left text-2xl"></i>
+          <i className="fa-solid fa-arrow-left text-2xl dark:text-neutral-50"></i>
         </Link>
-        <h1 className="text-3xl font-bold">Update your information:</h1>
+        <h1 className="text-3xl font-bold dark:text-neutral-50">Update your information:</h1>
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
           <form
-            className="relative flex flex-col"
+            className="relative flex flex-col dark:text-neutral-50"
             onSubmit={(e) => {
               e.preventDefault();
               setShowForm(false);

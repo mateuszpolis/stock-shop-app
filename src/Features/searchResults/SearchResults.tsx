@@ -13,26 +13,7 @@ import {
 } from "./searchResultsSlice";
 import { AppDispatch } from "../../Store/store";
 import Loading from "../../Components/Loading";
-
-type Product = {
-  id: number;
-  name: string;
-  brand: string;
-  price: number;
-  description: string;
-  priceHistory: number[];
-  discount: number;
-  stockQuantity: number;
-  categories: string[];
-  images: string[];
-  reviews: string[];
-  available: boolean;
-  createdTime: string;
-  updatedTime: string;
-  weight: number; 
-  dimensions: string;
-  rating: number;
-};
+import { Product } from "../../Components/Models/Product";
 
 function SearchResults() {
   const dispatch = useDispatch<AppDispatch>();
@@ -81,13 +62,10 @@ function SearchResults() {
   }
 
   return (
-    <div className="lg:grid lg:grid-cols-[2fr_4fr] lg:gap-5 lg:p-5 w-full xl:w-[1280px]">
-      <div className="hidden lg:block">
-        <FiltersCategoriesSide />
-      </div>
+    <div className="w-full">
       <div
         id="relative search-resulst"
-        className="p-5 pt-0 lg:p-0"
+        className="p-5 pt-0"
         ref={elementRef}
       >
         <h2 className="text-2xl font-bold mb-4 text-neutral-950 dark:text-neutral-50">

@@ -15,7 +15,7 @@ type Props = {
 
 function Category({ category, onClick }: Props) {
   return (
-    <div onClick={onClick} className="text-lg cursor-pointer">
+    <div onClick={onClick} className="text-lg cursor-pointer dark:text-neutral-50">
       {category.name}{" "}
       <i
         className={`fas fa-chevron-right ${
