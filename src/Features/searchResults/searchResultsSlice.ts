@@ -1,24 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-
-type Product = {
-  id: number;
-  name: string;
-  brand: string;
-  price: number;
-  description: string;
-  priceHistory: number[];
-  discount: number;
-  stockQuantity: number;
-  categories: string[];
-  images: string[];
-  reviews: string[];
-  available: boolean;
-  createdTime: string;
-  updatedTime: string;
-  weight: number; 
-  dimensions: string;
-  rating: number;
-};
+import { RootState } from "../../Store/store";
+import { Product } from "../../Models/Product";
+import axios from "axios";
 
 interface SearchResultsState {
   products: Product[];
@@ -30,11 +13,21 @@ interface SearchResultsState {
 
 export const loadProducts = createAsyncThunk(
   "searchResults/loadProducts",
-  async () => {
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState() as RootState;
+    const searchQuery: string = state.searchBar.searchQuery;
+
     try {
-      const response = await fetch(`https://localhost:7010/api/Products`);
-      const data = await response.json();
-      return data;
+      const response = await axios.get<Product[]>(
+        "https://localhost:7010/api/Products",
+        {
+          params: {
+            searchQuery: searchQuery,
+            limit: 15,
+          },
+        }
+      );
+      return response.data;
     } catch (error) {
       throw error;
     }

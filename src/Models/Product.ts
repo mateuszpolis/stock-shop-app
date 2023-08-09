@@ -7,7 +7,7 @@ export type Product = {
   priceHistory: number[];
   discount: number;
   stockQuantity: number;
-  categories: string[];
+  categoryId: number;
   images: string[];
   reviews: string[];
   available: boolean;

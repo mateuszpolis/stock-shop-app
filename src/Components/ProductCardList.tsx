@@ -7,37 +7,22 @@ import { useSelector } from "react-redux";
 import { WishlistState, inWishlist } from "../Features/wishlist/wishlistSlice";
 import CategoryXs from "./CategoryXs";
 import StarRating from "./StarRating";
+import { Product } from "../Models/Product";
 
 type Props = {
-  id: number;
-  name: string;
-  producer: string;
-  price: number;
-  categories?: string[];
-  price_before?: number;
-  rating: number;
-  img?: string;
+  product: Product;
 };
 
-function ProductCardList({
-  id,
-  name,
-  producer,
-  price,
-  categories,
-  price_before,
-  img,
-  rating,
-}: Props) {
+function ProductCardList({ product }: Props) {
   const inList = useSelector((state: { wishlist: WishlistState }) =>
-    inWishlist(state, id)
+    inWishlist(state, product.id)
   );
 
   let priceInfo;
-  if (price_before != null) {
+  if (product.priceHistory[1] != null) {
     priceInfo = (
       <span className="line-through text-neutral-400 dark:text-neutral-500">
-        ${price_before}
+        ${product.priceHistory[1]}
       </span>
     );
   } else {
@@ -48,7 +33,9 @@ function ProductCardList({
     <div
       style={{
         position: "relative",
-        backgroundImage: `url(${img ? img : picture})`,
+        backgroundImage: `url(${
+          product.images[0] ? product.images[0] : picture
+        })`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
@@ -65,26 +52,26 @@ function ProductCardList({
             "linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))",
         }}
       ></div>
-      <Link to={`/product/${id}`}>
+      <Link to={`/product/${product.id}`}>
         <div className="p-4 absolute top-[50%] translate-y-[-50%] z-10">
           <h1 className="font-bold text-lg sm:text-xl text-neutral-50">
-            {name}
+            {product.name}
           </h1>
-          <p className="text-neutral-300 sm:text-lg">{producer}</p>
+          <p className="text-neutral-300 sm:text-lg">{product.brand}</p>
           <p className="font-bold text-md sm:text-lg text-neutral-50">
-            Price: {priceInfo} ${price}
+            Price: {priceInfo} ${product.price}
           </p>
-          <StarRating rating={rating} review_id={id} />
+          <StarRating rating={product.rating} review_id={product.id} />
           <div className="flex justify-normal items-center mt-1">
-            {categories?.map((category, index) => (
+            {/* {categories?.map((category, index) => (
               <CategoryXs key={index} category={category} />
-            ))}
+            ))} */}
           </div>
         </div>
       </Link>
       <div className="absolute bottom-0 p-4 w-full z-10 flex justify-between items-center text-2xl text-neutral-50">
         <div>
-          <Link to={`/product/${id}`}>
+          <Link to={`/product/${product.id}`}>
             <span className="font-bold text-lg text-neutral-400 hover:text-neutral-50 hover:cursor-pointer transition-all">
               Go to <i className="fa-solid fa-chevron-right"></i>
             </span>
@@ -103,12 +90,12 @@ function ProductCardList({
             }
             inList={inList}
             product={{
-              id: id,
-              name: name,
-              producer: producer,
-              price: price,
-              price_before: price_before,
-              img: img,
+              id: product.id,
+              name: product.name,
+              producer: product.brand,
+              price: product.price,
+              price_before: product.priceHistory[1],
+              img: product.images[0],
             }}
           />
           <AddToCartButton
@@ -117,12 +104,12 @@ function ProductCardList({
             }
             products={[
               {
-                id: id,
-                name: name,
-                producer: producer,
-                price: price,
-                price_before: price_before,
-                img: img,
+                id: product.id,
+                name: product.name,
+                producer: product.brand,
+                price: product.price,
+                price_before: product.priceHistory[1],
+                img: product.images[0],
               },
             ]}
           />

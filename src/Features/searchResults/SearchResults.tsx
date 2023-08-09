@@ -12,15 +12,12 @@ import {
 } from "./searchResultsSlice";
 import { AppDispatch } from "../../Store/store";
 import Loading from "../../Components/Loading";
-import { Product } from "../../Components/Models/Product";
+import { Product } from "../../Models/Product";
 
 function SearchResults() {
   const dispatch = useDispatch<AppDispatch>();
-  useEffect(() => {
-    dispatch(loadProducts());
-  }, [dispatch]);
 
-  const products = useSelector(selectProducts);
+  const products: Product[] = useSelector(selectProducts);
 
   let productsDiv;
   const isLoading = useSelector(selectIsLoading);
@@ -44,17 +41,7 @@ function SearchResults() {
         className={`relative flex space-y-2 flex-col overflow-y-scroll snap-y snap-mandatory no-scrollbar`}
       >
         {products.map((product: Product) => (
-          <ProductCardList
-            key={product.id}
-            id={product.id}
-            name={product.name}
-            producer={product.brand}
-            price={product.price}
-            price_before={product.priceHistory[product.priceHistory.length - 2]}
-            categories={product.categories}
-            rating={product.rating}
-            img={product.images[0]}
-          />
+          <ProductCardList key={product.id} product={product} />
         ))}
       </div>
     );
@@ -62,18 +49,12 @@ function SearchResults() {
 
   return (
     <div className="w-full">
-      <div
-        id="relative search-resulst"
-        className="p-5 pt-0"
-        ref={elementRef}
-      >
+      <div id="relative search-resulst" className="p-5 pt-0" ref={elementRef}>
         <h2 className="text-2xl font-bold mb-4 text-neutral-950 dark:text-neutral-50">
           {nOfResults} results for "{searchTerm}"
         </h2>
         {productsDiv}
-        {isLoading && (
-          <Loading />
-        )}
+        {isLoading && <Loading />}
         {/* <div className="flex flex-row flex-wrap justify-center">
         {products.map((product) => (
           <ProductCard

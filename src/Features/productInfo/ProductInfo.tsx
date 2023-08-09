@@ -19,26 +19,7 @@ import {
 } from "./productInfoSlice";
 import Loading from "../../Components/Loading";
 import SimiliarProducts from "../similiarProducts/SimiliarProducts";
-
-type Product = {
-  id: number;
-  name: string;
-  brand: string;
-  price: number;
-  description: string;
-  priceHistory: number[];
-  discount: number;
-  stockQuantity: number;
-  categories: string[];
-  images: string[];
-  reviews: string[];
-  available: boolean;
-  createdTime: string;
-  updatedTime: string;
-  weight: number;
-  dimensions: string;
-  rating: number;
-};
+import { Product } from "../../Models/Product";
 
 function ProductInfo({ id }: { id: number }) {
   const dispatch = useDispatch<AppDispatch>();

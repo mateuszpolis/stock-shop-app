@@ -7,14 +7,15 @@ type Props = {
   children: React.ReactNode;
 };
 
-function FilterCategories({children}: Props) {
+function FilterCategories({ children }: Props) {
   const [isFiltersOpen, setIsFiltersOpen] = React.useState<boolean>(false);
 
   return (
     <div>
       <div
         className="text-center flex flex-col cursor-pointer"
-        onClick={() => {
+        onClick={(e) => {
+          e.stopPropagation();
           setIsFiltersOpen(!isFiltersOpen);
         }}
       >

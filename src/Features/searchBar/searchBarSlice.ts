@@ -1,14 +1,16 @@
 import { PayloadAction, createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { Product } from "../../Components/Models/Product";
+import { Product } from "../../Models/Product";
 import axios from "axios";
-import { RootState } from "../../Store/store";
+import { AppDispatch, RootState } from "../../Store/store";
+import { Category } from "../../Models/Category";
+import { useDispatch } from "react-redux";
 
 interface SearchBarState {
-  isLoading: boolean;
-  failedLoading: boolean;
-  hasLoaded: boolean;
+  hasLoadedProducts: boolean;
+  hasLoadedCategories: boolean;
   searchQuery: string;
   products: Product[];
+  categories: Category[];
 }
 
 export const fetchProducts = createAsyncThunk(
@@ -34,14 +36,28 @@ export const fetchProducts = createAsyncThunk(
   }
 );
 
+export const fetchCategories = createAsyncThunk(
+  "searchBar/fetchCategories",
+  async (id: number) => {
+    try {
+      const response = await axios.get<string[]>(
+        `https://localhost:7010/api/Categories/${id}/hierarchy`
+      );
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+);
+
 const searchBarSlice = createSlice({
   name: "searchBar",
   initialState: {
-    isLoading: false,
-    failedLoading: false,
-    hasLoaded: false,
+    hasLoadedProducts: false,
+    hasLoadedCategories: false,
     searchQuery: "",
     products: [],
+    categories: [],
   } as SearchBarState,
   reducers: {
     updateSearchBar: (state, action: PayloadAction<string>) => {
@@ -59,21 +75,31 @@ const searchBarSlice = createSlice({
       action: PayloadAction<Product[]>
     ) => {
       state.products = action.payload;
-      state.failedLoading = false;
-      state.isLoading = false;
-      state.hasLoaded = true;
+      state.hasLoadedProducts = true;
     },
 
     [fetchProducts.rejected.type]: (state, action: PayloadAction<Error>) => {
-      state.failedLoading = true;
-      state.isLoading = false;
-      state.hasLoaded = false;
+      state.hasLoadedProducts = false;
     },
 
     [fetchProducts.pending.type]: (state, action: PayloadAction<Product[]>) => {
-      state.failedLoading = false;
-      state.isLoading = true;
-      state.hasLoaded = false;
+      state.hasLoadedProducts = false;
+    },
+    [fetchCategories.fulfilled.type]: (
+      state,
+      action: PayloadAction<Category[]>
+    ) => {
+      state.categories = action.payload;
+      state.hasLoadedCategories = true;
+    },
+    [fetchCategories.rejected.type]: (state, action: PayloadAction<Error>) => {
+      state.hasLoadedCategories = false;
+    },
+    [fetchCategories.pending.type]: (
+      state,
+      action: PayloadAction<Category[]>
+    ) => {
+      state.hasLoadedCategories = false;
     },
   },
 });
@@ -86,16 +112,16 @@ export const selectProducts = (state: any): Product[] => {
   return state.searchBar.products;
 };
 
-export const selectIsLoading = (state: any): boolean => {
-  return state.searchBar.isLoading;
+export const selectCategories = (state: any): Category[] => {
+  return state.searchBar.categories;
 };
 
-export const selectFailedLoading = (state: any): boolean => {
-  return state.searchBar.failedLoading;
+export const selectHasLoadedProducts = (state: any): boolean => {
+  return state.searchBar.hasLoadedProducts;
 };
 
-export const selectHasLoaded = (state: any): boolean => {
-  return state.searchBar.hasLoaded;
+export const selectHasLoadedCategories = (state: any): boolean => {
+  return state.searchBar.hasLoadedCategories;
 };
 
 export const { updateSearchBar, checkIfSearchQueryIsEmpty } =
