@@ -25,6 +25,8 @@ export const fetchProducts = createAsyncThunk(
         {
           params: {
             searchQuery: searchQuery,
+            sorting: "defualt",
+            category: -1,
             limit: 1,
           },
         }

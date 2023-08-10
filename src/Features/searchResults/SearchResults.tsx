@@ -9,13 +9,35 @@ import {
   selectHasLoaded,
   selectIsLoading,
   selectProducts,
+  selectSearchParams,
+  setSearchParams,
 } from "./searchResultsSlice";
 import { AppDispatch } from "../../Store/store";
 import Loading from "../../Components/Loading";
 import { Product } from "../../Models/Product";
+import { useLocation } from "react-router";
 
 function SearchResults() {
   const dispatch = useDispatch<AppDispatch>();
+  const location = useLocation();
+
+  useEffect(() => {
+    const queryParams = new URLSearchParams(location.search);
+    const searchTerm = queryParams.get("searchQuery");
+    const limit = queryParams.get("limit");
+    const category = queryParams.get("category");
+    const sorting = queryParams.get("sorting");
+
+    dispatch(
+      setSearchParams({
+        searchQuery: searchTerm,
+        limit: limit,
+        category: category,
+        sorting: sorting,
+      })
+    );
+    dispatch(loadProducts());
+  }, [dispatch, location.search]);
 
   const products: Product[] = useSelector(selectProducts);
 
@@ -24,7 +46,7 @@ function SearchResults() {
   const failedLoading = useSelector(selectFailedLoading);
   const hasLoaded = useSelector(selectHasLoaded);
 
-  const searchTerm = useSelector(selectSearchTerm);
+  const searchTerm = useSelector(selectSearchParams).searchQuery;
   const nOfResults = products.length;
 
   const error = useSelector(selectError);

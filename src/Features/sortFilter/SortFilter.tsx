@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router";
 import FilterCategories from "../../Components/FilterCategories";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../Store/store";
+import { setSearchParams } from "../searchResults/searchResultsSlice";
 
 type Props = {
   query?: string;
@@ -15,6 +18,8 @@ type SortingOption = {
 };
 
 function SortFilter({ query, categories, sorting }: Props): JSX.Element {
+  const dispatch = useDispatch<AppDispatch>();
+
   const navigate = useNavigate();
 
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
@@ -37,13 +42,7 @@ function SortFilter({ query, categories, sorting }: Props): JSX.Element {
     setSelectedOption(optionValue);
     setIsDropdownOpen(false);
 
-    const searchQuery = encodeURIComponent(query ? query : " ");
-    const selectedCategories = encodeURIComponent(
-      categories ? categories : " "
-    );
-    const sorting = encodeURIComponent(optionValue);
-    const url = `/search/${searchQuery}/${selectedCategories}/${sorting}`;
-    navigate(url);
+    dispatch(setSearchParams({ sorting: optionValue }));
   };
 
   return (

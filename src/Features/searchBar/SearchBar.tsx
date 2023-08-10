@@ -16,7 +16,12 @@ import { useNavigate } from "react-router-dom";
 import FilterCategories from "../../Components/FilterCategories";
 import AddToCartProductCard from "../../Components/AddToCartProductCard";
 import { AnimatePresence, motion } from "framer-motion";
-import { loadProducts } from "../searchResults/searchResultsSlice";
+import {
+  selectQueryString,
+  selectSearchParams,
+  setQueryString,
+  setSearchParams,
+} from "../searchResults/searchResultsSlice";
 
 export default function SearchBar(): JSX.Element {
   const searchTerm = useSelector(selectSearchTerm);
@@ -27,6 +32,11 @@ export default function SearchBar(): JSX.Element {
 
   const products = useSelector(selectProducts);
   const categories = useSelector(selectCategories);
+
+  const searchParams = useSelector(selectSearchParams);
+  const limit = searchParams.limit;
+  const category = searchParams.category;
+  const sorting = searchParams.sorting;
 
   const hasLoadedProducts = useSelector(selectHasLoadedProducts);
   const hasLoadedCategories = useSelector(selectHasLoadedCategories);
@@ -52,12 +62,18 @@ export default function SearchBar(): JSX.Element {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const searchQuery = encodeURIComponent(searchTerm ? searchTerm : " ");
-    const categories = encodeURIComponent(" "); // Replace with your desired default value or remove this line if empty is fine.
-    const sorting = encodeURIComponent(""); // Replace with your desired default value or remove this line if empty is fine.
-    const url = `/search/${searchQuery}/${categories}/${sorting}`;
-    dispatch(loadProducts());
-    navigate(url);
+    const searchQuery = searchTerm;
+
+    const queryOptions = {
+      searchQuery: encodeURIComponent(searchQuery),
+      limit: encodeURIComponent(limit),
+      category: encodeURIComponent(category),
+      sorting: encodeURIComponent(sorting),
+    };
+    const queryString = new URLSearchParams(queryOptions).toString();
+    navigate(`/search?${queryString}`);
+    dispatch(setSearchParams({ searchQuery: searchTerm }));
+    dispatch(setQueryString());
   };
 
   return (
@@ -80,6 +96,7 @@ export default function SearchBar(): JSX.Element {
             placeholder="What are you looking for?"
             value={searchTerm}
             onChange={handleInputChange}
+            required={true}
           />
           <div className="absolute right-2.5 bottom-2.5 flex shadow-md rounded-lg">
             <FilterCategories>
@@ -128,7 +145,10 @@ export default function SearchBar(): JSX.Element {
                 </h2>
                 <div className="flex space-x-2 justify-center items-center overflow-x-scroll no-scrollbar">
                   {categories.map((category) => (
-                    <div className="hover:underline transition-all text-base cursor-pointer whitespace-nowrap">
+                    <div
+                      key={category.id}
+                      className="hover:underline transition-all text-base cursor-pointer whitespace-nowrap"
+                    >
                       {category.name}
                     </div>
                   ))}

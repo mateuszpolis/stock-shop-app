@@ -13,6 +13,7 @@ import cartReducer from "../Features/cart/cartSlice";
 import loginReducer from "../Features/login/loginSlice";
 import searchResultsReducer from "../Features/searchResults/searchResultsSlice";
 import registerReducer from "../Features/register/registerSlice";
+import sortFilterReducer from "../Features/sortFilter/sortFilterSlice";
 
 export const store = configureStore({
   reducer: {
@@ -29,10 +30,10 @@ export const store = configureStore({
     login: loginReducer,
     searchResults: searchResultsReducer,
     register: registerReducer,
+    sortFilter: sortFilterReducer,
   },
 });
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 export const useAppDispatch: () => AppDispatch = useDispatch;
-

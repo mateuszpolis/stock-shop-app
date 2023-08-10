@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  sort: "newest",
+  sort: "default",
   filters: {
     category: "all",
     price: "all",
@@ -20,6 +20,10 @@ const sortFilterSlice = createSlice({
     },
   },
 });
+
+export const selectSort = (state: any) => {
+  return state.sortFilter.sort;
+};
 
 export const { setSort } = sortFilterSlice.actions;
 
