@@ -55,7 +55,7 @@ const searchResultsSlice = createSlice({
     error: null,
     searchParams: {
       searchQuery: "",
-      limit: 15,
+      limit: 10,
       category: -1,
       sorting: "default",
     },

@@ -13,9 +13,17 @@ import {
 import { AnimatePresence, motion } from "framer-motion";
 import Category from "../../Components/Category";
 import Breadcrumbs from "./Breadcrumbs";
+import {
+  selectSearchParams,
+  setQueryString,
+  setSearchParams,
+} from "../searchResults/searchResultsSlice";
+import { useLocation, useNavigate } from "react-router";
 
 function Categories() {
   const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const parentCategory = useSelector(selectCurrentParentId);
 
@@ -25,6 +33,11 @@ function Categories() {
   useEffect(() => {
     dispatch(fetchCategories(parentCategory));
   }, [dispatch, parentCategory]);
+
+  const searchParams = useSelector(selectSearchParams);
+  const limit = searchParams.limit;
+  const searchQuery = searchParams.searchQuery;
+  const sorting = searchParams.sorting;
 
   const categories = useSelector(selectCategories);
 
@@ -50,6 +63,20 @@ function Categories() {
                 key={category.id}
                 category={category}
                 onClick={() => {
+                  const queryOptions = {
+                    searchQuery: encodeURIComponent(searchQuery),
+                    limit: encodeURIComponent(limit),
+                    category: encodeURIComponent(category.id),
+                    sorting: encodeURIComponent(sorting),
+                  };
+                  const queryString = new URLSearchParams(
+                    queryOptions
+                  ).toString();
+                  if (location.pathname.startsWith("/search")) {
+                    navigate(`/search?${queryString}`);
+                  }
+                  dispatch(setQueryString());
+                  dispatch(setSearchParams({ category: category.id }));
                   dispatch(addBreadcrumb(category));
                   dispatch(setCurrentParentId(category.id));
                 }}

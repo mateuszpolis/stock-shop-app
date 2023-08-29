@@ -2,11 +2,24 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { removeBreadcrumbs, selectBreadcrumbs } from "./categoriesSlice";
 import { AppDispatch } from "../../Store/store";
+import {
+  selectSearchParams,
+  setQueryString,
+  setSearchParams,
+} from "../searchResults/searchResultsSlice";
+import { useLocation, useNavigate } from "react-router";
 
 function Breadcrumbs() {
   const dispatch = useDispatch<AppDispatch>();
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const breadcrumbs = useSelector(selectBreadcrumbs);
+
+  const searchParams = useSelector(selectSearchParams);
+  const limit = searchParams.limit;
+  const searchQuery = searchParams.searchQuery;
+  const sorting = searchParams.sorting;
 
   return (
     <div className="flex flex-row space-x-1 flex-wrap">
@@ -14,6 +27,18 @@ function Breadcrumbs() {
         <div
           key={breadcrumb.id}
           onClick={() => {
+            const queryOptions = {
+              searchQuery: encodeURIComponent(searchQuery),
+              limit: encodeURIComponent(limit),
+              category: encodeURIComponent(breadcrumb.id),
+              sorting: encodeURIComponent(sorting),
+            };
+            const queryString = new URLSearchParams(queryOptions).toString();
+            if (location.pathname.startsWith("/search")) {
+              navigate(`/search?${queryString}`);
+            }
+            dispatch(setQueryString());
+            dispatch(setSearchParams({ category: breadcrumb.id }));
             dispatch(removeBreadcrumbs({ id: breadcrumb.id }));
           }}
           className={`text-xl font-bold cursor-pointer ${

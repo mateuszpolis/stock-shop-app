@@ -2,9 +2,14 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router";
 import FilterCategories from "../../Components/FilterCategories";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "../../Store/store";
-import { setSearchParams } from "../searchResults/searchResultsSlice";
+import {
+  selectSearchParams,
+  setQueryString,
+  setSearchParams,
+} from "../searchResults/searchResultsSlice";
+import Limit from "./Limit";
 
 type Props = {
   query?: string;
@@ -38,7 +43,21 @@ function SortFilter({ query, categories, sorting }: Props): JSX.Element {
     setIsDropdownOpen((prevState) => !prevState);
   };
 
+  const searchParams = useSelector(selectSearchParams);
+  const limit = searchParams.limit;
+  const category = searchParams.category;
+  const searchQuery = searchParams.searchQuery;
+
   const handleOptionSelect = (optionValue: string): void => {
+    const queryOptions = {
+      searchQuery: encodeURIComponent(searchQuery),
+      limit: encodeURIComponent(limit),
+      category: encodeURIComponent(category),
+      sorting: encodeURIComponent(optionValue),
+    };
+    const queryString = new URLSearchParams(queryOptions).toString();
+    navigate(`/search?${queryString}`);
+    dispatch(setQueryString());
     setSelectedOption(optionValue);
     setIsDropdownOpen(false);
 
@@ -59,7 +78,7 @@ function SortFilter({ query, categories, sorting }: Props): JSX.Element {
         <FilterCategories>
           <div className="text-center border-e-2 flex flex-col hover:cursor-pointer relative">
             <i className="fa-solid fa-filter"></i>
-            <p className="text-xs">Filters and Categories</p>
+            <p className="text-xs">Filters & Categories</p>
           </div>
         </FilterCategories>
         <motion.div
@@ -94,10 +113,7 @@ function SortFilter({ query, categories, sorting }: Props): JSX.Element {
             </motion.div>
           )}
         </motion.div>
-        <div className="text-center flex flex-col">
-          <i className="fa-solid fa-hashtag"></i>
-          <p className="text-xs">Limit</p>
-        </div>
+        <Limit />
       </div>
     </motion.div>
   );

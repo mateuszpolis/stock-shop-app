@@ -1,25 +1,10 @@
 import React from "react";
 import StarRating from "./StarRating";
+import { Review as ReviewModel } from "../Models/Review";
 
-type Props = {
-  author: string;
-  rating: number;
-  date: string;
-  content: string;
-  review_id: number;
-  number_of_likes: number;
-};
-
-function Review({
-  author,
-  rating,
-  review_id,
-  date,
-  content,
-  number_of_likes,
-}: Props) {
+function Review({ review }: { review: ReviewModel }) {
   const handleLikeReview = () => {
-    const thumb = document.getElementById(`thumb_${review_id}`);
+    const thumb = document.getElementById(`thumb_${review.id}`);
     if (thumb?.classList.contains("fa-regular")) {
       thumb?.classList.add("fa-solid");
       thumb?.classList.remove("fa-regular");
@@ -32,21 +17,28 @@ function Review({
   return (
     <div className="mb-2">
       <div className="flex items-center gap-1">
-        <h1 className="text-sm lg:text-base font-semibold">{author}</h1>
-        <StarRating rating={rating} review_id={review_id} />
+        <h1 className="text-sm lg:text-base font-semibold">{review.userId}</h1>
+        <StarRating rating={review.rating} review_id={review.id} />
         <div>
           <span className="text-xs lg:text-sm text-gray-500 dark:text-gray-300">
-            {date}
+            {review.createdTime}
           </span>
         </div>
+        {review.ownsProduct && (
+          <div>
+            <span className="text-xs lg:text-sm text-gray-500 dark:text-gray-300">
+              (owns product)
+            </span>
+          </div>
+        )}
       </div>
       <div className="p-2">
-        <p className="text-sm lg:text-base">{content}</p>
+        <p className="text-sm lg:text-base">{review.reviewText}</p>
       </div>
       <div onClick={handleLikeReview} className="hover:cursor-pointer">
         <span>
-          <i id={`thumb_${review_id}`} className="fa-regular fa-thumbs-up"></i>{" "}
-          {number_of_likes}
+          <i id={`thumb_${review.id}`} className="fa-regular fa-thumbs-up"></i>{" "}
+          {review.likes}
         </span>
       </div>
     </div>

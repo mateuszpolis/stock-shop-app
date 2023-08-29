@@ -1,7 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Review from "../../Components/Review";
+import { Review as ReviewModel } from "../../Models/Review";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch } from "../../Store/store";
+import {
+  loadReviews,
+  selectReviews,
+  selectReviewsLoaded,
+  selectReviewsLoading,
+} from "./reviewsSlice";
+import Loading from "../../Components/Loading";
 
-function Reviews() {
+function Reviews({ id }: { id: number }) {
+  const dispatch = useDispatch<AppDispatch>();
+
+  useEffect(() => {
+    dispatch(loadReviews(id));
+  }, [dispatch, id]);
+
+  const isLoading = useSelector(selectReviewsLoading);
+  const hasLoaded = useSelector(selectReviewsLoaded);
+  const reviews: ReviewModel[] = useSelector(selectReviews);
+
   const handleToggleReviews = () => {
     const reviews = document.getElementById("reviews");
     const angle = document.getElementById("reviews-angle");
@@ -25,33 +45,18 @@ function Reviews() {
         className="flex items-center hover:cursor-pointer"
       >
         <h1 className="text-xl lg:text-2xl font-semibold">
-          Reviews{" "}
-          <span className="text-base font-base text-gray-500 dark:text-gray-300">
-            (25)
-          </span>
+          Reviews ({reviews.length})
         </h1>{" "}
         <i id="reviews-angle" className="fa-solid fa-angle-down" />
       </div>
-      <div id="reviews" className="p-2 hidden">
-        <Review
-          author="John Doe"
-          rating={4.5}
-          content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-            voluptatum, quibusdam, voluptates, quia voluptate quod quos"
-          review_id={1}
-          date="2021-09-01"
-          number_of_likes={0}
-        />
-        <Review
-          author="John Doe"
-          rating={3.5}
-          content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-            voluptatum, quibusdam, voluptates, quia voluptate quod quos"
-          review_id={2}
-          date="2022-09-01"
-          number_of_likes={2}
-        />
-      </div>
+      {isLoading && <Loading />}
+      {hasLoaded && (
+        <div id="reviews" className="relative p-2 hidden">
+          {reviews.map((review) => (
+            <Review key={review.id} review={review} />
+          ))}
+        </div>
+      )}
     </div>
   );
 }

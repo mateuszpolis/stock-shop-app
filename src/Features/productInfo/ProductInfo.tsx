@@ -142,7 +142,7 @@ function ProductInfo({ id }: { id: number }) {
       <div className="mt-5 dark:text-neutral-50">
         <Description description={product.description}/>
         <Specification />
-        <Reviews />
+        <Reviews id={id}/>
       </div>
       <SimiliarProducts />
       {isLoading && <Loading />}
