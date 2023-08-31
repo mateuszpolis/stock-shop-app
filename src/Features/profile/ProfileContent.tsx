@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import React, { useState } from "react";
-import { logout, selectUser } from "../login/loginSlice";
+import { logout, selectUserId } from "../login/loginSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "../../Store/store";
 import ReactDOM from "react-dom";
@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 function ProfileContent() {
   const dispatch = useDispatch<AppDispatch>();
-  const user = useSelector(selectUser);
+  // const user = useSelector(selectUser);
 
   const [showLogoutModal, setShowLogoutModal] = useState(false);
 
@@ -22,7 +22,7 @@ function ProfileContent() {
         exit={{ opacity: 0 }}
       >
         <h1 className="text-3xl dark:text-neutral-50 font-bold">
-          Hi, {user.name}
+          {/* Hi, {user.name} */}
         </h1>
         <div className="flex flex-col space-y-4 xl:flex-row xl:space-x-4 xl:space-y-0">
           <div className="bg-neutral-50 shadow-lg rounded-lg p-5 flex-grow flex flex-col justify-around xl:h-72">
@@ -30,15 +30,15 @@ function ProfileContent() {
             <div className="flex flex-col space-y-1 mb-4">
               <div className="rounded-lg bg-neutral-50">
                 <h3 className="text-lg font-semibold text-neutral-950">
-                  Name: <span className="font-normal text-sm">{user.name}</span>
+                  {/* Name: <span className="font-normal text-sm">{user.name}</span> */}
                 </h3>
                 <h3 className="text-lg font-semibold text-neutral-950">
                   Surname:{" "}
-                  <span className="font-normal text-sm">{user.surname}</span>
+                  {/* <span className="font-normal text-sm">{user.surname}</span> */}
                 </h3>
                 <h3 className="text-lg font-semibold text-neutral-950">
                   Email:{" "}
-                  <span className="font-normal text-sm">{user.email}</span>
+                  {/* <span className="font-normal text-sm">{user.email}</span> */}
                 </h3>
                 <h3 className="text-lg font-semibold text-neutral-950">
                   Password:{" "}

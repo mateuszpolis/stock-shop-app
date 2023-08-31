@@ -135,8 +135,6 @@ export default function SearchBar(): JSX.Element {
                   name={products[0].name}
                   price={products[0].price}
                   producer={products[0].brand}
-                  price_before={products[0].priceHistory[0]}
-                  img={products[0].images[0]}
                 />
               </div>
               <div className="flex items-center border-t-2 border-neutral-200 w-full space-x-2 overflow-hidden">

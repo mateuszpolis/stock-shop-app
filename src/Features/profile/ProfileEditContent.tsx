@@ -2,16 +2,16 @@ import { motion } from "framer-motion";
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { selectUser } from "../login/loginSlice";
+import { selectUserId } from "../login/loginSlice";
 import authService from "../../services/auth.service";
 
 function ProfileEditContent() {
   const [showForm, setShowForm] = React.useState(false);
 
-  const user = useSelector(selectUser);
+  const user = useSelector(selectUserId);
 
-  const [name, setName] = React.useState(user.name);
-  const [surname, setSurname] = React.useState(user.surname);
+  // const [name, setName] = React.useState(user.name);
+  // const [surname, setSurname] = React.useState(user.surname);
 
   return (
     <div className="p-5 flex xl:w-[1280px] ">
@@ -35,7 +35,7 @@ function ProfileEditContent() {
             onSubmit={(e) => {
               e.preventDefault();
               setShowForm(false);
-              authService.editUserDetails(name, surname, user.email);
+              // authService.editUserDetails(name, surname, user.email);
             }}
           >
             <div className="flex flex-col space-y-1">
@@ -45,8 +45,8 @@ function ProfileEditContent() {
               <input
                 type="text"
                 name="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+                // value={name}
+                // onChange={(e) => setName(e.target.value)}
                 className="appearance-none block w-full p-3 text-base text-neutral-950 border-2 border-neutral-950 active:rounded-lg focus:rounded-lg hover:rounded-lg rounded-lg sm:rounded-lg bg-neutral-50 focus:outline-none focus:ring-1 focus:ring-neutral-950 dark:bg-neutral-900 dark:border-neutral-50 dark:placeholder-neutral-400 dark:text-neutral-50 dark:focus:ring-neutral-50  transition-all"
               />
             </div>
@@ -57,8 +57,8 @@ function ProfileEditContent() {
               <input
                 type="text"
                 name="surname"
-                value={surname}
-                onChange={(e) => setSurname(e.target.value)}
+                // value={surname}
+                // onChange={(e) => setSurname(e.target.value)}
                 className="appearance-none block w-full p-3 text-base text-neutral-950 border-2 border-neutral-950 active:rounded-lg focus:rounded-lg hover:rounded-lg rounded-lg sm:rounded-lg bg-neutral-50 focus:outline-none focus:ring-1 focus:ring-neutral-950 dark:bg-neutral-900 dark:border-neutral-50 dark:placeholder-neutral-400 dark:text-neutral-50 dark:focus:ring-neutral-50  transition-all"
               />
             </div>

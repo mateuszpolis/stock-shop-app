@@ -66,7 +66,7 @@ function ProductInfo({ id }: { id: number }) {
       exit={{ opacity: 0 }}
     >
       <div className="lg:grid lg:grid-cols-2">
-        <Gallery images={product.images} />
+        {/* <Gallery images={product.images} /> */}
         <div className="lg:mt-24 lg:flex lg:items-center lg:flex-col lg:text-xl">
           <div className="grid grid-cols-3 lg:w-full mt-2 dark:text-neutral-50">
             <div className="text-center border-e-2 flex flex-col">
@@ -85,12 +85,12 @@ function ProductInfo({ id }: { id: number }) {
           <div className="lg:p-10">
             <div className="flex flex-col gap-y-2 mt-3 justify-center items-start flex-wrap dark:text-neutral-50">
               <div className="flex justify-normal items-center">
-                <StarRating rating={product.rating} review_id={0} />
+                <StarRating rating={product.rating} />
                 <a
                   href="#reviews"
                   className="font-mono underline text-xs text-gray-500 dark:text-gray-300 hover:no-underline"
                 >
-                  ({product?.reviews?.length} reviews)
+                  ({product?.numberOfReviews} reviews)
                 </a>
               </div>
               <div className="mr-2">
@@ -140,9 +140,9 @@ function ProductInfo({ id }: { id: number }) {
         </div>
       </div>
       <div className="mt-5 dark:text-neutral-50">
-        <Description description={product.description}/>
+        <Description description={product.description} />
         <Specification />
-        <Reviews id={id}/>
+        <Reviews id={id} />
       </div>
       <SimiliarProducts />
       {isLoading && <Loading />}

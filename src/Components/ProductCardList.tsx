@@ -18,23 +18,24 @@ function ProductCardList({ product }: Props) {
     inWishlist(state, product.id)
   );
 
-  let priceInfo;
-  if (product.priceHistory[1] != null) {
-    priceInfo = (
-      <span className="line-through text-neutral-400 dark:text-neutral-500">
-        ${product.priceHistory[1]}
-      </span>
-    );
-  } else {
-    priceInfo = "";
-  }
+  let priceInfo = "";
+  // if (product.priceHistory[1] != null) {
+  //   priceInfo = (
+  //     <span className="line-through text-neutral-400 dark:text-neutral-500">
+  //       ${product.priceHistory[1]}
+  //     </span>
+  //   );
+  // } else {
+  //   priceInfo = "";
+  // }
 
   return (
     <div
       style={{
         position: "relative",
+        // testk
         backgroundImage: `url(${
-          product.images[0] ? product.images[0] : picture
+          picture
         })`,
         backgroundSize: "cover",
         backgroundPosition: "center",
@@ -61,7 +62,7 @@ function ProductCardList({ product }: Props) {
           <p className="font-bold text-md sm:text-lg text-neutral-50">
             Price: {priceInfo} ${product.price}
           </p>
-          <StarRating rating={product.rating} review_id={product.id} />
+          <StarRating rating={product.rating} />
           <div className="flex justify-normal items-center mt-1">
             {/* {categories?.map((category, index) => (
               <CategoryXs key={index} category={category} />
@@ -94,8 +95,6 @@ function ProductCardList({ product }: Props) {
               name: product.name,
               producer: product.brand,
               price: product.price,
-              price_before: product.priceHistory[1],
-              img: product.images[0],
             }}
           />
           <AddToCartButton
@@ -108,8 +107,6 @@ function ProductCardList({ product }: Props) {
                 name: product.name,
                 producer: product.brand,
                 price: product.price,
-                price_before: product.priceHistory[1],
-                img: product.images[0],
               },
             ]}
           />

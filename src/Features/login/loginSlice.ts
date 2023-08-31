@@ -3,10 +3,7 @@ import authService from "../../services/auth.service";
 import jwtDecode from "jwt-decode";
 
 type User = {
-  name: string;
-  surname: string;
-  email: string;
-  token: string;
+  id: string;
   exp: number;
 };
 
@@ -37,12 +34,7 @@ export const loginSlice = createSlice({
     loggedIn: false,
     error: null,
     exp: null as number | null,
-    user: {
-      name: "",
-      surname: "",
-      email: "",
-      token: "",
-    },
+    userId: null as number | null,
   },
   reducers: {
     logout: (state) => {
@@ -50,23 +42,14 @@ export const loginSlice = createSlice({
       state.loading = false;
       state.loggedIn = false;
       state.error = null;
-      state.user = {
-        name: "",
-        surname: "",
-        email: "",
-        token: "",
-      };
+      state.userId = null;
       state.exp = null;
     },
     checkLogin: (state) => {
       const token = localStorage.getItem("user");
       if (token) {
         const user: User = jwtDecode(token);
-        state.user.name = user.name;
-        state.user.surname = user.surname;
-        state.user.email = user.email;
-        state.exp = user.exp;
-        state.user.token = token;
+        state.userId = parseInt(user.id);
         state.loggedIn = true;
       } else {
         state.loggedIn = false;
@@ -86,11 +69,9 @@ export const loginSlice = createSlice({
       const token = localStorage.getItem("user");
       if (token) {
         const user: User = jwtDecode(token);
-        state.user.name = user.name;
-        state.user.surname = user.surname;
-        state.user.email = user.email;
+        state.userId = parseInt(user.id);
         state.exp = user.exp;
-        state.user.token = token;
+
       }
     },
     [login.rejected.type]: (state, action) => {
@@ -121,8 +102,8 @@ export const selectLoggedIn = (state: any) => {
   return state.login.loggedIn;
 };
 
-export const selectUser = (state: any) => {
-  return state.login.user;
+export const selectUserId = (state: any) => {
+  return state.login.userId;
 };
 
 export const selectExp = (state: any) => {
