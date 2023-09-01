@@ -1,5 +1,5 @@
 import React from "react";
-import picture from "../images/iphone14pro.webp";
+import picture from "../images/350wpx_6ec757775f8918266d758f0c14124d78.jpg";
 import { Link } from "react-router-dom";
 
 type Props = {

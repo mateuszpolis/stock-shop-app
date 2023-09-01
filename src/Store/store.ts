@@ -5,9 +5,8 @@ import catgoriesReducer from "../Features/categories/categoriesSlice";
 import offersReducer from "../Features/offers/offersSlice";
 import wishlistReducer from "../Features/wishlist/wishlistSlice";
 import bestsellersReducer from "../Features/bestsellers/bestsellersSlice";
-import productInfoReducer from "../Features/productInfo/productInfoSlice";
+import productInfoReducer from "../Features/product/productInfoSlice";
 import reviewsReducer from "../Features/reviews/reviewsSlice";
-import descriptionReducer from "../Features/description/descriptionSlice";
 import similiarProductsReducer from "../Features/similiarProducts/similiarProductsSlice";
 import cartReducer from "../Features/cart/cartSlice";
 import loginReducer from "../Features/login/loginSlice";
@@ -24,7 +23,6 @@ export const store = configureStore({
     bestsellers: bestsellersReducer,
     productInfo: productInfoReducer,
     reviews: reviewsReducer,
-    description: descriptionReducer,
     similiarProducts: similiarProductsReducer,
     cart: cartReducer,
     login: loginReducer,

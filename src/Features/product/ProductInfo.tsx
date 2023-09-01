@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import Gallery from "../../Components/Gallery";
+import Gallery from "./Gallery";
 import StarRating from "../../Components/StarRating";
 import Reviews from "../reviews/Reviews";
-import Description from "../description/Description";
+import Description from "./Description";
 import Specification from "../specification/Specification";
 import AddToCartButton from "../../Components/AddToCartButton";
 import AddToListButton from "../../Components/AddToListButton";
@@ -66,7 +66,7 @@ function ProductInfo({ id }: { id: number }) {
       exit={{ opacity: 0 }}
     >
       <div className="lg:grid lg:grid-cols-2">
-        {/* <Gallery images={product.images} /> */}
+        <Gallery productId={product.id} /> 
         <div className="lg:mt-24 lg:flex lg:items-center lg:flex-col lg:text-xl">
           <div className="grid grid-cols-3 lg:w-full mt-2 dark:text-neutral-50">
             <div className="text-center border-e-2 flex flex-col">

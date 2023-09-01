@@ -27,19 +27,16 @@ function Description({ description }: { description: string }) {
           className="fa-solid fa-angle-down transition-all"
         />
       </div>
-      <AnimatePresence>
-        {isDropdownOpen && (
-          <motion.div
-            initial={{ maxHeight: 0 }}
-            animate={{ maxHeight: "200px" }}
-            exit={{ maxHeight: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="p-2"
-          >
-            <p className="text-sm lg:text-base">{description}</p>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {isDropdownOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="p-2"
+        >
+          <p className="text-sm lg:text-base">{description}</p>
+        </motion.div>
+      )}
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import ProductInfo from "../Features/productInfo/ProductInfo";
+import ProductInfo from "../Features/product/ProductInfo";
 import { useParams } from "react-router";
 
 function Product() {
