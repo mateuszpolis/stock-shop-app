@@ -1,12 +1,11 @@
 import React from "react";
 import Slider from "react-slider";
+import { Option } from "../../../Models/Option";
 
-type Props = {
-  min: number;
-  max: number;
-};
+function RangeFilter({ options }: { options: Option[] }) {
+  const min: number = options[0].MinValue ? options[0].MinValue : 0;
+  const max: number = options[0].MaxValue ? options[0].MaxValue : 100;
 
-function RangeFilter({ min, max }: Props) {
   const [values, setValues] = React.useState<number[]>([min, max]);
 
   return (

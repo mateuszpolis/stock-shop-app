@@ -2,16 +2,9 @@ import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import RangeFilter from "./RangeFilter";
 import CheckboxFilter from "./CheckboxFilter";
+import { Parameter } from "../../../Models/Parameter";
 
-type Props = {
-  type: string;
-  name: string;
-  min?: number;
-  max?: number;
-  options?: string[];
-};
-
-function Filter({ name, min, max, type, options }: Props) {
+function Filter({ filter }: { filter: Parameter }) {
   const [isDropdownOpen, setIsDropdownOpen] = React.useState<boolean>(false);
 
   const toggleDropdown = () => {
@@ -19,27 +12,29 @@ function Filter({ name, min, max, type, options }: Props) {
   };
 
   let filterComponent = null;
-  if (type === "range" && min != null && max != null) {
-    filterComponent = <RangeFilter min={min} max={max} />;
-  } else if (type === "checkbox" && options != null) {
-    filterComponent = <CheckboxFilter options={options} />;
+  if (filter.parameterType === "RANGE") {
+    filterComponent = <RangeFilter options={filter.predefinedChoices} />;
+  } else if (filter.parameterType === "CHOICE") {
+    filterComponent = <CheckboxFilter options={filter.predefinedChoices} />;
+  } else {
+    filterComponent = <div>Unknown filter type.</div>;
   }
 
   return (
-    <div id={`filter-${name}`}>
+    <div id={`filter-${filter.id}`}>
       <div
         className="cursor-pointer text-lg dark:text-neutral-50"
         onClick={() => {
           toggleDropdown();
-          const chevron = document.getElementById(`chevron-${name}`);
+          const chevron = document.getElementById(`chevron-${filter.id}`);
           if (chevron) {
             chevron.classList.toggle("rotate-90");
           }
         }}
       >
-        {name}{" "}
+        {filter.name}{" "}
         <i
-          id={`chevron-${name}`}
+          id={`chevron-${filter.id}`}
           className="fas fa-chevron-right transition-all"
         ></i>
       </div>

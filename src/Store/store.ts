@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
 import searchBarReducer from "../Features/searchBar/searchBarSlice";
-import catgoriesReducer from "../Features/categories/categoriesSlice";
+import catgoriesReducer from "../Features/sortFilter/categories/categoriesSlice";
 import offersReducer from "../Features/offers/offersSlice";
 import wishlistReducer from "../Features/wishlist/wishlistSlice";
 import bestsellersReducer from "../Features/bestsellers/bestsellersSlice";
@@ -12,7 +12,7 @@ import cartReducer from "../Features/cart/cartSlice";
 import loginReducer from "../Features/login/loginSlice";
 import searchResultsReducer from "../Features/searchResults/searchResultsSlice";
 import registerReducer from "../Features/register/registerSlice";
-import sortFilterReducer from "../Features/sortFilter/sortFilterSlice";
+import filtersReducer from "../Features/sortFilter/filters/filtersSlice";
 
 export const store = configureStore({
   reducer: {
@@ -28,7 +28,7 @@ export const store = configureStore({
     login: loginReducer,
     searchResults: searchResultsReducer,
     register: registerReducer,
-    sortFilter: sortFilterReducer,
+    filters: filtersReducer,
   },
 });
 

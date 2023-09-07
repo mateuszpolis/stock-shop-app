@@ -1,49 +1,10 @@
 import React from "react";
-import Filter from "./Filter";
+import Filter from "./filters/Filter";
 import { AnimatePresence, motion } from "framer-motion";
-import Categories from "../Features/categories/Categories";
+import Categories from "./categories/Categories";
+import Filters from "./filters/Filters";
 
-function FiltersCategoriesSide() {
-
-  const filters = {
-    price: {
-      type: "range",
-      min: 0,
-      max: 1000,
-      options: [],
-    },
-    rating: {
-      type: "range",
-      min: 0,
-      max: 5,
-      options: [],
-    },
-    brand: {
-      type: "checkbox",
-      min: 0,
-      max: 0,
-      options: ["Apple", "Samsung", "HP", "Dell", "Lenovo", "Asus"],
-    },
-    color: {
-      type: "checkbox",
-      min: 0,
-      max: 0,
-      options: ["Black", "White", "Red", "Blue", "Green", "Yellow"],
-    },
-    storage: {
-      type: "checkbox",
-      min: 0,
-      max: 0,
-      options: ["128GB", "256GB", "512GB", "1TB"],
-    },
-    ram: {
-      type: "checkbox",
-      min: 0,
-      max: 0,
-      options: ["4GB", "8GB", "16GB", "32GB"],
-    },
-  };
-
+function FiltersCategoriesMenu() {
   const [showCategories, setShowCategories] = React.useState<boolean>(true);
   const [showFilters, setShowFilters] = React.useState<boolean>(false);
 
@@ -97,16 +58,7 @@ function FiltersCategoriesSide() {
             transition={{ duration: 0.3 }}
             className="absolute top-12 w-full"
           >
-            {Object.entries(filters).map(([filterKey, filter], index) => (
-              <Filter
-                key={index}
-                type={filter.type}
-                name={filterKey}
-                min={filter.min}
-                max={filter.max}
-                options={filter.options}
-              />
-            ))}
+            <Filters />
           </motion.div>
         )}
       </AnimatePresence>
@@ -114,4 +66,4 @@ function FiltersCategoriesSide() {
   );
 }
 
-export default FiltersCategoriesSide;
+export default FiltersCategoriesMenu;

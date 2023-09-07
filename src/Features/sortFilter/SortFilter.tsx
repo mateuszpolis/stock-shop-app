@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router";
-import FilterCategories from "../../Components/FilterCategories";
+import FilterCategoriesButton from "./FilterCategoriesButton";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "../../Store/store";
 import {
@@ -75,12 +75,12 @@ function SortFilter({ query, categories, sorting }: Props): JSX.Element {
           <i className="fa-solid fa-list"></i>
           <p className="text-xs">Display</p>
         </div>
-        <FilterCategories>
+        <FilterCategoriesButton>
           <div className="text-center border-e-2 flex flex-col hover:cursor-pointer relative">
             <i className="fa-solid fa-filter"></i>
             <p className="text-xs">Filters & Categories</p>
           </div>
-        </FilterCategories>
+        </FilterCategoriesButton>
         <motion.div
           className="text-center border-e-2 flex flex-col hover:cursor-pointer relative"
           onClick={handleDropdownToggle}

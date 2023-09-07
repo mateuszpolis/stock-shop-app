@@ -1,13 +1,14 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { removeBreadcrumbs, selectBreadcrumbs } from "./categoriesSlice";
-import { AppDispatch } from "../../Store/store";
+import { AppDispatch } from "../../../Store/store";
 import {
   selectSearchParams,
   setQueryString,
   setSearchParams,
-} from "../searchResults/searchResultsSlice";
+} from "../../searchResults/searchResultsSlice";
 import { useLocation, useNavigate } from "react-router";
+import { fetchFilters } from "../filters/filtersSlice";
 
 function Breadcrumbs() {
   const dispatch = useDispatch<AppDispatch>();
@@ -40,6 +41,7 @@ function Breadcrumbs() {
             dispatch(setQueryString());
             dispatch(setSearchParams({ category: breadcrumb.id }));
             dispatch(removeBreadcrumbs({ id: breadcrumb.id }));
+            dispatch(fetchFilters(breadcrumb.id));
           }}
           className={`text-xl font-bold cursor-pointer ${
             index === breadcrumbs.length - 1 ? "underline" : ""

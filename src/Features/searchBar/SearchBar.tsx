@@ -13,7 +13,7 @@ import {
 import { updateSearchBar } from "./searchBarSlice";
 import { AppDispatch } from "../../Store/store";
 import { useNavigate } from "react-router-dom";
-import FilterCategories from "../../Components/FilterCategories";
+import FilterCategories from "../sortFilter/FilterCategoriesButton";
 import AddToCartProductCard from "../../Components/AddToCartProductCard";
 import { AnimatePresence, motion } from "framer-motion";
 import {

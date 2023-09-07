@@ -1,5 +1,5 @@
 import React from "react";
-import FiltersCategoriesSide from "./FiltersCategoriesSide";
+import FiltersCategoriesMenu from "./FilterCategoriesMenu";
 import { AnimatePresence, motion } from "framer-motion";
 import ReactDOM from "react-dom";
 
@@ -7,7 +7,7 @@ type Props = {
   children: React.ReactNode;
 };
 
-function FilterCategories({ children }: Props) {
+function  FilterCategoriesButton({ children }: Props) {
   const [isFiltersOpen, setIsFiltersOpen] = React.useState<boolean>(false);
 
   return (
@@ -41,7 +41,7 @@ function FilterCategories({ children }: Props) {
                 Close <i className="fa-solid fa-times"></i>
               </button>
 
-              <FiltersCategoriesSide />
+              <FiltersCategoriesMenu />
             </motion.div>
           )}
           {isFiltersOpen && (
@@ -58,7 +58,7 @@ function FilterCategories({ children }: Props) {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -100 }}
                 transition={{ duration: 0.3, ease: "easeInOut" }}
-                className="hidden lg:block rounded-lg z-50 left-0 w-[60%] h-[60%] p-5 bg-neutral-50 dark:bg-neutral-900 overscroll-none"
+                className="shadow-lg hidden lg:block rounded-lg z-50 left-0 w-[60%] h-[60%] p-5 bg-neutral-50 dark:bg-neutral-900 overscroll-none"
               >
                 <button
                   className="text-neutral-900 dark:text-neutral-50 text-2xl mb-8 hover:cursor-pointer font-bold"
@@ -69,7 +69,7 @@ function FilterCategories({ children }: Props) {
                   Close <i className="fa-solid fa-times"></i>
                 </button>
 
-                <FiltersCategoriesSide />
+                <FiltersCategoriesMenu />
               </motion.div>
             </div>
           )}
@@ -80,4 +80,4 @@ function FilterCategories({ children }: Props) {
   );
 }
 
-export default FilterCategories;
+export default FilterCategoriesButton;

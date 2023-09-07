@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch } from "../../Store/store";
+import { AppDispatch } from "../../../Store/store";
 import {
   addBreadcrumb,
   fetchCategories,
@@ -11,14 +11,15 @@ import {
   setCurrentParentId,
 } from "./categoriesSlice";
 import { AnimatePresence, motion } from "framer-motion";
-import Category from "../../Components/Category";
+import Category from "./Category";
 import Breadcrumbs from "./Breadcrumbs";
 import {
   selectSearchParams,
   setQueryString,
   setSearchParams,
-} from "../searchResults/searchResultsSlice";
+} from "../../searchResults/searchResultsSlice";
 import { useLocation, useNavigate } from "react-router";
+import { fetchFilters } from "../filters/filtersSlice";
 
 function Categories() {
   const dispatch = useDispatch<AppDispatch>();
@@ -79,6 +80,7 @@ function Categories() {
                   dispatch(setSearchParams({ category: category.id }));
                   dispatch(addBreadcrumb(category));
                   dispatch(setCurrentParentId(category.id));
+                  dispatch(fetchFilters(category.id));
                 }}
               />
             ))}
