@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectSearchParams, setQueryString, setSearchParams } from "../searchResults/searchResultsSlice";
+import { selectSearchParams, setSearchParams } from "../searchResults/searchResultsSlice";
 import { useNavigate } from "react-router";
 import { AppDispatch } from "../../Store/store";
 
@@ -38,7 +38,6 @@ function Limit() {
     };
     const queryString = new URLSearchParams(queryOptions).toString();
     navigate(`/search?${queryString}`);
-    dispatch(setQueryString());
     setSelectedOption(optionValue);
     setIsDropdownOpen(false);
 
@@ -47,14 +46,14 @@ function Limit() {
 
   return (
     <motion.div
-      className="text-center border-e-2 flex flex-col hover:cursor-pointer relative"
+      className="text-center flex flex-col hover:cursor-pointer relative"
       onClick={handleDropdownToggle}
     >
       <i className="fa-solid fa-hashtag"></i>
       <p className="text-xs">Limit</p>
       {isDropdownOpen && (
         <motion.div
-          className="absolute top-full min-w-fit w-full mt-1 bg-neutral-50 dark:bg-neutral-800 shadow-md rounded-lg overflow-hidden"
+          className="absolute top-full min-w-fit w-full mt-1 bg-neutral-50 shadow-md rounded-lg overflow-hidden"
           initial={{ opacity: 0, zIndex: 10 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -64,8 +63,8 @@ function Limit() {
               key={option.value}
               className={`py-2 px-4 ${
                 selectedOption === option.value
-                  ? "bg-neutral-100 dark:bg-neutral-900"
-                  : "hover:bg-neutral-200 dark:hover:bg-neutral-700"
+                  ? "bg-neutral-100"
+                  : "hover:bg-neutral-200"
               } cursor-pointer transition-all duration-75 whitespace-nowrap relative z-20`}
               onClick={() => {
                 handleOptionSelect(option.value);

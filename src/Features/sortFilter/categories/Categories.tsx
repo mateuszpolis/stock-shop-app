@@ -15,7 +15,6 @@ import Category from "./Category";
 import Breadcrumbs from "./Breadcrumbs";
 import {
   selectSearchParams,
-  setQueryString,
   setSearchParams,
 } from "../../searchResults/searchResultsSlice";
 import { useLocation, useNavigate } from "react-router";
@@ -76,8 +75,7 @@ function Categories() {
                   if (location.pathname.startsWith("/search")) {
                     navigate(`/search?${queryString}`);
                   }
-                  dispatch(setQueryString());
-                  dispatch(setSearchParams({ category: category.id }));
+                  dispatch(setSearchParams({ category: category.id })); 
                   dispatch(addBreadcrumb(category));
                   dispatch(setCurrentParentId(category.id));
                   dispatch(fetchFilters(category.id));

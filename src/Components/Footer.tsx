@@ -2,7 +2,7 @@ import React from "react";
 
 function Footer() {
   return (
-    <footer className="mt-auto w-full p-10 bg-neutral-900 dark:bg-neutral-50 rounded-t-xl text-lg">
+    <footer className="mt-auto w-full p-10 bg-primary dark:bg-neutral-50 rounded-t-xl text-lg">
       <div className="flex justify-between items-center">
         <div>
           <span className="text-neutral-50 dark:text-neutral-950 font-bold text-md">

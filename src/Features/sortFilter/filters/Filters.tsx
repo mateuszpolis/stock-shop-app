@@ -17,8 +17,6 @@ function Filters() {
   const failedLoading = useSelector(selectFiltersFailed);
   const filters = useSelector(selectFilters);
 
-  const [showInfo, setShowInfo] = React.useState<boolean>(true);
-
   return (
     <div className="overflow-x-hidden h-full overflow-y-scroll w-full no-scrollbar dark:text-neutral-50">
       {loading && <Loading />}

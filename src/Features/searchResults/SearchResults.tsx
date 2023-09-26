@@ -27,6 +27,7 @@ function SearchResults() {
     const limit = queryParams.get("limit");
     const category = queryParams.get("category");
     const sorting = queryParams.get("sorting");
+    const filters = queryParams.get("filters");
 
     dispatch(
       setSearchParams({
@@ -34,6 +35,7 @@ function SearchResults() {
         limit: limit,
         category: category,
         sorting: sorting,
+        filters: JSON.parse(decodeURIComponent(filters || "[]")),
       })
     );
     dispatch(loadProducts());

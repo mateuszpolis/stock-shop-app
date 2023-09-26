@@ -14,18 +14,18 @@ function NavBar(): JSX.Element {
   return (
     <div
       id="navbar"
-      className="xl:w-[1280px] flex flex-col sticky top-0 p-5 pb-1 transition-all bg-neutral-50 dark:bg-neutral-900 z-40"
+      className="xl:w-[1280px] text-secondary flex flex-col sticky top-0 p-5 pb-1 transition-all bg-neutral-50 z-40"
     >
-      <div className="flex flex-col space-y-2 sm:flex-row justify-between mb-2 items-center text-sm sm:text-lg md:text-xl lg:text-2xl text-neutral-950 bg-neutral-50 dark:bg-neutral-900 dark:text-neutral-50 transition-all">
+      <div className="flex flex-col space-y-2 sm:flex-row justify-between mb-2 items-center text-sm sm:text-lg md:text-xl lg:text-2xl bg-neutral-50 transition-all">
         <div className="flex justify-between items-center w-full sm:w-auto">
           <Link to={`/${isLoggedin ? "profile" : "login"}`}>
-            <div className="text-3xl sm:hidden hover:text-neutral-500 dark:hover:text-neutral-200 cursor-pointer transition-all">
+            <div className="text-3xl sm:hidden hover:text-primary cursor-pointer transition-all">
               <i className="fa-solid fa-user"></i>
             </div>
           </Link>
           <div>
             <Link to="/">
-              <h1 className="text-3xl sm:text-2xl md:text-3xl lg:text-4xl font-black font-display">
+              <h1 className="text-3xl text-secondary sm:text-2xl md:text-3xl lg:text-4xl font-black font-display">
                 StockShop
               </h1>
             </Link>
@@ -42,7 +42,7 @@ function NavBar(): JSX.Element {
                 </span>
               </Link>
             </div>
-            <div className="relative hover:text-neutral-500 dark:hover:text-neutral-200  cursor-pointer transition-all">
+            <div className="relative hover:text-primary cursor-pointer transition-all">
               <Link to="/cart">
                 <i className="fa-solid fa-cart-shopping"></i>
               </Link>
@@ -57,7 +57,7 @@ function NavBar(): JSX.Element {
         </div>
         <div className="hidden sm:flex sm:text-2xl md:text-3xl justify-between space-x-2 sm:space-x-4 md:space-x-10 mr-5">
           <Link to={`/${isLoggedin ? "profile" : "login"}`}>
-            <div className="hover:text-neutral-500 dark:hover:text-neutral-200 cursor-pointer transition-all">
+            <div className="hover:text-primary cursor-pointer transition-all">
               <i className="fa-solid fa-user"></i>
             </div>
           </Link>
@@ -72,7 +72,7 @@ function NavBar(): JSX.Element {
               </span>
             </Link>
           </div>
-          <div className="relative hover:text-neutral-500 dark:hover:text-neutral-200  cursor-pointer transition-all">
+          <div className="relative hover:text-primary cursor-pointer transition-all">
             <Link to="/cart">
               <i className="fa-solid fa-cart-shopping"></i>
             </Link>

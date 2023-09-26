@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { Parameter, ParameterResponse } from "../../../Models/Parameter";
+import { FilterChoices, Parameter, ParameterResponse } from "../../../Models/Parameter";
 import { Option } from "../../../Models/Option";
 
 export const fetchFilters = createAsyncThunk(
@@ -36,6 +36,7 @@ type FiltersState = {
   failedLoading: boolean;
   hasLoaded: boolean;
   filters: Parameter[];
+  filterChoices: FilterChoices[];
 };
 
 const filtersSlice = createSlice({
@@ -45,8 +46,36 @@ const filtersSlice = createSlice({
     failedLoading: false,
     hasLoaded: false,
     filters: [],
+    filterChoices: [],
   } as FiltersState,
-  reducers: {},
+  reducers: {
+    addFilterChoice: (state, action) => {
+      const { parameterId, choiceId } = action.payload;
+      const filterChoice = state.filterChoices.find(
+        (filterChoice) => filterChoice.parameterId === parameterId
+      );
+
+      if (filterChoice) {
+        filterChoice.choicesIds.push(choiceId);
+      } else {
+        state.filterChoices.push({
+          parameterId,
+          choicesIds: [choiceId],
+        });
+      }
+    },
+    removeFilterChoice: (state, action) => {
+      const { parameterId, choiceId } = action.payload;
+      const filterChoice = state.filterChoices.find(
+        (filterChoice) => filterChoice.parameterId === parameterId
+      );
+
+      if (filterChoice) {
+        const index = filterChoice.choicesIds.indexOf(choiceId);
+        filterChoice.choicesIds.splice(index, 1);
+      }
+    },
+  },
   extraReducers: {
     [fetchFilters.fulfilled.type]: (state, action) => {
       state.hasLoaded = true;
@@ -82,5 +111,18 @@ export const selectFiltersFailed = (state: any) => {
 export const selectFiltersLoaded = (state: any) => {
   return state.filters.hasLoaded;
 };
+
+export const selectFilterChoices = (state: any) => {
+  return state.filters.filterChoices;
+};
+
+export const selectChoicesForFilter = (state: any, parameterId: number) => {
+  const filterChoices = state.filters.filterChoices.find(
+    (filterChoice: FilterChoices) => filterChoice.parameterId === parameterId
+  );
+  return filterChoices;
+};
+
+export const { addFilterChoice, removeFilterChoice } = filtersSlice.actions;
 
 export default filtersSlice.reducer;

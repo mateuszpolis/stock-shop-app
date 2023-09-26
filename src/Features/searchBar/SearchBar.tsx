@@ -17,9 +17,7 @@ import FilterCategories from "../sortFilter/FilterCategoriesButton";
 import AddToCartProductCard from "../../Components/AddToCartProductCard";
 import { AnimatePresence, motion } from "framer-motion";
 import {
-  selectQueryString,
   selectSearchParams,
-  setQueryString,
   setSearchParams,
 } from "../searchResults/searchResultsSlice";
 
@@ -73,7 +71,6 @@ export default function SearchBar(): JSX.Element {
     const queryString = new URLSearchParams(queryOptions).toString();
     navigate(`/search?${queryString}`);
     dispatch(setSearchParams({ searchQuery: searchTerm }));
-    dispatch(setQueryString());
   };
 
   return (
@@ -92,7 +89,7 @@ export default function SearchBar(): JSX.Element {
             type="search"
             autoComplete="off"
             id="default-search"
-            className="shadow-md appearance-none block w-full sm:w-72 md:w-80 lg:w-96 p-4 text-base text-neutral-950 border-2 border-neutral-950 active:rounded-lg focus:rounded-lg hover:rounded-lg rounded-lg sm:rounded-lg bg-neutral-50 focus:outline-none focus:ring-1 focus:ring-neutral-950 focus:border-neutral-950 dark:bg-neutral-900 dark:border-neutral-50 dark:placeholder-neutral-400 dark:text-neutral-50 dark:focus:ring-neutral-50 dark:focus:border-neutral-50 transition-all"
+            className="text-black shadow-md appearance-none block w-full sm:w-72 md:w-80 lg:w-96 p-4 text-base border-2 border-secondary active:rounded-lg focus:rounded-lg hover:rounded-lg rounded-lg sm:rounded-lg bg-neutral-50 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-all"
             placeholder="What are you looking for?"
             value={searchTerm}
             onChange={handleInputChange}
@@ -100,7 +97,7 @@ export default function SearchBar(): JSX.Element {
           />
           <div className="absolute right-2.5 bottom-2.5 flex shadow-md rounded-lg">
             <FilterCategories>
-              <div className="dark:text-neutral-950 h-full bg-neutral-50 border-neutral-950 border-e-0 px-4 py-2 hover:bg-neutral-950 hover:text-neutral-50 text-base rounded-lg rounded-tr-none rounded-br-none transition-all">
+              <div className="text-primary h-full bg-neutral-50 border-primary border-e-0 px-4 py-2 hover:bg-primary hover:text-neutral-50 text-base rounded-lg rounded-tr-none rounded-br-none transition-all">
                 <i className="fa-solid fa-filter"></i>
               </div>
             </FilterCategories>
@@ -108,7 +105,7 @@ export default function SearchBar(): JSX.Element {
               onClick={(e) => {
                 e.stopPropagation();
               }}
-              className="dark:text-neutral-950 h-full bg-neutral-50 border-neutral-950 px-4 py-2 hover:bg-neutral-950 hover:text-neutral-50 font-bold text-base rounded-lg rounded-tl-none rounded-bl-none transition-all"
+              className="text-primary h-full bg-neutral-50 border-primary px-4 py-2 hover:bg-primary hover:text-neutral-50 font-bold text-base rounded-lg rounded-tl-none rounded-bl-none transition-all"
             >
               <span className="sm:hidden lg:inline-block">Search</span>{" "}
               <i className="fa-solid fa-magnifying-glass"></i>
@@ -122,7 +119,7 @@ export default function SearchBar(): JSX.Element {
           hasLoadedCategories &&
           products.length > 0 && (
             <motion.div
-              className="absolute w-full sm:w-96 bg-neutral-50 rounded-b-lg shadow-lg overflow-hidden p-3"
+              className="text-black absolute w-full sm:w-96 bg-neutral-50 rounded-b-lg shadow-lg overflow-hidden p-3"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
@@ -138,7 +135,7 @@ export default function SearchBar(): JSX.Element {
                 />
               </div>
               <div className="flex items-center border-t-2 border-neutral-200 w-full space-x-2 overflow-hidden">
-                <h2 className="text-base text-neutral-950 font-bold">
+                <h2 className="text-base font-bold">
                   Suggested Categories:
                 </h2>
                 <div className="flex space-x-2 justify-center items-center overflow-x-scroll no-scrollbar">

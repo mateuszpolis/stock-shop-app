@@ -4,7 +4,6 @@ import { removeBreadcrumbs, selectBreadcrumbs } from "./categoriesSlice";
 import { AppDispatch } from "../../../Store/store";
 import {
   selectSearchParams,
-  setQueryString,
   setSearchParams,
 } from "../../searchResults/searchResultsSlice";
 import { useLocation, useNavigate } from "react-router";
@@ -38,7 +37,6 @@ function Breadcrumbs() {
             if (location.pathname.startsWith("/search")) {
               navigate(`/search?${queryString}`);
             }
-            dispatch(setQueryString());
             dispatch(setSearchParams({ category: breadcrumb.id }));
             dispatch(removeBreadcrumbs({ id: breadcrumb.id }));
             dispatch(fetchFilters(breadcrumb.id));

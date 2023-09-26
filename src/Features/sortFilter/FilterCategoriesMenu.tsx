@@ -1,5 +1,4 @@
 import React from "react";
-import Filter from "./filters/Filter";
 import { AnimatePresence, motion } from "framer-motion";
 import Categories from "./categories/Categories";
 import Filters from "./filters/Filters";

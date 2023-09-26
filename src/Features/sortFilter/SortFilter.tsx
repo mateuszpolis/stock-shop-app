@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "../../Store/store";
 import {
   selectSearchParams,
-  setQueryString,
   setSearchParams,
 } from "../searchResults/searchResultsSlice";
 import Limit from "./Limit";
@@ -57,7 +56,6 @@ function SortFilter({ query, categories, sorting }: Props): JSX.Element {
     };
     const queryString = new URLSearchParams(queryOptions).toString();
     navigate(`/search?${queryString}`);
-    dispatch(setQueryString());
     setSelectedOption(optionValue);
     setIsDropdownOpen(false);
 

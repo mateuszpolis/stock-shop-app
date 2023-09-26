@@ -17,3 +17,8 @@ export type Parameter = {
   parameterType: string;
   predefinedChoices: Option[];
 };
+
+export type FilterChoices = {
+  parameterId: number;
+  choicesIds: number[];
+};
