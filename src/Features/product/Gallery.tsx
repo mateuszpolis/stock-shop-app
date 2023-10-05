@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
-import img1 from "../../images/350wpx_6ec757775f8918266d758f0c14124d78.jpg";
-import img2 from "../../images/350wpx_8ae78e1e12374358083560891960dc37.jpg";
-import img3 from "../../images/350wpx_87f9beb21f42f925096180934e984c15.jpg";
+import img1 from "../../images/61DUKoWgZgL._AC_UF350,350_QL80_.jpg";
+import img2 from "../../images/Apple-iPhone-13-4.jpg";
+import img3 from "../../images/iphone-13-finish-unselect-gallery-1-202207_GEO_EMEA_FMT_WHH.jpg";
 
 type Props = {
   productId: number;

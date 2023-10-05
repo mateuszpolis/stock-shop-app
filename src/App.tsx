@@ -14,6 +14,8 @@ import PrivateRoute from "./Components/PrivateRoute";
 import ScrollUp from "./Components/ScrollUp";
 import NavBar from "./Components/NavBar";
 import Footer from "./Components/Footer";
+import Admin from "./Pages/Admin/Admin";
+import AdminProducts from "./Pages/Admin/AdminProducts";
 
 function App() {
   const location = useLocation();
@@ -22,12 +24,14 @@ function App() {
     window.scrollTo(0, 0);
   }, [location]);
 
+  const isAdminPage = location.pathname.startsWith("/admin");
+
   return (
     <div
       id="App"
       className="relative bg-neutral-50 dark:bg-neutral-900 flex flex-col xl:items-center min-h-screen"
     >
-      <NavBar />
+      {isAdminPage ? null : <NavBar />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
@@ -40,6 +44,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Signup />} />
         <Route path="/about" element={<div>About</div>} />
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/admin/products" element={<AdminProducts />} />
         <Route
           path="/profile"
           element={

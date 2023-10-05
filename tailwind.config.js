@@ -6,7 +6,7 @@ module.exports = {
     extend: {
       colors: {
         primary: "#000000",
-        secondary: "#0a0a0a",
+        secondary: "#d5731c",
       },
       backgroundSize: {
         "size-200": "200% 200%",
