@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
-import searchBarReducer from "../Features/searchBar/searchBarSlice";
+import searchBarReducer from "../Common/NavBar/SearchBar/searchBarSlice";
 import catgoriesReducer from "../Features/sortFilter/categories/categoriesSlice";
 import offersReducer from "../Features/offers/offersSlice";
 import wishlistReducer from "../Features/wishlist/wishlistSlice";

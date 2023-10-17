@@ -8,7 +8,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "../../Store/store";
 import { useNavigate } from "react-router";
-import Loading from "../../Components/Loading";
+import Loading from "../../Common/LoadingAnimation/LoadingAnimation";
 
 type passwordCheck = {
   message: string;

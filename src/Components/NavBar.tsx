@@ -1,5 +1,5 @@
 import React from "react";
-import SearchBar from "../Features/searchBar/SearchBar";
+import SearchBar from "../Common/NavBar/SearchBar/SearchBar";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectTotalQuantity } from "../Features/cart/cartSlice";

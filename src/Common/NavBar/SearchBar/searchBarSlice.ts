@@ -1,8 +1,8 @@
 import { PayloadAction, createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { Product } from "../../Models/Product";
+import { Product } from "../../../Models/Product";
 import axios from "axios";
-import { AppDispatch, RootState } from "../../Store/store";
-import { Category } from "../../Models/Category";
+import { AppDispatch, RootState } from "../../../Store/store";
+import { Category } from "../../../Models/Category";
 import { useDispatch } from "react-redux";
 
 interface SearchBarState {

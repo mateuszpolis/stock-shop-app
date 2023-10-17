@@ -17,7 +17,7 @@ import {
   selectIsLoading,
   selectProduct,
 } from "./productInfoSlice";
-import Loading from "../../Components/Loading";
+import Loading from "../../Common/LoadingAnimation/LoadingAnimation";
 import SimiliarProducts from "../similiarProducts/SimiliarProducts";
 import { Product } from "../../Models/Product";
 

@@ -12,7 +12,7 @@ import {
 } from "./loginSlice";
 import ReactDOM from "react-dom";
 import Error from "../../Components/Error";
-import Loading from "../../Components/Loading";
+import Loading from "../../Common/LoadingAnimation/LoadingAnimation";
 
 function LoginForm() {
   const dispatch = useDispatch<AppDispatch>();

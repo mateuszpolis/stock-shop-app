@@ -11,15 +11,15 @@ import {
   selectSearchTerm,
 } from "./searchBarSlice";
 import { updateSearchBar } from "./searchBarSlice";
-import { AppDispatch } from "../../Store/store";
+import { AppDispatch } from "../../../Store/store";
 import { useNavigate } from "react-router-dom";
-import FilterCategories from "../sortFilter/FilterCategoriesButton";
-import AddToCartProductCard from "../../Components/AddToCartProductCard";
+import FilterCategories from "../../../Features/sortFilter/FilterCategoriesButton";
+import AddToCartProductCard from "../../../Components/AddToCartProductCard";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   selectSearchParams,
   setSearchParams,
-} from "../searchResults/searchResultsSlice";
+} from "../../../Features/searchResults/searchResultsSlice";
 
 export default function SearchBar(): JSX.Element {
   const searchTerm = useSelector(selectSearchTerm);
@@ -74,7 +74,7 @@ export default function SearchBar(): JSX.Element {
   };
 
   return (
-    <div className="relative w-full sm:w-72 md:w-80 lg:w-96">
+    <div className="relative">
       <form
         onClick={() => {
           setSearchActive(true);
@@ -84,12 +84,12 @@ export default function SearchBar(): JSX.Element {
         }}
         onSubmit={handleSubmit}
       >
-        <div className="relative">
+        <div className="relative w-[450px]">
           <input
             type="search"
             autoComplete="off"
             id="default-search"
-            className="text-black shadow-md appearance-none block w-full sm:w-72 md:w-80 lg:w-96 p-4 text-base border-2 border-secondary active:rounded-lg focus:rounded-lg hover:rounded-lg rounded-lg sm:rounded-lg bg-neutral-50 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-all"
+            className="relative appearance-none block w-full p-4 text-base border-2 border-neutral-950 active:rounded-lg focus:rounded-lg hover:rounded-lg rounded-lg sm:rounded-lg bg-neutral-50 focus:outline-none focus:ring-1 focus:ring-neutral-950 focus:border-neutral-950 transition-all"
             placeholder="What are you looking for?"
             value={searchTerm}
             onChange={handleInputChange}
@@ -97,18 +97,19 @@ export default function SearchBar(): JSX.Element {
           />
           <div className="absolute right-2.5 bottom-2.5 flex shadow-md rounded-lg">
             <FilterCategories>
-              <div className="text-primary h-full bg-neutral-50 border-primary border-e-0 px-4 py-2 hover:bg-primary hover:text-neutral-50 text-base rounded-lg rounded-tr-none rounded-br-none transition-all">
-                <i className="fa-solid fa-filter"></i>
+              <div className="h-full bg-neutral-50 border-e-0 px-4 py-2 hover:bg-primary hover:text-neutral-50 font-bold text-base rounded-lg rounded-tr-none rounded-br-none flex items-center space-x-2">
+                <span className="hidden lg:inline-block">Filter</span>{" "}
+                <span className="material-symbols-outlined">filter_list</span>
               </div>
             </FilterCategories>
             <button
               onClick={(e) => {
                 e.stopPropagation();
               }}
-              className="text-primary h-full bg-neutral-50 border-primary px-4 py-2 hover:bg-primary hover:text-neutral-50 font-bold text-base rounded-lg rounded-tl-none rounded-bl-none transition-all"
+              className="h-full bg-neutral-50 px-4 py-2 hover:bg-primary hover:text-neutral-50 font-bold text-base rounded-lg rounded-tl-none rounded-bl-none flex items-center space-x-2"
             >
               <span className="sm:hidden lg:inline-block">Search</span>{" "}
-              <i className="fa-solid fa-magnifying-glass"></i>
+              <span className="material-symbols-outlined">search</span>
             </button>
           </div>
         </div>
@@ -135,9 +136,7 @@ export default function SearchBar(): JSX.Element {
                 />
               </div>
               <div className="flex items-center border-t-2 border-neutral-200 w-full space-x-2 overflow-hidden">
-                <h2 className="text-base font-bold">
-                  Suggested Categories:
-                </h2>
+                <h2 className="text-base font-bold">Suggested Categories:</h2>
                 <div className="flex space-x-2 justify-center items-center overflow-x-scroll no-scrollbar">
                   {categories.map((category) => (
                     <div

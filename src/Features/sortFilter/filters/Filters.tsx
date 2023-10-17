@@ -6,7 +6,7 @@ import {
   selectFiltersLoaded,
   selectFiltersLoading,
 } from "./filtersSlice";
-import Loading from "../../../Components/Loading";
+import Loading from "../../../Common/LoadingAnimation/LoadingAnimation";
 import { AnimatePresence, motion } from "framer-motion";
 import Filter from "./Filter";
 import { Parameter } from "../../../Models/Parameter";

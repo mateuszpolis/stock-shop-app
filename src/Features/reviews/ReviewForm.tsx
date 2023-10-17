@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import StarRating from "./StarRating";
-import Loading from "../../Components/Loading";
+import Loading from "../../Common/LoadingAnimation/LoadingAnimation";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "../../Store/store";
 import {

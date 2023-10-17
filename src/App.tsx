@@ -16,8 +16,9 @@ import NavBar from "./Components/NavBar";
 import Footer from "./Components/Footer";
 import Admin from "./Pages/Admin/Admin";
 import AdminProducts from "./Pages/Admin/AdminProducts";
+import NavBarComputer from "./Common/NavBar/NavBarComputer/NavBarComputer";
 
-function App() {
+function  App() {
   const location = useLocation();
 
   useEffect(() => {
@@ -27,11 +28,12 @@ function App() {
   const isAdminPage = location.pathname.startsWith("/admin");
 
   return (
-    <div
+    <div 
       id="App"
-      className="relative bg-neutral-50 dark:bg-neutral-900 flex flex-col xl:items-center min-h-screen"
+      className="z-50"
     >
-      {isAdminPage ? null : <NavBar />}
+      {isAdminPage ? null : <NavBarComputer />}
+      <div className="mt-32"></div>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectSearchTerm } from "../searchBar/searchBarSlice";
+import { selectSearchTerm } from "../../Common/NavBar/SearchBar/searchBarSlice";
 import ProductCardList from "../../Components/ProductCardList";
 import {
   loadProducts,
@@ -13,7 +13,7 @@ import {
   setSearchParams,
 } from "./searchResultsSlice";
 import { AppDispatch } from "../../Store/store";
-import Loading from "../../Components/Loading";
+import Loading from "../../Common/LoadingAnimation/LoadingAnimation";
 import { Product } from "../../Models/Product";
 import { useLocation } from "react-router";
 
